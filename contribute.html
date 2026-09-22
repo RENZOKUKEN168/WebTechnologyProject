@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plant Contribution Form">
+    <meta name="keywords" content="contribution, form">
+    <meta name="author" content="Darren">
+    <title>Contribution Form</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="contribute-page">
+
+    <header>
+        <div class="brand">
+            <img src="Photos/plantify_logo.png" alt="Plantify">
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="explore1.html">Explore</a>
+            <a href="#">Identifier</a>
+            <a href="contribute.html" aria-current="page">Contributors</a>
+            <a href="#">My Profile</a>
+            <a href="#">Enquiry</a>
+        </nav>
+
+        <div class="header-right">
+            <input type="search" aria-label="Search Plantify" placeholder="Search">
+        </div>
+    </header>
+
+    <main>
+        <h2>Plant Contribution Form</h2>
+        <p class="form-intro">Share a plant you have discovered with the Plantify community.</p>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+
+            <!-- Contributor Name -->
+            <p>
+                <label for="contributor">Name of Contributor:</label><br>
+                <input type="text"
+                       id="contributor"
+                       name="contributor"
+                       maxlength="25"
+                       pattern="[A-Za-z ]+"
+                       title="Use alphabetic characters only."
+                       placeholder="(Required)"
+                       required>
+            </p>
+
+            <!-- Plant Name -->
+            <p>
+                <label for="plantname">Plant's Name:</label><br>
+                <input type="text"
+                    id="plantname"
+                    name="plantname"
+                    maxlength="25"
+                    pattern="[A-Za-z ]+"
+                    title="Use alphabetic characters only."
+                    placeholder="(Required)"
+                    required>
+            </p>
+
+            <!-- Plant Photos -->
+            <p>
+                <label for="photo">Upload Plant Photo(s):</label><br>
+                <input type="file"
+                    id="photo"
+                    name="photo"
+                    accept="image/*"
+                    multiple>
+            </p>
+
+            <!-- Comments -->
+            <p>
+                <label for="comments">Comments:</label><br>
+                <textarea id="comments"
+                    name="comments"
+                    rows="6"
+                    cols="40"
+                    placeholder="(Optional) Enter information about the plant..."></textarea>
+            </p>
+
+            <!-- Buttons -->
+            <p>
+                <input type="submit" value="Submit Contribution">
+                <input type="reset" value="Clear Form">
+            </p>
+
+        </form>
+    </main>
+
+    <footer class="explore-footer">
+        <div class="footer-grid">
+            <section class="footer-brand" aria-label="About Plantify">
+                <img src="Photos/plantify_logo.png" alt="Plantify">
+                <p>Explore. Learn. Appreciate.<br>Plants make our world greener, healthier and more beautiful.</p>
+            </section>
+            <section>
+                <h2>Contact Us</h2>
+                <address>
+                    <p><span aria-hidden="true">●</span> Kuching, Sarawak, Malaysia</p>
+                    <p><span aria-hidden="true">✉</span> <a href="mailto:104406534@student.swinburne.edu.my">Email Us</a></p>
+                    <p><span aria-hidden="true">☎</span> <a href="tel:+6082123456">+60 82 123 456</a></p>
+                </address>
+            </section>
+            <section>
+                <h2>Find Us</h2>
+                <div class="map-card">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Swinburne%20University%20of%20Technology%20Sarawak%20Campus&amp;z=16&amp;output=embed"
+                        title="Map showing Swinburne University of Technology Sarawak Campus"
+                        loading="lazy"
+                        tabindex="0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+            <section>
+                <h2>Quick Links</h2>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="explore1.html">Explore</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </section>
+        </div>
+        <p class="footer-copy">&copy; 2026 Plantify. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

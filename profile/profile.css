@@ -1,0 +1,326 @@
+body {
+    margin: 0;
+    background-color: #f4f7f2;
+    color: #20352a;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 16px clamp(24px, 5vw, 72px);
+    background-color: #dcebe1;
+    border-bottom: 1px solid #dce7dc;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.brand img {
+    display: block;
+    width: 200px;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-left: auto;
+}
+
+nav a {
+    position: relative;
+    color: #3e5345;
+    font-size: 0.94rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+nav a:hover {
+    color: #1e6241;
+}
+
+nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    left: 0;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #286b46;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right input {
+    width: 185px;
+    padding: 9px 14px;
+    border: 1px solid #cbd8cc;
+    border-radius: 999px;
+    background: #f7faf6;
+    color: #20352a;
+    font: inherit;
+}
+
+.header-right input:focus {
+    border-color: #4f936a;
+    outline: 3px solid #dcefe2;
+}
+
+/* Profile content */
+main {
+    width: min(100% - 40px, 900px);
+    margin: 56px auto;
+    padding: 42px;
+    box-sizing: border-box;
+    border: 1px solid #e1e9e1;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 14px 34px rgba(31, 72, 45, 0.09);
+    animation: fade-up 0.7s ease-out both;
+}
+
+h1 {
+    margin: 0 0 28px;
+    color: #173d2b;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+h1::after {
+    display: block;
+    width: 58px;
+    height: 4px;
+    margin: 10px auto 0;
+    border-radius: 999px;
+    background-color: #4f936a;
+    content: "";
+    animation: grow-line 0.7s 0.35s ease-out both;
+}
+
+h2 {
+    margin: 0;
+    color: #173d2b;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.profile-summary {
+    min-height: 340px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #cbd8cc;
+}
+
+.profile-summary::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.profile-photo {
+    float: right;
+    width: 210px;
+    height: 280px;
+    margin: 0 0 20px 35px;
+    padding: 20px;
+    border: 6px groove rgb(40, 107, 70);
+    background-color: #dcebe1;
+    object-fit: cover;
+    box-shadow: 0 12px 24px rgba(31, 72, 45, 0.14);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.profile-photo:hover {
+    box-shadow: 0 18px 32px rgba(31, 72, 45, 0.22);
+    transform: translateY(-6px) rotate(1deg);
+}
+
+.profile-name {
+    margin: 0 0 30px;
+    color: #173d2b;
+    font-size: 200%;
+    font-weight: bold;
+    text-align: center;
+    animation: fade-up 0.7s 0.15s ease-out both;
+}
+
+.course {
+    color: rgb(40, 107, 70);
+}
+
+.personal-profile {
+    padding-top: 30px;
+    animation: fade-up 0.7s 0.25s ease-out both;
+}
+
+.personal-profile h2 {
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profile-table th,
+.profile-table td {
+    padding: 12px;
+    border: 1px solid #9eb5a5;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.profile-table th {
+    background-color: #dcebe1;
+    font-weight: bold;
+    text-align: center;
+}
+
+.profile-table td {
+    background-color: #f2f7f2;
+}
+
+.profile-table td:first-child {
+    width: 32%;
+    color: #20563a;
+    font-weight: bold;
+}
+
+.profile-table tbody tr:hover td {
+    background-color: #e5f1e7;
+}
+
+.profile-table tbody tr:hover td:first-child {
+    transform: translateX(4px);
+}
+
+.profile-table tfoot td {
+    background: linear-gradient(135deg, #edf6ee, #dcebe1);
+    text-align: center;
+}
+
+.email-button {
+    display: inline-block;
+    margin-left: 7px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background-color: #286b46;
+    box-shadow: 0 5px 12px rgba(40, 107, 70, 0.22);
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.email-button::after {
+    display: inline-block;
+    margin-left: 7px;
+    content: "\2192";
+    transition: transform 0.25s ease;
+}
+
+.email-button:hover {
+    background-color: #1e5738;
+    box-shadow: 0 8px 16px rgba(40, 107, 70, 0.3);
+    transform: translateY(-2px);
+}
+
+.email-button:hover::after {
+    transform: translateX(4px);
+}
+
+.email-button:focus-visible,
+nav a:focus-visible {
+    outline: 3px solid rgba(79, 147, 106, 0.35);
+    outline-offset: 4px;
+}
+
+footer {
+    padding: 0 20px 32px;
+    color: #718074;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes grow-line {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@media (max-width: 760px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-left: 0;
+    }
+
+    main {
+        padding: 28px 22px;
+    }
+
+    .profile-photo {
+        float: none;
+        display: block;
+        max-width: calc(100% - 52px);
+        margin: 0 auto 26px;
+    }
+
+    .profile-summary {
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
