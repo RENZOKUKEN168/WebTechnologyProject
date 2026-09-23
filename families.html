@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover four tropical plant families with Plantify.">
+    <title>Plant Families - Plantify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="explore-page families-page">
+    <header>
+        <div class="brand">
+            <img src="Photos/plantify_logo.png" alt="Plantify">
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="explore1.html" aria-current="page">Explore</a>
+            <a href="#">Identifier</a>
+            <a href="contribute.html">Contributors</a>
+            <a href="#">My Profile</a>
+            <a href="#">Enquiry</a>
+        </nav>
+
+        <div class="header-right">
+            <input type="search" aria-label="Search Plantify" placeholder="Search">
+        </div>
+    </header>
+
+    <section class="explore-cover families-cover" aria-labelledby="families-heading">
+        <img class="cover-background" src="Photos/explore-background1.png" alt="A tall Shorea sumatrana tree viewed from below">
+        <div class="cover-shade" aria-hidden="true"></div>
+        <div class="cover-content">
+            <p>Plant classification · Level 01</p>
+            <h1 id="families-heading">Plant<br>Families</h1>
+            <p class="cover-summary">Discover four tropical plant families and the features that connect the plants within each group.</p>
+            <a class="scroll-link" href="#families-list">Meet the families <span aria-hidden="true">↓</span></a>
+        </div>
+    </section>
+
+    <main class="explore-main classification-main">
+        <aside class="classification-rail">
+            <p class="classification-rail-title">Plant<br>Levels</p>
+            <nav aria-label="Plant classification pages">
+                <a href="families.html#families-list" aria-current="page">Families</a>
+                <a href="genera.html#genera-list">Genera</a>
+                <a href="species.html#species-list">Species</a>
+            </nav>
+        </aside>
+        <section class="families-section" id="families-list" aria-labelledby="family-list-heading">
+            <div class="families-intro">
+                <p>Selected from the supplied plant data</p>
+                <h2 id="family-list-heading">Four branches of plant life</h2>
+            </div>
+            <div class="classification-index" role="navigation" aria-label="Jump to a plant family">
+                <a href="#dipterocarpaceae-family">Dipterocarpaceae</a>
+                <a href="#lauraceae-family">Lauraceae</a>
+                <a href="#burseraceae-family">Burseraceae</a>
+                <a href="#myristicaceae-family">Myristicaceae</a>
+            </div>
+            <div class="family-list">
+                <article class="family-row" id="dipterocarpaceae-family">
+                    <div class="family-image"><img src="Photos/families/dipterocarpaceae.jpg" alt="Shorea sumatrana from the Dipterocarpaceae family"><span>01</span></div>
+                    <div class="family-copy">
+                        <p class="family-label">Dipterocarp family</p><h3>Dipterocarpaceae</h3>
+                        <p class="family-description">Many of Southeast Asia's tallest rainforest trees belong to this family. Dipterocarps are recognised for resinous wood and fruits with wing-like sepals.</p>
+                        <p class="family-genera"><strong>Selected genera:</strong> Vatica · Dipterocarpus</p>
+                        <a href="https://www.inaturalist.org/taxa/68691-Dipterocarpaceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
+                        <small>Photo: narido / iNaturalist · CC BY-NC</small>
+                    </div>
+                </article>
+                <article class="family-row" id="lauraceae-family">
+                    <div class="family-image"><img src="Photos/families/lauraceae.jpg" alt="Umbellularia californica from the Lauraceae family" loading="lazy"><span>02</span></div>
+                    <div class="family-copy">
+                        <p class="family-label">Laurel family</p><h3>Lauraceae</h3>
+                        <p class="family-description">Lauraceae consists mainly of aromatic evergreen trees and shrubs. Fragrant oils are often present in their leaves, bark and wood.</p>
+                        <p class="family-genera"><strong>Selected genera:</strong> Actinodaphne · Endiandra</p>
+                        <a href="https://www.inaturalist.org/taxa/48809-Lauraceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
+                        <small>Photo: Ken-ichi Ueda / iNaturalist · CC BY</small>
+                    </div>
+                </article>
+                <article class="family-row" id="burseraceae-family">
+                    <div class="family-image"><img src="Photos/families/burseraceae.jpg" alt="Bursera simaruba from the Burseraceae family" loading="lazy"><span>03</span></div>
+                    <div class="family-copy">
+                        <p class="family-label">Torchwood family</p><h3>Burseraceae</h3>
+                        <p class="family-description">These tropical trees and shrubs frequently have aromatic bark and resin-producing tissues. The family includes plants associated with frankincense and myrrh.</p>
+                        <p class="family-genera"><strong>Selected genera:</strong> Canarium · Dacryodes</p>
+                        <a href="https://www.inaturalist.org/taxa/62970-Burseraceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
+                        <small>Photo: Kuklín / iNaturalist · CC BY-NC</small>
+                    </div>
+                </article>
+                <article class="family-row" id="myristicaceae-family">
+                    <div class="family-image"><img src="Photos/families/myristicaceae.jpg" alt="Virola gardneri from the Myristicaceae family" loading="lazy"><span>04</span></div>
+                    <div class="family-copy">
+                        <p class="family-label">Nutmeg family</p><h3>Myristicaceae</h3>
+                        <p class="family-description">Myristicaceae is composed mainly of tropical evergreen trees. Its members commonly have aromatic sap, fleshy fruits and seeds.</p>
+                        <p class="family-genera"><strong>Selected genera:</strong> Horsfieldia · Knema</p>
+                        <a href="https://www.inaturalist.org/taxa/71575-Myristicaceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
+                        <small>Photo: Tarciso Leão / iNaturalist · CC BY-NC</small>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="explore-footer">
+        <div class="footer-grid">
+            <section class="footer-brand" aria-label="About Plantify">
+                <img src="Photos/plantify_logo.png" alt="Plantify">
+                <p>Explore. Learn. Appreciate.<br>Plants make our world greener, healthier and more beautiful.</p>
+            </section>
+            <section>
+                <h2>Contact Us</h2>
+                <address>
+                    <p><span aria-hidden="true">●</span> Kuching, Sarawak, Malaysia</p>
+                    <p><span aria-hidden="true">✉</span> <a href="mailto:info@plantify.com">info@plantify.com</a></p>
+                    <p><span aria-hidden="true">☎</span> <a href="tel:+6082123456">+60 82 123 456</a></p>
+                </address>
+            </section>
+            <section>
+                <h2>Find Us</h2>
+                <div class="map-card">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Swinburne%20University%20of%20Technology%20Sarawak%20Campus&amp;z=16&amp;output=embed"
+                        title="Map showing Swinburne University of Technology Sarawak Campus"
+                        loading="lazy"
+                        tabindex="0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+
+            <section>
+                <h2>Quick Links</h2>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="explore1.html">Explore</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </section>
+        </div>
+        <p class="footer-copy">&copy; 2026 Plantify. All rights reserved.</p>
+    </footer>
+</body>
+</html>

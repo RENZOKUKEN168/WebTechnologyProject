@@ -8,8 +8,8 @@ body {
 
 /* Header */
 header {
-    background-color: #dcebe1;
-    border-bottom: 1px solid #dce7dc;
+    background: linear-gradient(180deg, rgba(3, 34, 23, 0.76), rgba(3, 34, 23, 0.16));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     padding: 16px clamp(24px, 5vw, 72px);
     display: flex;
     align-items: center;
@@ -39,15 +39,10 @@ nav {
 
 nav a {
     position: relative;
-    color: #3e5345;
     text-decoration: none;
     font-size: 0.94rem;
     font-weight: 600;
     transition: color 0.25s ease;
-}
-
-nav a:hover {
-    color: #1e6241;
 }
 
 nav a::after {
@@ -57,7 +52,6 @@ nav a::after {
     left: 0;
     height: 2px;
     border-radius: 2px;
-    background-color: #286b46;
     content: "";
     transform: scaleX(0);
     transform-origin: center;
@@ -190,9 +184,6 @@ input[type="reset"]:hover {
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 0 20px 32px;
-    color: #718074;
     font-size: 0.9rem;
 }
 
@@ -223,22 +214,397 @@ footer {
     }
 }
 
+/* Shared navigation behaviour for Families, Genera and Species only */
+:is(.families-page, .genera-page, .species-page):has(.explore-cover) header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@supports (animation-timeline: scroll()) {
+    :is(.families-page, .genera-page, .species-page):has(.explore-cover) header {
+        position: fixed;
+        animation: classification-nav-hide linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 72vh 92vh;
+    }
+
+    :is(.families-page, .genera-page, .species-page):has(.explore-cover) header:hover,
+    :is(.families-page, .genera-page, .species-page):has(.explore-cover) header:focus-within {
+        animation: none;
+        transform: translateY(0);
+        box-shadow: 0 8px 24px rgba(5, 35, 23, 0.2);
+    }
+}
+
+@keyframes classification-nav-hide {
+    to { transform: translateY(-100%); }
+}
+
+/* Families page: inspired by Explore with an alternating editorial layout */
+
+.families-cover .cover-background {
+    object-position: center 38%;
+}
+
+.families-cover .cover-shade {
+    background: linear-gradient(90deg, rgba(3, 34, 23, 0.86), rgba(3, 34, 23, 0.38) 58%, rgba(3, 34, 23, 0.08));
+}
+
+.families-cover .cover-content {
+    margin-right: auto;
+    margin-left: max(24px, 7vw);
+}
+
+.families-cover .cover-content h1 {
+    font-size: clamp(4.5rem, 11vw, 9rem);
+}
+
+.cover-content > .cover-summary {
+    max-width: 560px;
+    margin: 42px 0 0;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.families-section {
+    padding: clamp(70px, 9vw, 115px) 0;
+    scroll-margin-top: 90px;
+}
+
+/* Sticky page switcher: its grid area keeps it inside main only. */
+.explore-page main.classification-main {
+    display: grid;
+    grid-template-columns: clamp(205px, 19vw, 285px) minmax(0, 1fr);
+    align-items: start;
+}
+
+.classification-main .families-section {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.classification-rail {
+    position: sticky;
+    top: max(24px, calc(50vh - 120px));
+    z-index: 8;
+    grid-column: 1;
+    grid-row: 1;
+    width: min(235px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.classification-rail-title {
+    margin: 0 0 34px;
+    color: #154c31;
+    font-size: clamp(1.65rem, 2.65vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: 0.025em;
+    line-height: 0.94;
+    text-transform: uppercase;
+}
+
+.classification-rail nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    width: 100%;
+    margin: 0;
+}
+
+.explore-page .classification-rail nav a {
+    align-self: flex-start;
+    padding: 5px 0 4px;
+    border-bottom: 2px solid transparent;
+    color: #6b756e;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    text-align: left;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.classification-rail nav a::after {
+    display: none;
+}
+
+.explore-page .classification-rail nav a:hover,
+.explore-page .classification-rail nav a:focus-visible {
+    color: #1d633d;
+}
+
+.explore-page .classification-rail nav a[aria-current="page"] {
+    color: #1d633d;
+    border-bottom-color: #1d633d;
+}
+
+.families-intro,
+.family-list {
+    width: min(100% - 48px, 1200px);
+    margin-inline: auto;
+}
+
+.families-intro {
+    margin-bottom: 48px;
+}
+
+.families-intro p,
+.family-label {
+    margin: 0 0 9px;
+    color: #4f7c5d;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.families-intro h2 {
+    max-width: 760px;
+    color: #154c31;
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    line-height: 0.98;
+    text-align: left;
+}
+
+.classification-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: min(100% - 48px, 1200px);
+    margin: -18px auto 52px;
+}
+
+.explore-page .classification-index a {
+    padding: 9px 15px;
+    border: 1px solid #b8cdbd;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #245d3b;
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.explore-page .classification-index a:hover,
+.explore-page .classification-index a:focus-visible {
+    background: #1d633d;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.classification-divider {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding: 24px 28px;
+    border-left: 6px solid #2f7950;
+    border-radius: 12px;
+    background: #e7f0e6;
+    scroll-margin-top: 110px;
+}
+
+.classification-divider:not(:first-child) {
+    margin-top: 42px;
+}
+
+.classification-divider p {
+    grid-column: 1 / -1;
+    margin: 0 0 3px;
+    color: #4f7c5d;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.classification-divider h3 {
+    margin: 0;
+    color: #154c31;
+    font-size: clamp(1.7rem, 4vw, 2.7rem);
+    line-height: 1.05;
+}
+
+.classification-divider span {
+    color: #52705d;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.family-list {
+    display: grid;
+    gap: 34px;
+}
+
+@media (min-width: 761px) {
+    .classification-main .family-list {
+        transform: translateX(clamp(-142.5px, -9.5vw, -102.5px));
+    }
+}
+
+.family-row {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    min-height: 420px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 15px 38px rgba(20, 70, 43, 0.11);
+    scroll-margin-top: 110px;
+}
+
+.family-row:nth-of-type(even) .family-image {
+    order: 2;
+}
+
+.family-image {
+    position: relative;
+    min-height: 390px;
+    overflow: hidden;
+}
+
+.family-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.family-row:hover .family-image img {
+    transform: scale(1.035);
+}
+
+.family-image span {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(18, 61, 42, 0.92);
+    color: #fff;
+    font-weight: 700;
+}
+
+.family-copy {
+    align-self: center;
+    padding: clamp(30px, 5vw, 62px);
+}
+
+.family-copy h3 {
+    margin: 0 0 20px;
+    color: #154c31;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1;
+}
+
+.family-description {
+    margin: 0;
+    color: #405047;
+    line-height: 1.75;
+}
+
+.family-genera {
+    margin: 22px 0 0;
+    padding-top: 17px;
+    border-top: 1px solid #dce7dc;
+    color: #245d3b;
+}
+
+.family-copy > a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #1d633d;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.family-copy > a:hover {
+    text-decoration: underline;
+}
+
+.family-copy small {
+    display: block;
+    margin-top: 16px;
+    color: #718074;
+}
+
+@media (max-width: 760px) {
+    .explore-page main.classification-main {
+        grid-template-columns: 92px minmax(0, 1fr);
+    }
+
+    .classification-rail {
+        top: max(16px, calc(50vh - 98px));
+        width: 84px;
+        padding: 0 8px;
+    }
+
+    .classification-rail-title {
+        margin-bottom: 22px;
+        font-size: 0.9rem;
+        line-height: 1;
+    }
+
+    .explore-page .classification-rail nav a {
+        padding: 4px 0;
+        font-size: 0.72rem;
+    }
+
+    .families-intro,
+    .family-list,
+    .classification-index {
+        width: min(100% - 28px, 560px);
+    }
+
+    .classification-divider {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .classification-divider span {
+        margin-top: 7px;
+    }
+
+    .family-row {
+        grid-template-columns: 1fr;
+    }
+
+    .family-row:nth-of-type(even) .family-image {
+        order: 0;
+    }
+
+    .family-image {
+        min-height: 280px;
+    }
+}
+
 /* Explore page */
 .explore-page header {
-    position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 3px 14px rgba(8, 45, 28, 0.16);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.explore-page nav a[aria-current="page"]::after {
-    transform: scaleX(1);
+/* Place the Explore landing navigation over its cover, matching Families. */
+.explore-landing-page header {
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .explore-page main.explore-main {
     width: 100%;
-    max-width: none;
     margin: 0;
     padding: 0;
     border: 0;
@@ -262,7 +628,7 @@ footer {
 
 .explore-footer section + section {
     padding-left: 30px;
-    border-left: 1px solid #afc8b6;
+    border-left: 1px solid var(--explore-white);
 }
 
 .explore-footer h2 {
@@ -300,7 +666,7 @@ footer {
 .map-card {
     min-height: 105px;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid var(--explore-dark);
     border-radius: 8px;
 }
 
@@ -363,8 +729,6 @@ footer {
     --explore-white: #ffffff;
 }
 
-.explore-page header,
-.contribute-page header,
 .explore-footer {
     background: var(--explore-dark);
 }
@@ -394,14 +758,12 @@ footer {
     background: var(--explore-light);
 }
 
-.explore-footer section + section,
 .footer-copy {
     border-color: var(--explore-white);
 }
 
 .explore-page .header-right input,
-.contribute-page .header-right input,
-.map-card {
+.contribute-page .header-right input {
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
@@ -475,6 +837,7 @@ html {
     margin-top: 42px;
     color: #ffffff;
     font-weight: 700;
+    text-decoration: none;
 }
 
 .scroll-link span {
@@ -536,6 +899,10 @@ html {
         animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         animation-timeline: scroll(root block);
         animation-range: 53% 61%;
+    }
+
+    .explore-landing-page header {
+        position: fixed;
     }
 
     .explore-page header::after {
