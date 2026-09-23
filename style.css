@@ -729,6 +729,10 @@ footer {
     --explore-white: #ffffff;
 }
 
+.contribute-page header {
+    background: var(--explore-dark);
+}
+
 .explore-footer {
     background: var(--explore-dark);
 }
