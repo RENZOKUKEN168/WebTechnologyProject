@@ -344,8 +344,7 @@ footer {
     border-bottom-color: #1d633d;
 }
 
-.families-intro,
-.family-list {
+.families-intro {
     width: min(100% - 48px, 1200px);
     margin-inline: auto;
 }
@@ -440,6 +439,8 @@ footer {
 .family-list {
     display: grid;
     gap: 34px;
+    width: min(100% - 48px, 1200px);
+    margin-inline: auto;
 }
 
 @media (min-width: 761px) {
@@ -615,6 +616,7 @@ footer {
 
 .explore-footer {
     padding: 30px clamp(24px, 7vw, 100px) 18px;
+    background: var(--explore-dark);
     text-align: left;
 }
 
@@ -668,6 +670,7 @@ footer {
     overflow: hidden;
     border: 2px solid var(--explore-dark);
     border-radius: 8px;
+    background: var(--explore-light);
 }
 
 .map-card iframe {
@@ -691,7 +694,7 @@ footer {
     max-width: 1320px;
     margin: 25px auto 0;
     padding-top: 15px;
-    border-top: 1px solid #afc8b6;
+    border-top: 1px solid var(--explore-white);
     text-align: center;
     font-size: 0.82rem;
 }
@@ -735,10 +738,6 @@ footer {
     border-bottom-color: #2f7950;
 }
 
-.explore-footer {
-    background: var(--explore-dark);
-}
-
 /* Lighten only the original logo images on the dark green background */
 .explore-page .brand img,
 .contribute-page .brand img,
@@ -764,18 +763,10 @@ footer {
     background: var(--explore-light);
 }
 
-.footer-copy {
-    border-color: var(--explore-white);
-}
-
 .explore-page .header-right input,
 .contribute-page .header-right input {
     border-color: var(--explore-dark);
     color: var(--explore-dark);
-}
-
-.map-card {
-    background: var(--explore-light);
 }
 
 /* Full-screen Explore landing page */
@@ -923,6 +914,58 @@ html {
     letter-spacing: 0;
     line-height: 1.75;
     text-transform: none;
+}
+
+.classification-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(100% - 48px, 1240px);
+    margin: 0 auto 16px;
+    color: #53675b;
+    font-size: 0.88rem;
+}
+
+.classification-summary strong {
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: #dfeade;
+    color: #245d3b;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.classification-summary span {
+    line-height: 1.4;
+}
+
+.classification-summary-details {
+    margin-top: -20px;
+}
+
+.back-to-overview {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 9px;
+    margin: 30px auto 0;
+    padding: 10px 16px;
+    border: 1px solid #b8cdbd;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #245d3b;
+    font-size: 0.86rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-overview:hover,
+.back-to-overview:focus-visible {
+    background: #1d633d;
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 
 @keyframes cover-title {
@@ -1405,6 +1448,7 @@ html {
         font-size: clamp(4rem, 18vw, 5.4rem);
     }
 
+    .classification-summary,
     .explore-page .explore-cards,
     .taxonomy-map {
         width: min(100% - 28px, 560px);
