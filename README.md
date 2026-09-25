@@ -63,5 +63,5 @@ To run this application workspace locally:
 
 ## 👥 Project Details
 * **Unit:** COS10026 Web Technology Project
-* **Semester:** Semester 2, 2026
+* **Semester:** Semester 1, 2026
 * **Institution:** Swinburne University of Technology Sarawak
