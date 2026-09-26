@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="Demonstrates some basic HTML form elements" />
+	<meta name="keywords" content="HTML, Form, tags" />
+	<meta name="author" content="Chin Jii Ann"  />
+	<link rel="stylesheet" href="style.css">
+	<title>Enquiry Form</title>
+</head>
+<body>
+	<header>
+        <div class="brand">
+            <img src="Photos/plantify_logo.png" alt="Plantify">
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="explore1.html">Explore</a>
+            <a href="#">Identifier</a>
+            <a href="contribute.html" aria-current="page">Contribution</a>
+            <a href="#">My Profile</a>
+            <a href="Enquiryform.html">Enquiry</a>
+        </nav>
+
+        <div class="header-right">
+            <input type="search" aria-label="Search Plantify" placeholder="Search">
+        </div>
+    </header>
+<form>
+<h2>Got any enquiries? Please drop them below.</h2>
+<form>
+	<fieldset>
+		<legend>Username</legend>
+		<p>
+			First Name*
+			<input type="text" id="firstname" name="firstname" maxlength="25" pattern="[A-Za-z]" placeholder="Enter your first name" required>
+			Last Name*
+			<input type="text" id="lastname" name="lastname" maxlength="25" pattern="[A-Za-z]" placeholder="Enter your last name" required>
+		</p>
+		<p>
+			Email Address*
+			<input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+		</p>
+		<p>
+			<label for="phone">Phone Number*</label>
+			<input type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]" placeholder="e.g. 012-3456789" required>
+		</p>
+	</fieldset>
+    <br>
+	<br>
+	<fieldset>
+    <legend>Enquiry</legend>
+	<p>
+		Family
+		<select id="type" name="type">
+			<option value="">Please select</option>
+			<option value="a">A</option>
+			<option value="b">B</option>
+			<option value="c">C</option>
+			<option value="d">D</option>
+			<option value="other">Other</option>
+		</select>
+		Genera
+		<select id="type" name="type">
+			<option value="">Please select</option>
+			<option value="e">E</option>
+			<option value="f">f</option>
+			<option value="g">g</option>
+			<option value="h">h</option>
+			<option value="other">Other</option>
+		</select>
+		Species
+		<select id="type" name="type">
+			<option value="">Please select</option>
+			<option value="i">I</option>
+			<option value="j">J</option>
+			<option value="k">K</option>
+			<option value="l">L</option>
+			<option value="other">Other</option>
+		</select>
+	</p>
+	</fieldset>
+	<br>
+	<br>
+    <label for="comment">Comment</label><br>
+    <textarea id="comment" name="comment" placeholder="Write your enquiry here..." rows="6" cols="60"></textarea>
+    <br>
+	<br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+</form>
+</body>
+</html>
