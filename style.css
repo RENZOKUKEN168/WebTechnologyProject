@@ -1498,3 +1498,14 @@ html {
     }
 
 }
+
+/* Index heading & video*/
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+}
+
+#bg-video {
+  filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
+}
