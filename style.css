@@ -278,7 +278,8 @@ footer {
 /* Sticky page switcher: its grid area keeps it inside main only. */
 .explore-page main.classification-main {
     display: grid;
-    grid-template-columns: clamp(205px, 19vw, 285px) minmax(0, 1fr);
+    /* Used in families.html, genera.html and species.html. */
+    grid-template-columns: clamp(150px, 12vw, 190px) minmax(0, 1fr); /* Side nav: 12% of viewport width, limited to 150–190px; content fills the remaining space and can shrink without overflowing. */
     align-items: start;
 }
 
@@ -294,7 +295,7 @@ footer {
     z-index: 8;
     grid-column: 1;
     grid-row: 1;
-    width: min(235px, calc(100% - 32px));
+    width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
@@ -303,7 +304,7 @@ footer {
 .classification-rail-title {
     margin: 0 0 34px;
     color: #154c31;
-    font-size: clamp(1.65rem, 2.65vw, 2.5rem);
+    font-size: clamp(1.35rem, 2vw, 1.9rem);
     font-weight: 800;
     letter-spacing: 0.025em;
     line-height: 0.94;
@@ -311,7 +312,6 @@ footer {
 }
 
 .classification-rail nav {
-    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
@@ -324,7 +324,7 @@ footer {
     padding: 5px 0 4px;
     border-bottom: 2px solid transparent;
     color: #6b756e;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     line-height: 1.2;
     text-align: left;
     transition: border-color 0.2s ease, color 0.2s ease;
@@ -347,10 +347,21 @@ footer {
 .families-intro {
     width: min(100% - 48px, 1200px);
     margin-inline: auto;
+    margin-bottom: 48px;
+    text-align: center;
 }
 
-.families-intro {
-    margin-bottom: 48px;
+@media (min-width: 761px) { /* Apply only while the side navigation occupies a separate column. */
+    .classification-main .families-intro, /* Title and subtitle in families.html, genera.html and species.html. */
+    .classification-main .classification-index { /* Centre the classification buttons with the title on the same three pages. */
+        position: relative; /* Adjust visual alignment without changing the surrounding layout. */
+        left: calc(clamp(150px, 12vw, 190px) / -2); /* Offset half the side-nav width to centre this block in the whole page. */
+    }
+
+    .classification-main .family-list { /* Plant cards and group dividers on the same three classification pages. */
+        position: relative; /* Keep the existing card sizes and vertical spacing. */
+        left: clamp(-32px, -2vw, -16px); /* Move cards slightly left while preserving space beside the navigation. */
+    }
 }
 
 .families-intro p,
@@ -365,15 +376,16 @@ footer {
 
 .families-intro h2 {
     max-width: 760px;
+    margin-inline: auto;
     color: #154c31;
     font-size: clamp(2.4rem, 6vw, 5rem);
     line-height: 0.98;
-    text-align: left;
 }
 
 .classification-index {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     width: min(100% - 48px, 1200px);
     margin: -18px auto 52px;
@@ -400,7 +412,6 @@ footer {
 
 .classification-divider {
     display: grid;
-    grid-template-columns: 1fr auto;
     align-items: end;
     padding: 24px 28px;
     border-left: 6px solid #2f7950;
@@ -443,15 +454,9 @@ footer {
     margin-inline: auto;
 }
 
-@media (min-width: 761px) {
-    .classification-main .family-list {
-        transform: translateX(clamp(-142.5px, -9.5vw, -102.5px));
-    }
-}
-
 .family-row {
     display: grid;
-    grid-template-columns: 1.08fr 0.92fr;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
     min-height: 420px;
     overflow: hidden;
     border-radius: 18px;
@@ -471,6 +476,9 @@ footer {
 }
 
 .family-image img {
+    position: absolute;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -496,14 +504,16 @@ footer {
 }
 
 .family-copy {
+    min-width: 0;
+    overflow-wrap: anywhere;
     align-self: center;
-    padding: clamp(30px, 5vw, 62px);
+    padding: clamp(24px, 3vw, 48px);
 }
 
 .family-copy h3 {
     margin: 0 0 20px;
     color: #154c31;
-    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-size: clamp(1.65rem, 2.6vw, 3.25rem);
     line-height: 1;
 }
 
@@ -538,26 +548,60 @@ footer {
     color: #718074;
 }
 
+/* Keep long botanical names inside their available column. */
+.classification-main .families-intro,
+.classification-main .classification-index,
+.classification-main .classification-divider {
+    overflow-wrap: anywhere;
+}
+
+.classification-main .classification-divider {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 20px;
+}
+
+@media (max-width: 1100px) {
+    .classification-main .family-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .classification-main .family-row .family-image {
+        order: 0;
+        min-height: 0;
+        height: clamp(240px, 38vw, 400px);
+    }
+}
+
 @media (max-width: 760px) {
     .explore-page main.classification-main {
-        grid-template-columns: 92px minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .classification-main .families-section {
+        grid-column: 1;
+        grid-row: 2;
     }
 
     .classification-rail {
-        top: max(16px, calc(50vh - 98px));
-        width: 84px;
-        padding: 0 8px;
+        top: 0;
+        padding: 14px 20px;
+        background: #f3f5ed;
+        border-bottom: 1px solid #dce7dc;
     }
 
     .classification-rail-title {
-        margin-bottom: 22px;
-        font-size: 0.9rem;
-        line-height: 1;
+        display: none;
+    }
+
+    .classification-rail nav {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 12px;
     }
 
     .explore-page .classification-rail nav a {
         padding: 4px 0;
-        font-size: 0.72rem;
+        font-size: 0.9rem;
     }
 
     .families-intro,
@@ -566,8 +610,8 @@ footer {
         width: min(100% - 28px, 560px);
     }
 
-    .classification-divider {
-        grid-template-columns: 1fr;
+    .classification-main .classification-divider {
+        grid-template-columns: minmax(0, 1fr);
         align-items: start;
     }
 
@@ -575,17 +619,6 @@ footer {
         margin-top: 7px;
     }
 
-    .family-row {
-        grid-template-columns: 1fr;
-    }
-
-    .family-row:nth-of-type(even) .family-image {
-        order: 0;
-    }
-
-    .family-image {
-        min-height: 280px;
-    }
 }
 
 /* Explore page */
@@ -746,14 +779,40 @@ footer {
     left: 0;
     z-index: 10;
     width: 100%;
-    background: linear-gradient(180deg, rgba(3, 34, 23, 0.76), rgba(3, 34, 23, 0.16));
-    border-bottom-color: rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
 }
 
-/* Keep the homepage stable when its background video loads or the page refreshes. */
+/* Disable the homepage title's entrance movement. */
 .home-page .cover-content h1 {
     animation: none;
+}
+
+.home-page .home-explore-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 42px;
+    padding: 16px 44px;
+    border: 1px solid rgba(242, 247, 236, 0.8);
+    border-radius: 30px 8px 30px 8px;
+    background: transparent;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 4px rgba(242, 247, 236, 0.06);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+}
+
+.home-page .home-explore-button:hover {
+    background: rgba(242, 247, 236, 0.12);
+    border-color: #ffffff;
+    box-shadow: inset 0 0 0 4px rgba(242, 247, 236, 0.09), 0 6px 20px rgba(3, 34, 23, 0.2);
+}
+
+.home-page .home-explore-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
 }
 
 /* Lighten only the original logo images on the dark green background */
@@ -797,6 +856,11 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Prevent vertical overscroll bounce on the homepage. */
+html.home-document {
+    overscroll-behavior-y: none;
+}
+
 .explore-cover {
     position: relative;
     min-height: 100vh;
@@ -825,7 +889,6 @@ html {
     width: min(100% - 48px, 1240px);
     margin: 0 auto;
     padding: clamp(125px, 16vh, 165px) 24px 65px clamp(24px, 4.2vw, 72px);
-    box-sizing: border-box;
 }
 
 .explore-landing-page .cover-content h1 {
@@ -836,13 +899,6 @@ html {
 
 .explore-landing-page .scroll-link {
     margin-top: 34px;
-}
-
-.explore-landing-page :is(.cover-background, .cover-shade) {
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
 }
 
 .cover-shade {
@@ -1524,8 +1580,6 @@ html {
 
 /* Index heading & video*/
 .hero-content {
-  display: flex;
-  flex-direction: column;
   max-width: 720px;
 }
 
