@@ -278,7 +278,8 @@ footer {
 /* Sticky page switcher: its grid area keeps it inside main only. */
 .explore-page main.classification-main {
     display: grid;
-    grid-template-columns: clamp(205px, 19vw, 285px) minmax(0, 1fr);
+    /* Used in families.html, genera.html and species.html. */
+    grid-template-columns: clamp(150px, 12vw, 190px) minmax(0, 1fr); /* Side nav: 12% of viewport width, limited to 150–190px; content fills the remaining space and can shrink without overflowing. */
     align-items: start;
 }
 
@@ -294,7 +295,7 @@ footer {
     z-index: 8;
     grid-column: 1;
     grid-row: 1;
-    width: min(235px, calc(100% - 32px));
+    width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
@@ -303,7 +304,7 @@ footer {
 .classification-rail-title {
     margin: 0 0 34px;
     color: #154c31;
-    font-size: clamp(1.65rem, 2.65vw, 2.5rem);
+    font-size: clamp(1.35rem, 2vw, 1.9rem);
     font-weight: 800;
     letter-spacing: 0.025em;
     line-height: 0.94;
@@ -311,7 +312,6 @@ footer {
 }
 
 .classification-rail nav {
-    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
@@ -324,7 +324,7 @@ footer {
     padding: 5px 0 4px;
     border-bottom: 2px solid transparent;
     color: #6b756e;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     line-height: 1.2;
     text-align: left;
     transition: border-color 0.2s ease, color 0.2s ease;
@@ -344,14 +344,24 @@ footer {
     border-bottom-color: #1d633d;
 }
 
-.families-intro,
-.family-list {
+.families-intro {
     width: min(100% - 48px, 1200px);
     margin-inline: auto;
+    margin-bottom: 48px;
+    text-align: center;
 }
 
-.families-intro {
-    margin-bottom: 48px;
+@media (min-width: 761px) { /* Apply only while the side navigation occupies a separate column. */
+    .classification-main .families-intro, /* Title and subtitle in families.html, genera.html and species.html. */
+    .classification-main .classification-index { /* Centre the classification buttons with the title on the same three pages. */
+        position: relative; /* Adjust visual alignment without changing the surrounding layout. */
+        left: calc(clamp(150px, 12vw, 190px) / -2); /* Offset half the side-nav width to centre this block in the whole page. */
+    }
+
+    .classification-main .family-list { /* Plant cards and group dividers on the same three classification pages. */
+        position: relative; /* Keep the existing card sizes and vertical spacing. */
+        left: clamp(-32px, -2vw, -16px); /* Move cards slightly left while preserving space beside the navigation. */
+    }
 }
 
 .families-intro p,
@@ -366,15 +376,16 @@ footer {
 
 .families-intro h2 {
     max-width: 760px;
+    margin-inline: auto;
     color: #154c31;
     font-size: clamp(2.4rem, 6vw, 5rem);
     line-height: 0.98;
-    text-align: left;
 }
 
 .classification-index {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     width: min(100% - 48px, 1200px);
     margin: -18px auto 52px;
@@ -401,7 +412,6 @@ footer {
 
 .classification-divider {
     display: grid;
-    grid-template-columns: 1fr auto;
     align-items: end;
     padding: 24px 28px;
     border-left: 6px solid #2f7950;
@@ -440,17 +450,13 @@ footer {
 .family-list {
     display: grid;
     gap: 34px;
-}
-
-@media (min-width: 761px) {
-    .classification-main .family-list {
-        transform: translateX(clamp(-142.5px, -9.5vw, -102.5px));
-    }
+    width: min(100% - 48px, 1200px);
+    margin-inline: auto;
 }
 
 .family-row {
     display: grid;
-    grid-template-columns: 1.08fr 0.92fr;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
     min-height: 420px;
     overflow: hidden;
     border-radius: 18px;
@@ -470,6 +476,9 @@ footer {
 }
 
 .family-image img {
+    position: absolute;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -495,14 +504,16 @@ footer {
 }
 
 .family-copy {
+    min-width: 0;
+    overflow-wrap: anywhere;
     align-self: center;
-    padding: clamp(30px, 5vw, 62px);
+    padding: clamp(24px, 3vw, 48px);
 }
 
 .family-copy h3 {
     margin: 0 0 20px;
     color: #154c31;
-    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-size: clamp(1.65rem, 2.6vw, 3.25rem);
     line-height: 1;
 }
 
@@ -537,26 +548,60 @@ footer {
     color: #718074;
 }
 
+/* Keep long botanical names inside their available column. */
+.classification-main .families-intro,
+.classification-main .classification-index,
+.classification-main .classification-divider {
+    overflow-wrap: anywhere;
+}
+
+.classification-main .classification-divider {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 20px;
+}
+
+@media (max-width: 1100px) {
+    .classification-main .family-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .classification-main .family-row .family-image {
+        order: 0;
+        min-height: 0;
+        height: clamp(240px, 38vw, 400px);
+    }
+}
+
 @media (max-width: 760px) {
     .explore-page main.classification-main {
-        grid-template-columns: 92px minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .classification-main .families-section {
+        grid-column: 1;
+        grid-row: 2;
     }
 
     .classification-rail {
-        top: max(16px, calc(50vh - 98px));
-        width: 84px;
-        padding: 0 8px;
+        top: 0;
+        padding: 14px 20px;
+        background: #f3f5ed;
+        border-bottom: 1px solid #dce7dc;
     }
 
     .classification-rail-title {
-        margin-bottom: 22px;
-        font-size: 0.9rem;
-        line-height: 1;
+        display: none;
+    }
+
+    .classification-rail nav {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 12px;
     }
 
     .explore-page .classification-rail nav a {
         padding: 4px 0;
-        font-size: 0.72rem;
+        font-size: 0.9rem;
     }
 
     .families-intro,
@@ -565,8 +610,8 @@ footer {
         width: min(100% - 28px, 560px);
     }
 
-    .classification-divider {
-        grid-template-columns: 1fr;
+    .classification-main .classification-divider {
+        grid-template-columns: minmax(0, 1fr);
         align-items: start;
     }
 
@@ -574,17 +619,6 @@ footer {
         margin-top: 7px;
     }
 
-    .family-row {
-        grid-template-columns: 1fr;
-    }
-
-    .family-row:nth-of-type(even) .family-image {
-        order: 0;
-    }
-
-    .family-image {
-        min-height: 280px;
-    }
 }
 
 /* Explore page */
@@ -615,6 +649,7 @@ footer {
 
 .explore-footer {
     padding: 30px clamp(24px, 7vw, 100px) 18px;
+    background: var(--explore-dark);
     text-align: left;
 }
 
@@ -668,6 +703,7 @@ footer {
     overflow: hidden;
     border: 2px solid var(--explore-dark);
     border-radius: 8px;
+    background: var(--explore-light);
 }
 
 .map-card iframe {
@@ -691,7 +727,7 @@ footer {
     max-width: 1320px;
     margin: 25px auto 0;
     padding-top: 15px;
-    border-top: 1px solid #afc8b6;
+    border-top: 1px solid var(--explore-white);
     text-align: center;
     font-size: 0.82rem;
 }
@@ -714,8 +750,9 @@ footer {
     }
 }
 
-/* Explore page colours based on the supplied design */
-.explore-page {
+/* Shared Plantify colours for the home and Explore pages */
+.explore-page,
+.home-page {
     --explore-dark: #1d633d;
     --explore-light: #f2f7ec;
     --explore-white: #ffffff;
@@ -729,16 +766,58 @@ footer {
     --explore-white: #ffffff;
 }
 
+/* Keep the Contribution header solid on the light form page. */
 .contribute-page header {
-    background: var(--explore-dark);
+    background: #1d633d;
+    border-bottom-color: #2f7950;
 }
 
-.explore-footer {
-    background: var(--explore-dark);
+.home-page header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Disable the homepage title's entrance movement. */
+.home-page .cover-content h1 {
+    animation: none;
+}
+
+.home-page .home-explore-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 42px;
+    padding: 16px 44px;
+    border: 1px solid rgba(242, 247, 236, 0.8);
+    border-radius: 30px 8px 30px 8px;
+    background: transparent;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 4px rgba(242, 247, 236, 0.06);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+}
+
+.home-page .home-explore-button:hover {
+    background: rgba(242, 247, 236, 0.12);
+    border-color: #ffffff;
+    box-shadow: inset 0 0 0 4px rgba(242, 247, 236, 0.09), 0 6px 20px rgba(3, 34, 23, 0.2);
+}
+
+.home-page .home-explore-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
 }
 
 /* Lighten only the original logo images on the dark green background */
 .explore-page .brand img,
+.home-page .brand img,
 .contribute-page .brand img,
 .footer-brand img {
     filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%);
@@ -747,6 +826,8 @@ footer {
 .explore-page nav a,
 .explore-page nav a:hover,
 .explore-page nav a[aria-current="page"],
+.home-page nav a,
+.home-page nav a:hover,
 .contribute-page nav a,
 .contribute-page nav a:hover,
 .contribute-page nav a[aria-current="page"],
@@ -758,27 +839,26 @@ footer {
 }
 
 .explore-page nav a::after,
+.home-page nav a::after,
 .contribute-page nav a::after {
     background: var(--explore-light);
 }
 
-.footer-copy {
-    border-color: var(--explore-white);
-}
-
 .explore-page .header-right input,
+.home-page .header-right input,
 .contribute-page .header-right input {
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
 
-.map-card {
-    background: var(--explore-light);
-}
-
 /* Full-screen Explore landing page */
 html {
     scroll-behavior: smooth;
+}
+
+/* Prevent vertical overscroll bounce on the homepage. */
+html.home-document {
+    overscroll-behavior-y: none;
 }
 
 .explore-cover {
@@ -798,6 +878,27 @@ html {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.explore-landing-page .explore-cover {
+    min-height: 76vh;
+    background: #0b3d2d;
+}
+
+.explore-landing-page .cover-content {
+    width: min(100% - 48px, 1240px);
+    margin: 0 auto;
+    padding: clamp(125px, 16vh, 165px) 24px 65px clamp(24px, 4.2vw, 72px);
+}
+
+.explore-landing-page .cover-content h1 {
+    max-width: 680px;
+    font-size: clamp(4.5rem, 7.5vw, 7.5rem);
+    line-height: 0.88;
+}
+
+.explore-landing-page .scroll-link {
+    margin-top: 34px;
 }
 
 .cover-shade {
@@ -883,8 +984,67 @@ html {
     letter-spacing: -0.04em;
 }
 
-.explore-page .explore-card:hover {
-    box-shadow: 0 24px 55px rgba(20, 70, 43, 0.18);
+.category-intro .category-intro-copy {
+    max-width: 690px;
+    margin: 22px 0 0;
+    color: #53675b;
+    font-size: 1.02rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.75;
+    text-transform: none;
+}
+
+.classification-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(100% - 48px, 1240px);
+    margin: 0 auto 16px;
+    color: #53675b;
+    font-size: 0.88rem;
+}
+
+.classification-summary strong {
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: #dfeade;
+    color: #245d3b;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.classification-summary span {
+    line-height: 1.4;
+}
+
+.classification-summary-details {
+    margin-top: -20px;
+}
+
+.back-to-overview {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 9px;
+    margin: 30px auto 0;
+    padding: 10px 16px;
+    border: 1px solid #b8cdbd;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #245d3b;
+    font-size: 0.86rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-overview:hover,
+.back-to-overview:focus-visible {
+    background: #1d633d;
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 
 @keyframes cover-title {
@@ -907,6 +1067,7 @@ html {
 
     .explore-landing-page header {
         position: fixed;
+        animation-range: 76vh 90vh;
     }
 
     .explore-page header::after {
@@ -928,10 +1089,12 @@ html {
 
 @keyframes nav-hide {
     from {
+        opacity: 1;
         transform: translateY(0);
     }
 
     to {
+        opacity: 0;
         transform: translateY(-100%);
     }
 }
@@ -946,55 +1109,58 @@ html {
     }
 }
 
-/* Classification cards: one full-width row at a time */
-.explore-page .explore-cards {
+/* Detailed Family → Genus → Species hierarchy */
+.explore-page .explore-cards,
+.taxonomy-map {
     width: min(100% - 48px, 1240px);
-    margin: 0 auto;
-    padding: 0;
+    margin-inline: auto;
+}
+
+.explore-page .explore-cards {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin-bottom: 42px;
 }
 
 .explore-page .card-link {
+    position: relative;
     display: block;
+    min-width: 0;
     color: inherit;
     text-decoration: none;
-    border-radius: 12px;
+}
+
+.explore-page .card-link:not(:last-child)::after {
+    position: absolute;
+    top: 50%;
+    right: -24px;
+    z-index: 4;
+    display: grid;
+    width: 20px;
+    height: 20px;
+    place-items: center;
+    border-radius: 50%;
+    background: #f3f5ed;
+    color: #2f7950;
+    content: "→";
+    font-weight: 800;
+    transform: translateY(-50%);
 }
 
 .explore-page .card-link:focus-visible {
-    outline: 4px solid rgba(79, 147, 106, 0.55);
+    border-radius: 17px;
+    outline: 4px solid rgba(79, 147, 106, 0.5);
     outline-offset: 5px;
 }
 
 .explore-page .explore-card {
     position: relative;
-    width: 100%;
-    min-height: 330px;
-    display: grid;
-    align-items: end;
+    min-height: 255px;
     overflow: hidden;
-    color: #ffffff;
+    border-radius: 17px;
     background: #123d2a;
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(20, 70, 43, 0.12);
-    animation: row-reveal both;
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    animation-timeline: view(block);
-}
-
-/* Each row stays hidden until it reaches its own trigger point. */
-.explore-page .card-link:nth-child(1) .explore-card {
-    animation-range: entry 12% cover 50%;
-}
-
-.explore-page .card-link:nth-child(2) .explore-card {
-    animation-range: entry 16% cover 46%;
-}
-
-.explore-page .card-link:nth-child(3) .explore-card {
-    animation-range: entry 20% cover 43%;
+    box-shadow: 0 15px 34px rgba(20, 70, 43, 0.14);
 }
 
 .explore-page .explore-card > img {
@@ -1003,104 +1169,405 @@ html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.45s ease;
 }
 
 .explore-page .explore-card::after {
     position: absolute;
     inset: 0;
-    z-index: 1;
     content: "";
-    background: linear-gradient(90deg, rgba(5, 35, 23, 0.88) 0%, rgba(5, 35, 23, 0.62) 48%, rgba(5, 35, 23, 0.12) 100%);
-}
-
-.explore-page .explore-card:hover > img {
-    transform: scale(1.025);
+    background: linear-gradient(0deg, rgba(4, 35, 25, 0.92), rgba(4, 35, 25, 0.18) 80%);
 }
 
 .explore-page .card-body {
-    position: relative;
-    z-index: 2;
-    width: min(520px, 75%);
-    padding: 38px 42px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 24px;
+    color: #ffffff;
 }
 
 .explore-page .card-number {
-    margin: 0 0 12px;
+    margin: 0 0 6px;
     color: #c7e3ce;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .explore-page .card-body h3 {
-    margin-bottom: 10px;
+    margin: 0 0 9px;
     color: #ffffff;
-    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+    line-height: 1;
 }
 
-.explore-page .card-body > p:not(.card-number) {
-    min-height: 0;
-    margin-bottom: 19px;
-    color: rgba(255, 255, 255, 0.9);
+.explore-page .card-description {
+    max-width: 310px;
+    margin: 0 0 16px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.explore-page .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    color: #c7e3ce;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .explore-page .card-action {
     color: #ffffff;
-    font-weight: 700;
+    font-size: 0.86rem;
+    font-weight: 800;
 }
 
-.explore-page .card-action > span {
+.explore-page .card-action > b {
     display: inline-block;
-    margin-left: 6px;
-    transition: transform 0.35s ease;
+    margin-left: 4px;
+    font-size: 1rem;
+    transition: transform 0.25s ease;
 }
 
-.explore-page .card-link:hover .card-action > span,
-.explore-page .card-link:focus-visible .card-action > span {
-    transform: translateX(7px);
+.explore-page .card-link:hover .explore-card > img,
+.explore-page .card-link:focus-visible .explore-card > img {
+    transform: scale(1.045);
 }
 
-@keyframes row-reveal {
-    0% {
-        visibility: hidden;
-        opacity: 0;
-        filter: blur(7px);
-        transform: translateY(55px) scale(0.975);
+.explore-page .card-link:hover .card-action > b,
+.explore-page .card-link:focus-visible .card-action > b {
+    transform: translateX(5px);
+}
+
+.taxonomy-map {
+    display: grid;
+    gap: 34px;
+}
+
+.taxonomy-family {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.38fr);
+    gap: 18px;
+    padding: 18px;
+    border: 1px solid #dce7dc;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 18px 45px rgba(20, 70, 43, 0.1);
+}
+
+.taxonomy-family-card {
+    position: relative;
+    min-height: 335px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #123d2a;
+}
+
+.taxonomy-family-card::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(0deg, rgba(4, 35, 25, 0.94), rgba(4, 35, 25, 0.08) 72%);
+}
+
+.taxonomy-family-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.taxonomy-family:hover .taxonomy-family-card img {
+    transform: scale(1.035);
+}
+
+.taxonomy-family-copy {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 28px;
+    color: #ffffff;
+}
+
+.taxonomy-family-copy p {
+    margin: 0 0 7px;
+    color: #c7e3ce;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.taxonomy-family-copy h3 {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: clamp(1.8rem, 3.1vw, 2.7rem);
+    line-height: 1;
+}
+
+.taxonomy-family-copy > span {
+    display: block;
+    max-width: 420px;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.taxonomy-family-copy > a {
+    display: inline-block;
+    margin-top: 18px;
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.taxonomy-family-copy > a:hover,
+.taxonomy-family-copy > a:focus-visible {
+    text-decoration: underline;
+}
+
+.taxonomy-genera {
+    position: relative;
+    display: grid;
+    align-content: center;
+    gap: 16px;
+    padding: 12px 4px 12px 34px;
+}
+
+.taxonomy-genera::before {
+    position: absolute;
+    top: 24%;
+    bottom: 24%;
+    left: 10px;
+    width: 2px;
+    border-radius: 2px;
+    background: #9bbda4;
+    content: "";
+}
+
+.taxonomy-genus {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(135px, 0.62fr) minmax(0, 1.38fr);
+    gap: 16px;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid #d6e4d7;
+    border-radius: 16px;
+    background: #eef4ec;
+}
+
+.taxonomy-genus::before {
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    width: 25px;
+    height: 2px;
+    background: #9bbda4;
+    content: "";
+}
+
+.taxonomy-genus-heading span,
+.taxonomy-species span {
+    display: block;
+    margin-bottom: 5px;
+    color: #64806d;
+    font-size: 0.64rem;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.taxonomy-genus-heading h4 {
+    margin: 0;
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    line-height: 1.05;
+}
+
+.taxonomy-genus-heading p {
+    margin: 8px 0 0;
+    color: #617568;
+    font-size: 0.76rem;
+    line-height: 1.45;
+}
+
+.taxonomy-genus-heading a {
+    color: #154c31;
+    text-decoration: none;
+}
+
+.taxonomy-genus-heading a:hover,
+.taxonomy-genus-heading a:focus-visible {
+    color: #2f7950;
+}
+
+.taxonomy-species {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.taxonomy-species a {
+    min-width: 0;
+    padding: 13px 14px;
+    border: 1px solid #d5e2d6;
+    border-radius: 11px;
+    background: #ffffff;
+    color: #244b35;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.taxonomy-species i {
+    display: block;
+    overflow-wrap: anywhere;
+    font-family: Georgia, serif;
+    font-size: 0.92rem;
+    line-height: 1.3;
+}
+
+.taxonomy-species small {
+    display: block;
+    margin-top: 7px;
+    color: #708177;
+    font-size: 0.67rem;
+    line-height: 1.35;
+}
+
+.taxonomy-species a:hover,
+.taxonomy-species a:focus-visible {
+    border-color: #78a888;
+    box-shadow: 0 8px 18px rgba(25, 91, 55, 0.1);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 980px) {
+    .taxonomy-family {
+        grid-template-columns: 1fr;
     }
 
-    1% {
-        visibility: visible;
-        opacity: 0;
-        filter: blur(7px);
-        transform: translateY(55px) scale(0.975);
-    }
-
-    100% {
-        visibility: visible;
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0) scale(1);
+    .taxonomy-family-card {
+        min-height: 300px;
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
+    .explore-landing-page header {
+        position: absolute;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px 16px;
+        padding: 13px 18px 12px;
+    }
+
+    .explore-landing-page .brand {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .explore-landing-page .brand img {
+        width: 145px;
+    }
+
+    .explore-landing-page .header-right {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .explore-landing-page .header-right input {
+        width: 118px;
+        padding: 7px 12px;
+    }
+
+    .explore-landing-page header > nav {
+        grid-row: 2;
+        grid-column: 1 / -1;
+        order: initial;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 18px;
+        margin: 0;
+        padding: 3px 0 5px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .explore-landing-page header > nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .explore-landing-page header > nav a {
+        flex: 0 0 auto;
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+
+    .explore-landing-page .cover-content {
+        width: min(100% - 28px, 560px);
+        padding: 150px 18px 48px;
+    }
+
+    .explore-landing-page .cover-content h1 {
+        font-size: clamp(4rem, 18vw, 5.4rem);
+    }
+
+    .classification-summary,
+    .explore-page .explore-cards,
+    .taxonomy-map {
+        width: min(100% - 28px, 560px);
+    }
+
     .explore-page .explore-cards {
-        width: min(100% - 28px, 520px);
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        overflow-x: auto;
+        padding: 4px 5px 16px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        box-sizing: border-box;
     }
 
-    .explore-page .explore-card {
-        min-height: 360px;
+    .explore-page .explore-cards::-webkit-scrollbar {
+        display: none;
     }
 
-    .explore-page .explore-card::after {
-        background: linear-gradient(0deg, rgba(5, 35, 23, 0.92), rgba(5, 35, 23, 0.12));
+    .explore-page .card-link {
+        scroll-snap-align: start;
     }
 
-    .explore-page .card-body {
-        width: auto;
-        padding: 28px 25px;
+    .taxonomy-family {
+        padding: 10px;
+        border-radius: 20px;
     }
+
+    .taxonomy-genera {
+        padding: 4px 0 0;
+    }
+
+    .taxonomy-genera::before,
+    .taxonomy-genus::before {
+        display: none;
+    }
+
+    .taxonomy-genus {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1109,10 +1576,239 @@ html {
         transform: none;
     }
 
-    .explore-page .explore-card {
-        opacity: 1;
-        filter: none;
-        transform: none;
-        animation: none;
-    }
+}
+
+/* Index heading & video*/
+.hero-content {
+  max-width: 720px;
+}
+
+#bg-video {
+  filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
+  object-fit: cover;
+}
+
+/* Index text*/
+.ifeature-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.ifeature-section h2 {
+  margin-bottom: 5px;
+}
+
+.feature-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px auto 40px auto;
+  max-width: 800px; /* controls how wide the whole divider is */
+}
+
+.feature-line {
+  flex: 1;
+  height: 3px;
+  background: #111111;
+  border-radius: 2px;
+}
+
+.feature-leaf {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.ifeature-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.ifeature-column {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.ifeature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 220px;
+}
+
+.ifeature-right .ifeature-item {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.ifeature-left {
+    text-align: left;
+}
+
+.ifeature-icon {
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ifeature-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.ifeature-text h3 {
+  margin: 0 0 5px 0;
+  font-size: 2rem;
+}
+
+.ifeature-text p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.ifeature-center-image {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.ifeature-center-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .ifeature-layout {
+    flex-direction: column;
+  }
+  .right .ifeature-item{
+    text-align: left;
+    flex-direction: row;
+  }
+}
+
+/* Index plant care & identify */
+.care-banner {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 50px 40px;
+  min-height: 280px;
+  background-image: url('Photos/care-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 40, 20, 0.55); /* dark green tint over the image */
+  z-index: 0;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.banner-text {
+  color: white;
+  max-width: 320px;
+}
+
+.banner-text h2 {
+  margin: 0 0 10px 0;
+  font-size: 2.2rem;
+  color: white;
+  text-align: left;
+}
+
+.banner-text p {
+  margin: 0 0 20px 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.banner-btn {
+  background: white;
+  color: #1a2e1a;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.banner-btn:hover {
+  background: #f0f0f0d6;
+}
+
+.banner-cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.care-card {
+  background: rgba(245, 245, 240, 0.95);
+  border-radius: 14px;
+  padding: 20px;
+  width: 200px;
+}
+
+.care-icon {
+    margin-bottom: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+.care-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.care-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 0.95rem;
+  color: #1a2e1a;
+}
+
+.care-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #4a4a4a;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
