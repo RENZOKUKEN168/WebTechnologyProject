@@ -717,8 +717,9 @@ footer {
     }
 }
 
-/* Explore page colours based on the supplied design */
-.explore-page {
+/* Shared Plantify colours for the home and Explore pages */
+.explore-page,
+.home-page {
     --explore-dark: #1d633d;
     --explore-light: #f2f7ec;
     --explore-white: #ffffff;
@@ -738,8 +739,26 @@ footer {
     border-bottom-color: #2f7950;
 }
 
+.home-page header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(3, 34, 23, 0.76), rgba(3, 34, 23, 0.16));
+    border-bottom-color: rgba(255, 255, 255, 0.18);
+    box-sizing: border-box;
+}
+
+/* Keep the homepage stable when its background video loads or the page refreshes. */
+.home-page .cover-content h1 {
+    animation: none;
+}
+
 /* Lighten only the original logo images on the dark green background */
 .explore-page .brand img,
+.home-page .brand img,
 .contribute-page .brand img,
 .footer-brand img {
     filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%);
@@ -748,6 +767,8 @@ footer {
 .explore-page nav a,
 .explore-page nav a:hover,
 .explore-page nav a[aria-current="page"],
+.home-page nav a,
+.home-page nav a:hover,
 .contribute-page nav a,
 .contribute-page nav a:hover,
 .contribute-page nav a[aria-current="page"],
@@ -759,11 +780,13 @@ footer {
 }
 
 .explore-page nav a::after,
+.home-page nav a::after,
 .contribute-page nav a::after {
     background: var(--explore-light);
 }
 
 .explore-page .header-right input,
+.home-page .header-right input,
 .contribute-page .header-right input {
     border-color: var(--explore-dark);
     color: var(--explore-dark);
