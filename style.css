@@ -1804,54 +1804,68 @@ html.home-document {
 
 /* Plant Enquiry Form */
 .plant-enquiry-form {
-    width: 100%;
+    max-width: 550px;
+    margin: 30px auto;
+    padding: 30px;
     box-sizing: border-box;
+
+    background-color: #ffffff;
+    border: 1px solid #d9e3da;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Form sections */
 .plant-enquiry-form fieldset {
-    border: 1px solid #cbd8cc;
-    border-radius: 7px;
-    padding: 20px;
-    margin-bottom: 25px;
+    border: none;
+    padding: 0;
+    margin: 0 0 25px 0;
 }
 
+/* Section titles */
 .plant-enquiry-form legend {
     color: #173d2b;
     font-weight: bold;
     font-size: 1.1rem;
-    padding: 0 8px;
+    padding: 0;
+    margin-bottom: 20px;
 }
 
+/* Labels */
+.plant-enquiry-form label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 7px;
+    color: #20352a;
+    font-weight: bold;
+}
+
+/* Text, email and phone fields */
 .plant-enquiry-form input[type="text"],
 .plant-enquiry-form input[type="email"],
 .plant-enquiry-form input[type="tel"],
 .plant-enquiry-form select,
 .plant-enquiry-form textarea {
+    display: block;
+    width: 100%;
     padding: 11px 12px;
+    box-sizing: border-box;
+
     border: 1px solid #cbd8cc;
     border-radius: 7px;
+
     font: inherit;
-    box-sizing: border-box;
     background-color: #ffffff;
     color: #20352a;
 }
 
-.plant-enquiry-form input[type="text"],
-.plant-enquiry-form input[type="email"],
-.plant-enquiry-form input[type="tel"] {
-    width: 220px;
-}
-
-.plant-enquiry-form select {
-    width: 180px;
-}
-
+/* Text area */
 .plant-enquiry-form textarea {
-    width: 100%;
-    margin-top: 7px;
+    min-height: 120px;
     resize: vertical;
 }
 
+/* When user clicks a field */
 .plant-enquiry-form input:focus,
 .plant-enquiry-form select:focus,
 .plant-enquiry-form textarea:focus {
@@ -1859,9 +1873,10 @@ html.home-document {
     outline: 3px solid #dcefe2;
 }
 
+/* Buttons */
 .plant-enquiry-form input[type="submit"],
 .plant-enquiry-form input[type="reset"] {
-    padding: 11px 17px;
+    padding: 11px 20px;
     border: 1px solid #cbd8cc;
     border-radius: 7px;
     cursor: pointer;
@@ -1869,20 +1884,22 @@ html.home-document {
     font-weight: bold;
 }
 
+/* Submit button */
 .plant-enquiry-form input[type="submit"] {
     background-color: #286b46;
     color: #ffffff;
     border-color: #286b46;
 }
 
+.plant-enquiry-form input[type="submit"]:hover {
+    background-color: #1e5738;
+}
+
+/* Reset button */
 .plant-enquiry-form input[type="reset"] {
     background-color: #ffffff;
     color: #3e5345;
     margin-left: 7px;
-}
-
-.plant-enquiry-form input[type="submit"]:hover {
-    background-color: #1e5738;
 }
 
 .plant-enquiry-form input[type="reset"]:hover {
