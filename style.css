@@ -724,6 +724,7 @@ footer {
 }
 
 .footer-copy {
+    font-style:italic; /*copyright edit to italic*/
     max-width: 1320px;
     margin: 25px auto 0;
     padding-top: 15px;
@@ -760,14 +761,16 @@ footer {
     color: var(--explore-dark);
 }
 
-.contribute-page {
+.contribute-page,
+.enquiry-page { /* Enquiryform.html uses the same header/footer colour variables as contribute.html. */
     --explore-dark: #1d633d;
     --explore-light: #f2f7ec;
     --explore-white: #ffffff;
 }
 
-/* Keep the Contribution header solid on the light form page. */
-.contribute-page header {
+/* Keep both form-page headers solid on their light backgrounds. */
+.contribute-page header,
+.enquiry-page header { /* Match the Contribution header background and border on Enquiry. */
     background: #1d633d;
     border-bottom-color: #2f7950;
 }
@@ -819,6 +822,7 @@ footer {
 .explore-page .brand img,
 .home-page .brand img,
 .contribute-page .brand img,
+.enquiry-page .brand img, /* Match the pale green header logo on Enquiryform.html. */
 .footer-brand img {
     filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%);
 }
@@ -831,6 +835,9 @@ footer {
 .contribute-page nav a,
 .contribute-page nav a:hover,
 .contribute-page nav a[aria-current="page"],
+.enquiry-page nav a, /* Match the white navigation text on Enquiryform.html. */
+.enquiry-page nav a:hover, /* Preserve the same text colour when hovering. */
+.enquiry-page nav a[aria-current="page"], /* Keep the current Enquiry link white. */
 .explore-footer,
 .explore-footer h2,
 .explore-footer a,
@@ -840,13 +847,15 @@ footer {
 
 .explore-page nav a::after,
 .home-page nav a::after,
-.contribute-page nav a::after {
+.contribute-page nav a::after,
+.enquiry-page nav a::after { /* Match the active-link and hover underline colour. */
     background: var(--explore-light);
 }
 
 .explore-page .header-right input,
 .home-page .header-right input,
-.contribute-page .header-right input {
+.contribute-page .header-right input,
+.enquiry-page .header-right input { /* Match the Contribution search field text and border. */
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
@@ -1585,7 +1594,6 @@ html.home-document {
 
 #bg-video {
   filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
-  object-fit: cover;
 }
 
 /* Index text*/
@@ -1694,10 +1702,6 @@ html.home-document {
   .ifeature-layout {
     flex-direction: column;
   }
-  .right .ifeature-item{
-    text-align: left;
-    flex-direction: row;
-  }
 }
 
 /* Index plant care & identify */
@@ -1751,21 +1755,6 @@ html.home-document {
   margin: 0 0 20px 0;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.85);
-}
-
-.banner-btn {
-  background: white;
-  color: #1a2e1a;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.banner-btn:hover {
-  background: #f0f0f0d6;
 }
 
 .banner-cards {
