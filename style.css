@@ -1897,15 +1897,15 @@ html.home-document {
     background-color: #f2f7f2;
 }
 
-.plantify-logo{
-    animation: pulseLogo 2s ease-in-out infinite;
+img[alt="Plantify"]{
+    animation: pulseLogo 3s ease-in-out infinite;
 }
 
 @keyframes pulselogo{
     0%,100%{
-        transform: scale(1);
+        transform: translateY(0) rotate(0deg);
     }
     50%{
-        transform: scale(1.2);
+        transform: translate(-6px) rotate(3deg);
     }
 }
