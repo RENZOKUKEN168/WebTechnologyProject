@@ -1888,9 +1888,9 @@ html.home-document {
 
 .enquiry-form input[type="submit"]:hover {
     background-color: #286b46;
-    box-shadow: 0 0 10px #286b46,
-                0 0 20px #286b46,
-                0 0 30px #286b46;
+    box-shadow: 0 0 10px #E4EFE7,
+                0 0 20px #E4EFE7,
+                0 0 30px #E4EFE7;
 }
 
 .enquiry-form input[type="reset"] {
