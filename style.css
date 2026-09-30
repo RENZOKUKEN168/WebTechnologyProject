@@ -1857,6 +1857,7 @@ html.home-document {
 .enquiry-form textarea {
     min-height: 120px;
     resize: vertical;
+    margin-bottom: 20px;
 }
 
 .enquiry-form input:focus,
