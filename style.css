@@ -1885,6 +1885,8 @@ html.home-document {
 
 .enquiry-form input[type="submit"]:hover {
     background-color: #1e5738;
+    display: block;
+    filter: drop-shadow(0 0 10px #fffdef);
 }
 
 .enquiry-form input[type="reset"] {
@@ -1895,17 +1897,4 @@ html.home-document {
 
 .enquiry-form input[type="reset"]:hover {
     background-color: #f2f7f2;
-}
-
-img[alt="Plantify"]{
-    animation: pulseLogo 3s ease-in-out infinite;
-}
-
-@keyframes pulselogo{
-    0%,100%{
-        transform: translateY(0) rotate(0deg);
-    }
-    50%{
-        transform: translate(-6px) rotate(3deg);
-    }
 }
