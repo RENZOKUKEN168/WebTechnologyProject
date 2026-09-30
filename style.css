@@ -1908,3 +1908,17 @@ html.home-document {
                 0 0 20px #95c0a1,
                 0 0 30px #95c0a1;
 }
+
+.brand img {
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
