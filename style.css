@@ -1896,3 +1896,16 @@ html.home-document {
 .enquiry-form input[type="reset"]:hover {
     background-color: #f2f7f2;
 }
+
+.plantify-logo{
+    animation: pulseLogo 2s ease-in-out infinite;
+}
+
+@keyframes pulselogo{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.08);
+    }
+}
