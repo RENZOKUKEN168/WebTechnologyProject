@@ -1880,13 +1880,17 @@ html.home-document {
 .enquiry-form input[type="submit"] {
     background-color: #286b46;
     color: #ffffff;
-    border-color: #286b46;
+    border: 2px solid #286b46;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .enquiry-form input[type="submit"]:hover {
-    background-color: #1e5738;
-    display: block;
-    filter: drop-shadow(0 0 10px #fffdef);
+    background-color: #286b46;
+    box-shadow: 0 0 10px #286b46,
+                0 0 20px #286b46,
+                0 0 30px #286b46;
 }
 
 .enquiry-form input[type="reset"] {
