@@ -1802,8 +1802,8 @@ html.home-document {
   }
 }
 
-/* Plant Enquiry Form */
-.plant-enquiry-form {
+/*Enquiry Form */
+.enquiry-form {
     max-width: 550px;
     margin: 30px auto;
     padding: 30px;
@@ -1815,13 +1815,13 @@ html.home-document {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.plant-enquiry-form fieldset {
+.enquiry-form fieldset {
     border: none;
     padding: 0;
     margin: 0 0 25px 0;
 }
 
-.plant-enquiry-form legend {
+.enquiry-form legend {
     color: #173d2b;
     font-weight: bold;
     font-size: 1.1rem;
@@ -1829,7 +1829,7 @@ html.home-document {
     margin-bottom: 20px;
 }
 
-.plant-enquiry-form label {
+.enquiry-form label {
     display: block;
     margin-top: 16px;
     margin-bottom: 7px;
@@ -1837,11 +1837,11 @@ html.home-document {
     font-weight: bold;
 }
 
-.plant-enquiry-form input[type="text"],
-.plant-enquiry-form input[type="email"],
-.plant-enquiry-form input[type="tel"],
-.plant-enquiry-form select,
-.plant-enquiry-form textarea {
+.enquiry-form input[type="text"],
+.enquiry-form input[type="email"],
+.enquiry-form input[type="tel"],
+.nquiry-form select,
+.enquiry-form textarea {
     display: block;
     width: 100%;
     padding: 11px 12px;
@@ -1855,20 +1855,20 @@ html.home-document {
     color: #20352a;
 }
 
-.plant-enquiry-form textarea {
+.enquiry-form textarea {
     min-height: 120px;
     resize: vertical;
 }
 
-.plant-enquiry-form input:focus,
-.plant-enquiry-form select:focus,
-.plant-enquiry-form textarea:focus {
+.enquiry-form input:focus,
+.enquiry-form select:focus,
+.enquiry-form textarea:focus {
     border-color: #4f936a;
     outline: 3px solid #dcefe2;
 }
 
-.plant-enquiry-form input[type="submit"],
-.plant-enquiry-form input[type="reset"] {
+.enquiry-form input[type="submit"],
+.enquiry-form input[type="reset"] {
     padding: 11px 20px;
     border: 1px solid #cbd8cc;
     border-radius: 7px;
@@ -1877,22 +1877,22 @@ html.home-document {
     font-weight: bold;
 }
 
-.plant-enquiry-form input[type="submit"] {
+.enquiry-form input[type="submit"] {
     background-color: #286b46;
     color: #ffffff;
     border-color: #286b46;
 }
 
-.plant-enquiry-form input[type="submit"]:hover {
+.enquiry-form input[type="submit"]:hover {
     background-color: #1e5738;
 }
 
-.plant-enquiry-form input[type="reset"] {
+.enquiry-form input[type="reset"] {
     background-color: #ffffff;
     color: #3e5345;
     margin-left: 7px;
 }
 
-.plant-enquiry-form input[type="reset"]:hover {
+.enquiry-form input[type="reset"]:hover {
     background-color: #f2f7f2;
 }
