@@ -1688,88 +1688,88 @@ html.home-document {
 }
 
 .ifeature-center-image {
-  width: 280px;
-  flex-shrink: 0;
+    width: 280px;
+    flex-shrink: 0;
 }
 
 .ifeature-center-image img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 @media (max-width: 800px) {
-  .ifeature-layout {
+    .ifeature-layout {
     flex-direction: column;
-  }
+    }
 }
 
 /* Index plant care & identify */
 .care-banner {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 50px 40px;
-  min-height: 280px;
-  background-image: url('Photos/care-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  width: min(100% - 48px, 1350px); /* leaves a gap on both sides */
-  margin-inline: auto; /* centers the banner horizontally */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 50px 40px;
+    min-height: 280px;
+    background-image: url('Photos/care-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    width: min(100% - 48px, 1350px); /* leaves a gap on both sides */
+    margin-inline: auto; /* centers the banner horizontally */
 }
 
 .banner-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(20, 40, 20, 0.55); /* dark green tint over the image */
-  z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 40, 20, 0.55); /* dark green tint over the image */
+    z-index: 0;
 }
 
 .banner-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  gap: 30px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .banner-text {
-  color: white;
-  max-width: 320px;
+    color: white;
+    max-width: 320px;
 }
 
 .banner-text h2 {
-  margin: 0 0 10px 0;
-  font-size: 2.2rem;
-  color: white;
-  text-align: left;
+    margin: 0 0 10px 0;
+    font-size: 2.2rem;
+    color: white;
+    text-align: left;
 }
 
 .banner-text p {
-  margin: 0 0 20px 0;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 20px 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .banner-cards {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .care-card {
-  background: rgba(245, 245, 240, 0.95);
-  border-radius: 14px;
-  padding: 20px;
-  width: 200px;
+    background: rgba(245, 245, 240, 0.95);
+    border-radius: 14px;
+    padding: 20px;
+    width: 200px;
 }
 
 .care-icon {
@@ -1785,23 +1785,23 @@ html.home-document {
 }
 
 .care-card h3 {
-  margin: 0 0 5px 0;
-  font-size: 0.95rem;
-  color: #1a2e1a;
+    margin: 0 0 5px 0;
+    font-size: 0.95rem;
+    color: #1a2e1a;
 }
 
 .care-card p {
-  margin: 0;
-  font-size: 0.8rem;
-  color: #4a4a4a;
-  line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #4a4a4a;
+    line-height: 1.4;
 }
 
 @media (max-width: 700px) {
-  .banner-content {
+    .banner-content {
     flex-direction: column;
     align-items: flex-start;
-  }
+    }
 }
 
 /*Enquiry Form */
@@ -1917,4 +1917,43 @@ html.home-document {
 
 .brand img:hover {
     transform: scale(1.1) rotate(3deg);
+}
+
+/* Index page video */
+.video-section {
+    width: min(100% - 48px, 1200px);
+    margin-inline: auto;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.video-section h2 {
+    margin: 0 0 10px;
+    color: #154c31;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.video-section p {
+    margin: 0 0 30px;
+    color: #405047;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 38px rgba(20, 70, 43, 0.11);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
