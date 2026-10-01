@@ -762,7 +762,8 @@ footer {
 }
 
 .contribute-page,
-.enquiry-page { /* Enquiryform.html uses the same header/footer colour variables as contribute.html. */
+.enquiry-page,
+.aboutus-page { /* Enquiryform.html uses the same header/footer colour variables as contribute.html. */
     --explore-dark: #1d633d;
     --explore-light: #f2f7ec;
     --explore-white: #ffffff;
@@ -770,7 +771,8 @@ footer {
 
 /* Keep both form-page headers solid on their light backgrounds. */
 .contribute-page header,
-.enquiry-page header { /* Match the Contribution header background and border on Enquiry. */
+.enquiry-page header,
+.aboutus-page header { /* Match the Contribution header background and border on Enquiry. */
     background: #1d633d;
     border-bottom-color: #2f7950;
 }
@@ -839,6 +841,9 @@ footer {
 .enquiry-page nav a, /* Match the white navigation text on Enquiryform.html. */
 .enquiry-page nav a:hover, /* Preserve the same text colour when hovering. */
 .enquiry-page nav a[aria-current="page"], /* Keep the current Enquiry link white. */
+.aboutus-page nav a,
+.aboutus-page nav a:hover,
+.aboutus-page nav a[aria-current="page"],
 .explore-footer,
 .explore-footer h2,
 .explore-footer a,
@@ -849,14 +854,16 @@ footer {
 .explore-page nav a::after,
 .home-page nav a::after,
 .contribute-page nav a::after,
-.enquiry-page nav a::after { /* Match the active-link and hover underline colour. */
+.enquiry-page nav a::after,
+.aboutus-page nav a::after { /* Match the active-link and hover underline colour. */
     background: var(--explore-light);
 }
 
 .explore-page .header-right input,
 .home-page .header-right input,
 .contribute-page .header-right input,
-.enquiry-page .header-right input { /* Match the Contribution search field text and border. */
+.enquiry-page .header-right input,
+.aboutus-page .header-right input { /* Match the Contribution search field text and border. */
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
