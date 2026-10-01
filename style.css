@@ -823,6 +823,7 @@ footer {
 .home-page .brand img,
 .contribute-page .brand img,
 .enquiry-page .brand img, /* Match the pale green header logo on Enquiryform.html. */
+.aboutus-page .brand img
 .footer-brand img {
     filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%);
 }
