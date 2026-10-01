@@ -7,7 +7,7 @@
 	<meta name="keywords" content="HTML, Form, tags" />
 	<meta name="author" content="All"  />
 	<link rel="stylesheet" href="style.css">
-	<title>Enquiry Form</title>
+	<title>About Us</title>
 </head>
 <body>
     <header>
@@ -30,7 +30,7 @@
         </div>
     </header>
     <h1>User Profile</h1>
-    
+
     <footer class="explore-footer">
         <div class="footer-grid">
             <section class="footer-brand" aria-label="About Plantify">
