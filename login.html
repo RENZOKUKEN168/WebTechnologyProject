@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Plantify Login Page">
+    <meta name="keywords" content="Plantify, login, biodiversity, plants">
+    <meta name="author" content="Plantify Team">
+    <title>Plantify - Login</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+
+            <a href="index.html">
+                <img src="Photos/plantify_logo.png" alt="Plantify logo" class="logo">
+            </a>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="explore.html">Explore</a>
+                <a href="contribute.html">Contribute</a>
+                <a href="enquiry.html">Enquiry</a>
+                <a href="register.html">Register</a>
+                <a href="login.html">Login</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <article class="login-container">
+
+            <section class="login-box">
+
+                <h1>Login</h1>
+
+                <p>Login to access your Plantify account.</p>
+
+                <form action="#" method="post">
+
+                    <p>
+                        <label for="login">Login:</label>
+                        <input
+                            type="text"
+                            id="login"
+                            name="login"
+                            maxlength="10"
+                            pattern="[A-Za-z]+"
+                            required>
+                    </p>
+
+                    <p>
+                        <label for="password">Password:</label>
+                        <input
+                            type="text"
+                            id="password"
+                            name="password"
+                            maxlength="25"
+                            pattern="[A-Za-z]+"
+                            required>
+                    </p>
+
+                    <p class="login-buttons">
+                        <input type="submit" value="Login">
+                        <input type="reset" value="Clear">
+                    </p>
+
+                </form>
+
+            </section>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Plantify - Biodiversity and Plant Data</p>
+    </footer>
+
+</body>
+
+</html>
