@@ -1716,6 +1716,8 @@ html.home-document {
   background-position: center;
   display: flex;
   align-items: center;
+  width: min(100% - 48px, 1350px); /* leaves a gap on both sides */
+  margin-inline: auto; /* centers the banner horizontally */
 }
 
 .banner-overlay {
