@@ -1597,70 +1597,70 @@ html.home-document {
 
 /* Index heading & video*/
 .hero-content {
-  max-width: 720px;
+    max-width: 720px;
 }
 
 #bg-video {
-  filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
+    filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
 }
 
 /* Index text*/
 .ifeature-section {
-  text-align: center;
-  padding: 60px 20px;
+    text-align: center;
+    padding: 60px 20px;
 }
 
 .ifeature-section h2 {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .feature-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin: 10px auto 40px auto;
-  max-width: 800px; /* controls how wide the whole divider is */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px auto 40px auto;
+    max-width: 800px; /* controls how wide the whole divider is */
 }
 
 .feature-line {
-  flex: 1;
-  height: 3px;
-  background: #111111;
-  border-radius: 2px;
+    flex: 1;
+    height: 3px;
+    background: #111111;
+    border-radius: 2px;
 }
 
 .feature-leaf {
-  font-size: 2rem;
-  flex-shrink: 0;
+    font-size: 2rem;
+    flex-shrink: 0;
 }
 
 .ifeature-layout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .ifeature-column {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
 .ifeature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  max-width: 220px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    max-width: 220px;
 }
 
 .ifeature-right .ifeature-item {
-  text-align: right;
-  flex-direction: row-reverse;
+    text-align: right;
+    flex-direction: row-reverse;
 }
 
 .ifeature-left {
@@ -1668,31 +1668,31 @@ html.home-document {
 }
 
 .ifeature-icon {
-  flex-shrink: 0;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ifeature-icon img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 .ifeature-text h3 {
-  margin: 0 0 5px 0;
-  font-size: 2rem;
+    margin: 0 0 5px 0;
+    font-size: 2rem;
 }
 
 .ifeature-text p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.4;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
 .ifeature-center-image {
