@@ -21,7 +21,7 @@
             <a href="explore1.html">Explore</a>
             <a href="#">Identifier</a>
             <a href="contribute.html">Contribution</a>
-            <a href="#">About Us</a>
+            <a href="Aboutus.html">About Us</a>
             <a href="Enquiryform.html" aria-current="page">Enquiry</a>
         </nav>
 
@@ -29,8 +29,8 @@
             <input type="search" aria-label="Search Plantify" placeholder="Search">
         </div>
     </header>
-<h2>Got any enquiries? Please drop them below.</h2>
-<form>
+<form class="enquiry-form">
+	<h2>Got any enquiries?<br>Please drop them below.</h2>
 	<fieldset>
 		<legend>Username</legend>
 		<p>
@@ -48,48 +48,58 @@
 			<input type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]" placeholder="e.g. 012-3456789" required>
 		</p>
 	</fieldset>
-    <br>
-	<br>
 	<fieldset>
-    <legend>Enquiry</legend>
-	<p>
-		Family
-		<select id="type" name="type">
-			<option value="">Please select</option>
-			<option value="a">A</option>
-			<option value="b">B</option>
-			<option value="c">C</option>
-			<option value="d">D</option>
-			<option value="other">Other</option>
-		</select>
-		Genera
-		<select id="type" name="type">
-			<option value="">Please select</option>
-			<option value="e">E</option>
-			<option value="f">f</option>
-			<option value="g">g</option>
-			<option value="h">h</option>
-			<option value="other">Other</option>
-		</select>
-		Species
-		<select id="type" name="type">
-			<option value="">Please select</option>
-			<option value="i">I</option>
-			<option value="j">J</option>
-			<option value="k">K</option>
-			<option value="l">L</option>
-			<option value="other">Other</option>
-		</select>
-	</p>
+		<legend>Enquiry</legend>
+		<p>
+			Family
+			<select id="type" name="type">
+				<option value="">Please select</option>
+				<option value="Dipterocarpaceae">Dipterocarpaceae</option>
+				<option value="Lauraceae">Lauraceae</option>
+				<option value="Burseraceae">Burseraceae</option>
+				<option value="Myristicaceae">Myristicaceae</option>
+				<option value="other">Other</option>
+			</select>
+			Genera
+			<select id="type" name="type">
+				<option value="">Please select</option>
+				<option value="Vatica">Vatica</option>
+				<option value="Dipterocarpus">Dipterocarpus</option>
+				<option value="Actinodaphne">Actinodaphne</option>
+				<option value="Endiandra">Endiandra</option>
+				<option value="Canarium">Canarium</option>
+				<option value="Dacryodes">Dacryodes</option>
+				<option value="Horsfieldia">Horsfieldia</option>
+				<option value="Knema">Knema</option>
+				<option value="other">Other</option>
+			</select>
+			Species
+			<select id="type" name="type">
+				<option value="">Please select</option>
+				<option value="Vatica borneensis">Vatica borneensis</option>
+				<option value="Vatica flavida">Vatica flavida</option>
+				<option value="Dipterocarpus alatus">Dipterocarpus alatus</option>
+				<option value="Dipterocarpus grandiflorus">Dipterocarpus grandiflorus</option>
+				<option value="Actinodaphne mushaensis">Actinodaphne mushaensis</option>
+				<option value="Actinodaphne wightiana">Actinodaphne wightiana</option>
+				<option value="Endiandra sieberi">Endiandra sieberi</option>
+				<option value="Endiandra discolor">Endiandra discolor</option>
+				<option value="Canarium album">Canarium album</option>
+				<option value="Canarium australasicum">Canarium australasicum</option>
+				<option value="Dacryodes excelsa">Dacryodes excelsa</option>
+				<option value="Dacryodes rostrata">Dacryodes rostrata</option>
+				<option value="Horsfieldia irya">Horsfieldia irya</option>
+				<option value="Horsfieldia superba">Horsfieldia superba</option>
+				<option value="Knema attenuata">Knema attenuata</option>
+				<option value="Knema conferta">Knema conferta</option>
+				<option value="other">Other</option>
+			</select>
+		</p>
 	</fieldset>
-	<br>
-	<br>
-    <label for="comment">Comment</label><br>
-    <textarea id="comment" name="comment" placeholder="Write your enquiry here..." rows="6" cols="60"></textarea>
-    <br>
-	<br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
+	<label for="comment">Comment</label><br>
+	<textarea id="comment" name="comment" placeholder="Write your enquiry here..." rows="6" cols="60"></textarea>
+	<input type="submit" value="Submit">
+	<input type="reset" value="Reset">
 </form>
 	<footer class="explore-footer">
         <div class="footer-grid">
@@ -125,6 +135,7 @@
                     <li><a href="explore1.html">Explore</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
+					<li><a href="Enquiryform.html">Enquiry</a></li>
                 </ul>
             </section>
         </div>
