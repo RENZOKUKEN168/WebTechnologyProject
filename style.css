@@ -2076,6 +2076,7 @@ html.home-document {
   background: rgba(255, 255, 255, 0.15);
 }
 
+<<<<<<< HEAD
 /* Register form*/
 .register-form {
     max-width: 700px;
@@ -2179,4 +2180,38 @@ html.home-document {
     box-shadow: 0 0 10px #95c0a1,
                 0 0 20px #95c0a1,
                 0 0 30px #95c0a1;
+=======
+/* User Profile section */
+.user-profile {
+    text-align: center;
+    padding: 30px;
+}
+
+.user-profile h1 {
+    margin-bottom: 30px;
+    color: #173d2b;
+}
+
+.user-profile img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #cbd8cc;
+    transition: transform 0.3s ease;
+}
+
+.user-profile img:hover {
+    transform: scale(1.08);
+}
+
+.user-profile h2 {
+    margin: 10px 0 25px;
+    color: #20352a;
+    font-size: 20px;
+}
+
+.user-profile br {
+    display: none;
+>>>>>>> 70fb97970e6daa46c138bbc4d987b0d0ab1747a2
 }
