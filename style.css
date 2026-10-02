@@ -1878,7 +1878,7 @@ html.home-document {
 .enquiry-form input[type="text"],
 .enquiry-form input[type="email"],
 .enquiry-form input[type="tel"],
-.nquiry-form select,
+.enquiry-form select,
 .enquiry-form textarea {
     display: block;
     width: 100%;
