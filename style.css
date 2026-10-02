@@ -2544,3 +2544,27 @@ footer {
         transition-duration: 0.01ms !important;
     }
 }
+
+
+/* Acknowledgement */
+.ack-button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ack-button a {
+  display: inline-block;
+  background: #eaf4ec;
+  color: #154c31;
+  border: 3px solid #8fc9a3;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ack-button a:hover {
+  background: #ddeee1;
+}
