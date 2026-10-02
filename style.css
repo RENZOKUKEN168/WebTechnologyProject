@@ -104,6 +104,10 @@ main {
     box-sizing: border-box;
 }
 
+.contribute-page main {
+    width: min(100% - 40px, 700px);
+}
+
 h2 {
     color: #173d2b;
     text-align: center;
@@ -2074,4 +2078,72 @@ html.home-document {
 
 .register-btn:hover {
   background: rgba(255, 255, 255, 0.15);
+}
+
+/* Explore links to the plant tools */
+.explore-tool-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    width: min(100% - 48px, 1240px);
+    margin: 38px auto 74px;
+}
+
+.explore-tool-link {
+    position: relative;
+    display: flex;
+    min-height: 175px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    padding: 28px 68px 28px 30px;
+    border-radius: 22px;
+    background: #dceadd;
+    color: #174b31;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.explore-tool-link:nth-child(2) {
+    background: #194f35;
+    color: #ffffff;
+}
+
+.explore-tool-link:hover,
+.explore-tool-link:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(20, 70, 43, 0.16);
+}
+
+.explore-tool-number {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.explore-tool-link strong {
+    font-size: clamp(1.3rem, 2.3vw, 2rem);
+    line-height: 1.15;
+}
+
+.explore-tool-link > span:not(.explore-tool-number) {
+    max-width: 460px;
+    line-height: 1.5;
+}
+
+.explore-tool-link b {
+    position: absolute;
+    top: 25px;
+    right: 29px;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 700px) {
+    .explore-tool-links {
+        grid-template-columns: 1fr;
+        width: min(100% - 28px, 560px);
+    }
 }
