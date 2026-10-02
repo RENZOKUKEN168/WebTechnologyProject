@@ -327,7 +327,7 @@ footer {
 }
 
 .explore-page .classification-rail nav a, 
-.userprofile-rail nav a {
+.contribute-page .contribute-page.userprofile-rail nav a {
     align-self: flex-start;
     padding: 5px 0 4px;
     border-bottom: 2px solid transparent;
@@ -345,13 +345,13 @@ footer {
 
 .explore-page .classification-rail nav a:hover,
 .explore-page .classification-rail nav a:focus-visible ,
-.userprofile-rail nav a:hover,
-.userprofile-rail nav a:focus-visible {
+.contribute-page.userprofile-rail nav a:hover,
+.contribute-page.userprofile-rail nav a:focus-visible {
     color: #1d633d;
 }
 
 .explore-page .classification-rail nav a[aria-current="page"] ,
-.userprofile-rail nav a[aria-current="page"] {
+.contribute-page .userprofile-rail nav a[aria-current="page"] {
     color: #1d633d;
     border-bottom-color: #1d633d;
 }
