@@ -293,8 +293,7 @@ footer {
     min-width: 0;
 }
 
-.classification-rail,
-.userprofile-rail {
+.classification-rail{
     position: sticky;
     top: max(24px, calc(50vh - 120px));
     z-index: 8;
@@ -306,8 +305,7 @@ footer {
     box-sizing: border-box;
 }
 
-.classification-rail-title,
-.userprofile-rail-title {
+.classification-rail-title {
     margin: 0 0 34px;
     color: #154c31;
     font-size: clamp(1.35rem, 2vw, 1.9rem);
@@ -317,8 +315,7 @@ footer {
     text-transform: uppercase;
 }
 
-.classification-rail nav ,
-.userprofile-rail nav {
+.classification-rail nav{
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
@@ -326,8 +323,7 @@ footer {
     margin: 0;
 }
 
-.explore-page .classification-rail nav a, 
-.contribute-page .userprofile-rail nav a {
+.explore-page .classification-rail nav a {
     align-self: flex-start;
     padding: 5px 0 4px;
     border-bottom: 2px solid transparent;
@@ -338,20 +334,16 @@ footer {
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.classification-rail nav a::after, 
-.userprofile-rail nav a::after {
+.classification-rail nav a::after{
     display: none;
 }
 
 .explore-page .classification-rail nav a:hover,
-.explore-page .classification-rail nav a:focus-visible ,
-.contribute-page.userprofile-rail nav a:hover,
-.contribute-page.userprofile-rail nav a:focus-visible {
+.explore-page .classification-rail nav a:focus-visible{
     color: #1d633d;
 }
 
-.explore-page .classification-rail nav a[aria-current="page"] ,
-.contribute-page .userprofile-rail nav a[aria-current="page"] {
+.explore-page .classification-rail nav a[aria-current="page"]{
     color: #1d633d;
     border-bottom-color: #1d633d;
 }
@@ -594,28 +586,24 @@ footer {
         grid-row: 2;
     }
 
-    .classification-rail,
-    .userprofile-rail {
+    .classification-rail{
         top: 0;
         padding: 14px 20px;
         background: #f3f5ed;
         border-bottom: 1px solid #dce7dc;
     }
 
-    .classification-rail-title,
-    .userprofile-rail-title {
+    .classification-rail-title{
         display: none;
     }
 
-    .classification-rail nav, 
-    .userprofile-rail nav {
+    .classification-rail nav{
         flex-direction: row;
         justify-content: space-around;
         gap: 12px;
     }
 
-    .explore-page .classification-rail nav a,
-    .userprofile-rail nav a {
+    .explore-page .classification-rail nav a{
         padding: 4px 0;
         font-size: 0.9rem;
     }
