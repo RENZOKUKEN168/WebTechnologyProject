@@ -764,7 +764,8 @@ footer {
 .contribute-page,
 .enquiry-page,
 .aboutus-page,
-.login-page {
+.login-page,
+.register-page {
     --explore-dark: #1d633d;
     --explore-light: #f2f7ec;
     --explore-white: #ffffff;
@@ -774,7 +775,8 @@ footer {
 .contribute-page header,
 .enquiry-page header,
 .aboutus-page header,
-.login-page header { /* Match the Contribution header background and border on Enquiry. */
+.login-page header,
+.register-page header { /* Match the Contribution header background and border on Enquiry. */
     background: #1d633d;
     border-bottom-color: #2f7950;
 }
@@ -840,7 +842,8 @@ footer {
 .enquiry-page .brand img, /* Match the pale green header logo on Enquiryform.html. */
 .aboutus-page .brand img,
 .login-page .brand img,
-.footer-brand img {
+.footer-brand img,
+.register-page img {
     filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%);
 }
 
@@ -864,7 +867,10 @@ footer {
 .explore-footer,
 .explore-footer h2,
 .explore-footer a,
-.explore-footer address span {
+.explore-footer address span,
+.register-page nav a,
+.register-page nav a:hover,
+.register-page nav a[aria-current="page"] {
     color: var(--explore-white);
 }
 
@@ -873,7 +879,8 @@ footer {
 .contribute-page nav a::after,
 .enquiry-page nav a::after,
 .aboutus-page nav a::after,
-.login-page nav a::after { /* Match the active-link and hover underline colour. */
+.login-page nav a::after,
+.register-page nav a:after { /* Match the active-link and hover underline colour. */
     background: var(--explore-light);
 }
 
@@ -882,7 +889,8 @@ footer {
 .contribute-page .header-right input,
 .enquiry-page .header-right input,
 .aboutus-page .header-right input,
-.login-page .header-right input { /* Match the Contribution search field text and border. */
+.login-page .header-right input,
+.register-page .header-right input { /* Match the Contribution search field text and border. */
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
