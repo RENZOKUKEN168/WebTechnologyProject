@@ -2075,3 +2075,108 @@ html.home-document {
 .register-btn:hover {
   background: rgba(255, 255, 255, 0.15);
 }
+
+/* Register form*/
+.register-form {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #d9e3da;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.register-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.register-form legend {
+    color: #173d2b;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0;
+}
+
+.register-form label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 7px;
+    color: #20352a;
+    font-weight: bold;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="tel"],
+.register-form select,
+.register-form textarea {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    box-sizing: border-box;
+
+    border: 1px solid #cbd8cc;
+    border-radius: 7px;
+
+    font: inherit;
+    background-color: #ffffff;
+    color: #20352a;
+}
+
+.register-form textarea {
+    min-height: 120px;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+.register-form input:focus,
+.register-form select:focus,
+.register-form textarea:focus {
+    border-color: #4f936a;
+    outline: 3px solid #dcefe2;
+}
+
+.register-form input[type="submit"],
+.register-form input[type="reset"] {
+    padding: 11px 20px;
+    border: 1px solid #cbd8cc;
+    border-radius: 7px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+}
+
+.register-form input[type="submit"] {
+    background-color: #286b46;
+    color: #ffffff;
+    border: 2px solid #286b46;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register-form input[type="submit"]:hover {
+    background-color: #286b46;
+    box-shadow: 0 0 10px #95c0a1,
+                0 0 20px #95c0a1,
+                0 0 30px #95c0a1;
+}
+
+.register-form input[type="reset"] {
+    background-color: #ffffff;
+    color: #3e5345;
+    border: 2px solid #286b46;
+    margin-left: 7px;
+    transition: 0.3s;
+}
+
+.register-form input[type="reset"]:hover {
+    background-color: #ffffff;
+    color: #286b46;
+    box-shadow: 0 0 10px #95c0a1,
+                0 0 20px #95c0a1,
+                0 0 30px #95c0a1;
+}
