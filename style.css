@@ -1597,70 +1597,70 @@ html.home-document {
 
 /* Index heading & video*/
 .hero-content {
-  max-width: 720px;
+    max-width: 720px;
 }
 
 #bg-video {
-  filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
+    filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
 }
 
 /* Index text*/
 .ifeature-section {
-  text-align: center;
-  padding: 60px 20px;
+    text-align: center;
+    padding: 60px 20px;
 }
 
 .ifeature-section h2 {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .feature-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin: 10px auto 40px auto;
-  max-width: 800px; /* controls how wide the whole divider is */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px auto 40px auto;
+    max-width: 800px; /* controls how wide the whole divider is */
 }
 
 .feature-line {
-  flex: 1;
-  height: 3px;
-  background: #111111;
-  border-radius: 2px;
+    flex: 1;
+    height: 3px;
+    background: #111111;
+    border-radius: 2px;
 }
 
 .feature-leaf {
-  font-size: 2rem;
-  flex-shrink: 0;
+    font-size: 2rem;
+    flex-shrink: 0;
 }
 
 .ifeature-layout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .ifeature-column {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
 .ifeature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  max-width: 220px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    max-width: 220px;
 }
 
 .ifeature-right .ifeature-item {
-  text-align: right;
-  flex-direction: row-reverse;
+    text-align: right;
+    flex-direction: row-reverse;
 }
 
 .ifeature-left {
@@ -1668,116 +1668,116 @@ html.home-document {
 }
 
 .ifeature-icon {
-  flex-shrink: 0;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ifeature-icon img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 .ifeature-text h3 {
-  margin: 0 0 5px 0;
-  font-size: 2rem;
+    margin: 0 0 5px 0;
+    font-size: 2rem;
 }
 
 .ifeature-text p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.4;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
 .ifeature-center-image {
-  width: 280px;
-  flex-shrink: 0;
+    width: 280px;
+    flex-shrink: 0;
 }
 
 .ifeature-center-image img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 @media (max-width: 800px) {
-  .ifeature-layout {
+    .ifeature-layout {
     flex-direction: column;
-  }
+    }
 }
 
 /* Index plant care & identify */
 .care-banner {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 50px 40px;
-  min-height: 280px;
-  background-image: url('Photos/care-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  width: min(100% - 48px, 1350px); /* leaves a gap on both sides */
-  margin-inline: auto; /* centers the banner horizontally */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 50px 40px;
+    min-height: 280px;
+    background-image: url('Photos/care-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    width: min(100% - 48px, 1350px); /* leaves a gap on both sides */
+    margin-inline: auto; /* centers the banner horizontally */
 }
 
 .banner-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(20, 40, 20, 0.55); /* dark green tint over the image */
-  z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 40, 20, 0.55); /* dark green tint over the image */
+    z-index: 0;
 }
 
 .banner-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  gap: 30px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .banner-text {
-  color: white;
-  max-width: 320px;
+    color: white;
+    max-width: 320px;
 }
 
 .banner-text h2 {
-  margin: 0 0 10px 0;
-  font-size: 2.2rem;
-  color: white;
-  text-align: left;
+    margin: 0 0 10px 0;
+    font-size: 2.2rem;
+    color: white;
+    text-align: left;
 }
 
 .banner-text p {
-  margin: 0 0 20px 0;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 20px 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .banner-cards {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .care-card {
-  background: rgba(245, 245, 240, 0.95);
-  border-radius: 14px;
-  padding: 20px;
-  width: 200px;
+    background: rgba(245, 245, 240, 0.95);
+    border-radius: 14px;
+    padding: 20px;
+    width: 200px;
 }
 
 .care-icon {
@@ -1793,23 +1793,23 @@ html.home-document {
 }
 
 .care-card h3 {
-  margin: 0 0 5px 0;
-  font-size: 0.95rem;
-  color: #1a2e1a;
+    margin: 0 0 5px 0;
+    font-size: 0.95rem;
+    color: #1a2e1a;
 }
 
 .care-card p {
-  margin: 0;
-  font-size: 0.8rem;
-  color: #4a4a4a;
-  line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #4a4a4a;
+    line-height: 1.4;
 }
 
 @media (max-width: 700px) {
-  .banner-content {
+    .banner-content {
     flex-direction: column;
     align-items: flex-start;
-  }
+    }
 }
 
 /*Enquiry Form */
@@ -1929,3 +1929,124 @@ html.home-document {
 :hover {
     transform: scale(1.1) rotate(3deg);
 }
+
+/* Index page video */
+.video-section {
+    width: min(100% - 48px, 1200px);
+    margin-inline: auto;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.video-section h2 {
+    margin: 0 0 10px;
+    color: #154c31;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.video-section p {
+    margin: 0 0 30px;
+    color: #405047;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 38px rgba(20, 70, 43, 0.11);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Index register */
+.register-section {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+    background-image: url('Photos/indexregister-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.register-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0;
+}
+
+.register-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding: 40px 20px;
+    max-width: 700px;
+}
+
+.register-logo {
+    width: 160px;
+    height: auto;
+    margin: 0;
+    display: block;
+    position: relative;
+    left: 8px;
+}
+
+.register-logo-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50px;
+    padding: 14px 32px;
+    margin-bottom: 25px;
+}
+
+.register-content h2 {
+    margin: 0 0 15px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color:white;
+}
+
+.register-content p {
+    margin: 0 0 30px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.register-btn {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 2px solid white;
+    padding: 16px 40px;
+    border-radius: 40px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.register-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
