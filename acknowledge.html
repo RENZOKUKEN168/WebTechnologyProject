@@ -1,88 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Plantify Login Page">
-    <meta name="keywords" content="Plantify, login, biodiversity, plants">
-    <meta name="author" content="Plantify Team">
-    <title>Plantify - Login</title>
+    <meta content="acknowledgement">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acknowledgement of items used">
+<title>Acknowledgement</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
-<bod class="login-page">
-
+<body>
     <header>
         <div class="brand">
             <a href="index.html">
-                <img src="Photos/plantify_logo.png" alt="Plantify">
-            </a>
+            <img src="Photos/plantify_logo.png" alt="Plantify"></a>
         </div>
 
         <nav aria-label="Main navigation">
-            <a href="explore1.html">Explore</a>
+            <a href="explore1.html" aria-current="page">Explore</a>
             <a href="#">Identifier</a>
             <a href="contribute.html">Contribution</a>
             <a href="Aboutus.html">About Us</a>
             <a href="enquiry.html">Enquiry</a>
-            <a href="login.html" aria-current="page">Login</a>
+            <a href="login.html">Login</a>
         </nav>
+
         <div class="header-right">
             <input type="search" aria-label="Search Plantify" placeholder="Search">
         </div>
     </header>
 
-    <main>
 
-        <article class="login-container">
+  <!--  <aside class="page-toc" aria-label="Table of contents">
+        <h2>Citations</h2>
+        <nav>
+            <ul>
+                <li><a href="#">Index page</a></li>
+                <li><a href="#">Explorer page</a></li>
+                <li><a href="#">Plant Care</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Fun Facts</a></li>
+                <li><a href="#">Newsletter</a></li>
+            </ul>
+        </nav>
+    </aside>-->
 
-            <section class="login-box">
+    <section>
+        <h1>Acknowledgement</h1>
+        <p>Below are the website links of origins of photos, icons, information, videos and etc. </p>
+    </section>
 
-                <h1>Login</h1>
+    <section>
+        <h3>Index page</h3>
+        <div class="ack-button">
+            <a href="https://pixabay.com/videos/flowers-garden-colorful-spring-184972/">Video</a>
+            <a href="https://pixabay.com/photos/daisy-honor-award-chamaedrys-flower-3102512/">Care banner</a>
+            <a href="https://pixabay.com/photos/flowers-asters-book-9115519/">Join bg</a>
+            <a href="https://www.flaticon.com/free-icon/droplet_4007761?term=droplet&page=1&position=17&origin=search&related_id=4007761">Droplet icon</a>
+            <a href="https://www.flaticon.com/free-icon/natural-product_5221638?term=plant+care&related_id=5221638">Care icon</a>
+            <a href="https://www.flaticon.com/free-icon/write_9592955?term=write&page=3&position=16&origin=search&related_id=9592955">Write icon</a>
+        </div>
+    </section>
 
-                <p>Login to access your Plantify account.</p>
 
-                <form action="#" method="post">
 
-                    <p>
-                        <label for="login">Username:</label>
-                        <input
-                            type="text"
-                            id="login"
-                            name="login"
-                            maxlength="10"
-                            pattern="[A-Za-z]+"
-                            required
-                            oninvalid="this.setCustomValidity('Please enter login credentials.')"
-                            oninput="this.setCustomValidity('')">
-                    </p>
 
-                    <p>
-                        <label for="password">Password:</label>
-                        <input
-                            type="text"
-                            id="password"
-                            name="password"
-                            maxlength="25"
-                            pattern="[A-Za-z]+"
-                            required
-                            oninvalid="this.setCustomValidity('Please enter your password.')"
-                            oninput="this.setCustomValidity('')"                            >
-                    </p>
 
-                    <p class="login-buttons">
-                        <input type="submit" value="Login">
-                        <input type="reset" value="Clear">
-                    </p>
 
-                </form>
-
-            </section>
-
-        </article>
-
-    </main>
 
     <footer class="explore-footer">
         <div class="footer-grid">
@@ -118,13 +103,10 @@
                     <li><a href="explore1.html">Explore</a></li>
                     <li><a href="Aboutus.html">About</a></li>
                     <li><a href="#">Contact</a></li>
-					<li><a href="enquiry.html">Enquiry</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
                 </ul>
             </section>
         </div>
         <p class="footer-copy">&copy; 2026 Plantify. All rights reserved.</p>
     </footer>
-
 </body>
-
-</html>
