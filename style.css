@@ -2295,8 +2295,8 @@ html.home-document {
 .user-profile br {
     display: none;
 }
-/* Profile page */
-main {
+/* Profile page: keep these overrides on user1.html only. */
+.user1-page main {
     width: min(100% - 40px, 900px);
     margin: 56px auto;
     padding: 42px;
@@ -2308,14 +2308,14 @@ main {
     animation: fade-up 0.7s ease-out both;
 }
 
-h1 {
+.user1-page h1 {
     margin: 0 0 28px;
     color: #173d2b;
     text-align: center;
     letter-spacing: 1px;
 }
 
-h1::after {
+.user1-page h1::after {
     display: block;
     width: 58px;
     height: 4px;
@@ -2326,7 +2326,7 @@ h1::after {
     animation: grow-line 0.7s 0.35s ease-out both;
 }
 
-h2 {
+.user1-page h2 {
     margin: 0;
     color: #173d2b;
     font-size: 1.75rem;
@@ -2458,12 +2458,12 @@ h2 {
 }
 
 .email-button:focus-visible,
-nav a:focus-visible {
+.user1-page nav a:focus-visible {
     outline: 3px solid rgba(79, 147, 106, 0.35);
     outline-offset: 4px;
 }
 
-footer {
+.user1-page footer {
     padding: 0 20px 32px;
     color: #718074;
     font-size: 0.9rem;
@@ -2493,12 +2493,12 @@ footer {
 }
 
 @media (max-width: 760px) {
-    header {
+    .user1-page header {
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    nav {
+    .user1-page nav {
         order: 3;
         width: 100%;
         justify-content: center;
@@ -2506,7 +2506,7 @@ footer {
         margin-left: 0;
     }
 
-    main {
+    .user1-page main {
         padding: 28px 22px;
     }
 
