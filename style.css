@@ -2076,7 +2076,6 @@ html.home-document {
   background: rgba(255, 255, 255, 0.15);
 }
 
-<<<<<<< HEAD
 /* Register form*/
 .register-form {
     max-width: 700px;
@@ -2180,7 +2179,7 @@ html.home-document {
     box-shadow: 0 0 10px #95c0a1,
                 0 0 20px #95c0a1,
                 0 0 30px #95c0a1;
-=======
+}
 /* User Profile section */
 .user-profile {
     text-align: center;
@@ -2213,5 +2212,4 @@ html.home-document {
 
 .user-profile br {
     display: none;
->>>>>>> 70fb97970e6daa46c138bbc4d987b0d0ab1747a2
 }
