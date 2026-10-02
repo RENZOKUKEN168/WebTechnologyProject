@@ -250,6 +250,12 @@ footer {
 
 /* Families page: inspired by Explore with an alternating editorial layout */
 
+/* Restore full-screen covers on the three classification pages. */
+:is(.families-page, .genera-page, .species-page) .explore-cover {
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
 .families-cover .cover-background {
     object-position: center 38%;
 }
