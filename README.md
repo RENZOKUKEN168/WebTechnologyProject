@@ -56,7 +56,7 @@ To run this application workspace locally:
 
 1. Clone this repository into your machine's environment:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/RENZOKUKEN168/WebTechnologyProject
    ```
 2. Open the directory workspace in your preferred source editor (e.g., **VS Code**).
 3. Open any active HTML file (such as `explore1.html`) using a live server execution plugin or drag the file into your local web browser.
