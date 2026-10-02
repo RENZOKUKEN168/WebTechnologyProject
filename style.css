@@ -1919,14 +1919,11 @@ html.home-document {
                 0 0 30px #95c0a1;
 }
 
-.brand img
-.footer-brand img {
+.brand img {
     transition: transform 0.3s ease;
 }
 
-.brand img
-.footer-brand img
-:hover {
+.brand img:hover {
     transform: scale(1.1) rotate(3deg);
 }
 
