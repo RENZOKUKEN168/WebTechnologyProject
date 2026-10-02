@@ -881,7 +881,8 @@ footer {
 .home-page .header-right input,
 .contribute-page .header-right input,
 .enquiry-page .header-right input,
-.aboutus-page .header-right input { /* Match the Contribution search field text and border. */
+.aboutus-page .header-right input,
+.login-page .header-right input { /* Match the Contribution search field text and border. */
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
