@@ -2557,3 +2557,55 @@ footer {
   background: #ddeee1;
 }
 
+/* User Profile sidebar - same style as Classification sidebar */
+.userprofile-rail {
+    position: absolute;
+    top: max(24px, calc(50vh - 120px));
+    z-index: 8;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px 0 0;
+    box-sizing: border-box;
+}
+
+.userprofile-title {
+    margin: 0 0 34px;
+    color: #154c31;
+    font-size: clamp(1.35rem, 2vw, 1.9rem);
+    font-weight: 800;
+    letter-spacing: 0.025em;
+    line-height: 0.94;
+    text-transform: uppercase;
+}
+
+.userprofile-rail nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    width: 100%;
+    margin: 0;
+}
+
+.userprofile-rail nav a {
+    align-self: flex-start;
+    padding: 5px 0 4px;
+    border-bottom: 2px solid transparent;
+    color: #6b756e;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.userprofile-rail nav a::after {
+    display: none;
+}
+
+.userprofile-rail nav a:hover,
+.userprofile-rail nav a:focus-visible {
+    color: #1d633d;
+}
+
+.userprofile-rail nav a[aria-current="page"] {
+    color: #1d633d;
+    border-bottom-color: #1d633d;
+}
