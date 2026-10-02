@@ -2083,29 +2083,35 @@ html.home-document {
 }
 
 .user-profile h1 {
-    margin-bottom: 30px;
     color: #173d2b;
+    margin-bottom: 30px;
 }
 
-.user-profile img {
-    width: 120px;
-    height: 120px;
+.user-list {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.user {
+    text-align: center;
+}
+
+.user img {
+    width: 130px;
+    height: 130px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #cbd8cc;
     transition: transform 0.3s ease;
 }
 
-.user-profile img:hover {
+.user img:hover {
     transform: scale(1.08);
 }
 
-.user-profile h2 {
-    margin: 10px 0 25px;
+.user h2 {
+    margin-top: 10px;
     color: #20352a;
-    font-size: 20px;
-}
-
-.user-profile br {
-    display: none;
+    font-size: 18px;
 }
