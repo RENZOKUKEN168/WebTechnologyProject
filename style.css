@@ -791,9 +791,20 @@ footer {
     box-sizing: border-box;
 }
 
-/* Disable the homepage title's entrance movement. */
+/* Keep the homepage title clear of the overlaid navigation. */
+.home-page .cover-content {
+    padding-top: max(140px, 15vh);
+}
+
 .home-page .cover-content h1 {
     animation: none;
+    font-size: clamp(3.7rem, 8vw, 6.5rem);
+}
+
+@media (max-width: 760px) {
+    .home-page .cover-content {
+        padding-top: max(180px, 18vh);
+    }
 }
 
 .home-page .home-explore-button {
@@ -896,8 +907,6 @@ html.home-document {
 
 .explore-cover {
     position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -916,6 +925,10 @@ html.home-document {
 .explore-landing-page .explore-cover {
     min-height: 76vh;
     background: #0b3d2d;
+}
+
+.home-page .explore-cover {
+    min-height: 76vh;
 }
 
 .explore-landing-page .cover-content {
@@ -957,7 +970,7 @@ html.home-document {
     text-transform: uppercase;
 }
 
-.cover-content h1 {
+.cover-content h1{
     max-width: 760px;
     margin: 0;
     color: #ffffff;
@@ -1865,7 +1878,7 @@ html.home-document {
 .enquiry-form input[type="text"],
 .enquiry-form input[type="email"],
 .enquiry-form input[type="tel"],
-.nquiry-form select,
+.enquiry-form select,
 .enquiry-form textarea {
     display: block;
     width: 100%;
@@ -2062,5 +2075,3 @@ html.home-document {
 .register-btn:hover {
   background: rgba(255, 255, 255, 0.15);
 }
-
-
