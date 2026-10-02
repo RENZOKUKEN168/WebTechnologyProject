@@ -2317,14 +2317,14 @@ html.home-document {
     animation: fade-up 0.7s ease-out both;
 }
 
-.user1-page h1 {
+.user1-page main h1 {
     margin: 0 0 28px;
     color: #173d2b;
     text-align: center;
     letter-spacing: 1px;
 }
 
-.user1-page h1::after {
+.user1-page main h1::after {
     display: block;
     width: 58px;
     height: 4px;
@@ -2335,7 +2335,7 @@ html.home-document {
     animation: grow-line 0.7s 0.35s ease-out both;
 }
 
-.user1-page h2 {
+.user1-page main h2 {
     margin: 0;
     color: #173d2b;
     font-size: 1.75rem;
@@ -2470,13 +2470,6 @@ html.home-document {
 .user1-page nav a:focus-visible {
     outline: 3px solid rgba(79, 147, 106, 0.35);
     outline-offset: 4px;
-}
-
-.user1-page footer {
-    padding: 0 20px 32px;
-    color: #718074;
-    font-size: 0.9rem;
-    text-align: center;
 }
 
 @keyframes fade-up {
