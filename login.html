@@ -46,14 +46,16 @@
                 <form action="#" method="post">
 
                     <p>
-                        <label for="login">Login:</label>
+                        <label for="login">Username:</label>
                         <input
                             type="text"
                             id="login"
                             name="login"
                             maxlength="10"
                             pattern="[A-Za-z]+"
-                            required>
+                            required
+                            oninvalid="this.setCustomValidity('Please enter login credentials.')"
+                            oninput="this.setCustomValidity('')">
                     </p>
 
                     <p>
@@ -64,7 +66,9 @@
                             name="password"
                             maxlength="25"
                             pattern="[A-Za-z]+"
-                            required>
+                            required
+                            oninvalid="this.setCustomValidity('Please enter your password.')"
+                            oninput="this.setCustomValidity('')"                            >
                     </p>
 
                     <p class="login-buttons">
