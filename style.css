@@ -2690,3 +2690,8 @@ html.home-document {
         grid-column: 1;
     }
 }
+
+/* User 3 */
+.course-user3 {
+    color: rgb(93, 173, 226);
+}
