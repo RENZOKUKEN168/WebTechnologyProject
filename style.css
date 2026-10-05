@@ -2881,3 +2881,22 @@ html.home-document {
 .course-user3 {
     color: rgb(93, 173, 226);
 }
+
+.contribute-btn {
+    display: inline-block;
+    background-color: #286b46;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.contribute-btn:hover {
+    background-color: #1e5738;
+    transform: translateY(-2px);
+}
