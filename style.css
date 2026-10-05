@@ -8,6 +8,9 @@ body {
 
 /* Header */
 header {
+    position: relative;
+    z-index: 10;
+    --dropdown-header-gap: 16px;
     background: linear-gradient(180deg, rgba(3, 34, 23, 0.76), rgba(3, 34, 23, 0.16));
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     padding: 16px clamp(24px, 5vw, 72px);
@@ -35,6 +38,30 @@ nav {
     align-items: center;
     gap: 22px;
     margin-left: auto;
+}
+
+/* Fill the center of the header with evenly spaced links. */
+@media (min-width: 1200px) {
+    header {
+        display: grid;
+        grid-template-columns: 275px minmax(0, 1fr) 275px;
+    }
+
+    header > nav {
+        justify-content: space-between;
+        gap: 16px;
+        margin: 0;
+        padding-inline: clamp(0px, calc((100vw - 1200px) / 16), 32px);
+    }
+
+    header > nav a {
+        font-size: clamp(1.02rem, 1.15vw, 1.25rem);
+        white-space: nowrap;
+    }
+
+    header > .header-right {
+        justify-self: end;
+    }
 }
 
 nav a {
@@ -69,10 +96,139 @@ nav a:focus-visible {
     outline-offset: 4px;
 }
 
+/* Explore dropdown: a full-width panel beneath the existing navigation. */
+header > nav {
+    align-self: stretch;
+}
+
+.nav-explore {
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+}
+
+/* Keep hover active while the pointer moves from Explore into its dropdown. */
+.nav-explore::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: var(--dropdown-header-gap);
+    content: "";
+}
+
+header::before {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 220px;
+    background: inherit;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom-color: inherit;
+    content: "";
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.explore-dropdown {
+    position: absolute;
+    top: calc(100% + var(--dropdown-header-gap));
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 220px;
+    margin: 0;
+    padding: 28px 0;
+    list-style: none;
+    text-align: center;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+header > nav .explore-dropdown a {
+    display: block;
+    padding: 5px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.explore-dropdown a::after {
+    display: none;
+}
+
+.explore-dropdown a:hover,
+.explore-dropdown a:focus-visible {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-explore:hover .explore-dropdown,
+.nav-explore:focus-within .explore-dropdown,
+header:has(.nav-explore:hover)::before,
+header:has(.nav-explore:focus-within)::before {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+@media (max-width: 760px) {
+    .nav-explore {
+        position: static;
+    }
+
+    .nav-explore::before {
+        display: none;
+    }
+
+    .explore-dropdown {
+        top: 100%;
+        left: 0;
+        width: 100%;
+        transform: none;
+    }
+}
+
 /* Right side */
 .header-right {
     display: flex;
     align-items: center;
+    gap: 16px;
+}
+
+.header-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: transparent;
+    border-radius: 7px;
+}
+
+.header-account img {
+    display: block;
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    /* Clip the PNG to its silhouette and tint it white, without background blending. */
+    clip-path: path("M 29.7 12.83 A 7.7 7.7 0 1 0 14.3 12.83 A 7.7 7.7 0 1 0 29.7 12.83 Z M 6.6 38.85 C 8.5 28.8 13.8 23.45 22 23.45 C 30.2 23.45 35.5 28.8 37.4 38.85 Z");
+    filter: brightness(0) invert(1);
+}
+
+.header-account:focus-visible {
+    outline: 3px solid #f2f7ec;
+    outline-offset: 4px;
 }
 
 .header-right input {
@@ -641,7 +797,8 @@ footer {
 }
 
 /* Explore page */
-.explore-page header {
+.explore-page header,
+.home-page header {
     top: 0;
     z-index: 10;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -1121,21 +1278,24 @@ html.home-document {
     50% { transform: translateY(7px); }
 }
 
-/* Hide the navigation near the classification section and reveal it on hover. */
+/* Hide the navigation on scroll and reveal it when hovering at the top edge. */
 @supports (animation-timeline: scroll()) {
-    .explore-page header {
+    .explore-page header,
+    .home-page header {
         animation: nav-hide both;
         animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         animation-timeline: scroll(root block);
         animation-range: 53% 61%;
     }
 
-    .explore-landing-page header {
+    .explore-landing-page header,
+    .home-page header {
         position: fixed;
         animation-range: 76vh 90vh;
     }
 
-    .explore-page header::after {
+    .explore-page header::after,
+    .home-page header::after {
         position: absolute;
         top: 100%;
         left: 0;
@@ -1145,11 +1305,35 @@ html.home-document {
     }
 
     .explore-page header:hover,
-    .explore-page header:focus-within {
+    .explore-page header:focus-within,
+    .home-page header:hover,
+    .home-page header:focus-within {
         animation: none;
         transform: translateY(0);
         box-shadow: 0 8px 24px rgba(5, 35, 23, 0.2);
     }
+}
+
+/* Keep transparent headers and their open dropdowns free of separator lines. */
+:is(.home-page, .explore-page) header {
+    border-bottom: none;
+}
+
+:is(.home-page, .explore-page) header:hover,
+:is(.home-page, .explore-page) header:focus-within {
+    box-shadow: none;
+}
+
+:is(.home-page, .explore-page) header::before {
+    top: 0;
+    z-index: -1;
+    height: calc(100% + 220px);
+    background: linear-gradient(180deg, rgba(3, 34, 23, 0.76), rgba(3, 34, 23, 0.16));
+    border-bottom: none;
+}
+
+:is(.home-page, .explore-page) header:has(.nav-explore:is(:hover, :focus-within)) {
+    background: transparent;
 }
 
 @keyframes nav-hide {
@@ -1538,6 +1722,7 @@ html.home-document {
         grid-template-columns: 1fr auto;
         gap: 10px 16px;
         padding: 13px 18px 12px;
+        --dropdown-header-gap: 12px;
     }
 
     .explore-landing-page .brand {
@@ -1564,12 +1749,12 @@ html.home-document {
         grid-column: 1 / -1;
         order: initial;
         width: 100%;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 18px;
         margin: 0;
         padding: 3px 0 5px;
-        overflow-x: auto;
+        overflow: visible;
         scrollbar-width: none;
     }
 
@@ -1636,7 +1821,8 @@ html.home-document {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .explore-page header {
+    .explore-page header,
+    .home-page header {
         animation: none;
         transform: none;
     }
