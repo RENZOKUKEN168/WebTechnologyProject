@@ -2419,3 +2419,54 @@ html.home-document {
     color: #20352a;
     font-size: 18px;
 }
+/* User Profile Navigation */
+
+.userprofile-rail {
+    width: 180px;
+    flex-shrink: 0;
+    padding: 20px;
+    border-right: 1px solid #cbd8cc;
+}
+
+.userprofile-title {
+    margin: 0 0 20px;
+    color: #173d2b;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.userprofile-rail nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.userprofile-rail nav a {
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    color: #20352a;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.userprofile-rail nav a:hover {
+    background-color: #dcebe1;
+    color: #173d2b;
+    transform: translateX(4px);
+}
+
+.userprofile-rail nav a[aria-current="page"] {
+    background-color: #286b46;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.userprofile-content {
+    flex: 1;
+    min-width: 0;
+}
