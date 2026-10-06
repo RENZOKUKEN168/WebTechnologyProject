@@ -2380,3 +2380,42 @@ html.home-document {
         height: auto;
     }
 }
+
+.user-profile {
+    text-align: center;
+    padding: 30px;
+}
+
+.user-profile h1 {
+    color: #173d2b;
+    margin-bottom: 30px;
+}
+
+.user-list {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.user {
+    text-align: center;
+}
+
+.user img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #cbd8cc;
+    transition: transform 0.3s ease;
+}
+
+.user img:hover {
+    transform: scale(1.08);
+}
+
+.user h2 {
+    margin-top: 10px;
+    color: #20352a;
+    font-size: 18px;
+}
