@@ -2740,7 +2740,8 @@ html.home-document {
 .ack-button {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    column-gap: 12px;
+    row-gap: 8px;
 }
 
 .ack-button a {
@@ -2917,3 +2918,8 @@ html.home-document {
 .acknowledge-format h1, h3, p {
     padding: 0px 48px 0px 48px;
 }
+
+.acknowledge-break {
+    flex-basis: 100%;
+    height: 0%;
+} 
