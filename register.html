@@ -53,7 +53,7 @@
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required>
             <label for="phone">Phone Number:</label>
-            <input type="tel" oninput="this.value = this.value.replace(/[^0-9]/g, '')" id="phone" name="phone" maxlength="10" placeholder="e.g. 0123456789" pattern="\d{1,10}" title="Maximum of 10 digits" required>
+            <input type="tel" id="phone" name="phone" maxlength="10" placeholder="e.g. 0123456789" pattern="\d{1,10}" title="Maximum of 10 digits" required>
         </p>
         <p>
             <label for="street_address">Street Address:</label>
@@ -88,7 +88,7 @@
             </p>
 			<p>
                 <label for="postcode">Postcode:</label>
-                <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" id="postcode" name="postcode" pattern="\d{5}" maxlength="5" title="Must be exactly 5 digits" required>
+                <input type="text" id="postcode" name="postcode" pattern="\d{5}" maxlength="5" title="Must be exactly 5 digits" required>
             </p>
         </fieldset>
 
@@ -131,11 +131,12 @@
             <section>
                 <h2>Quick Links</h2>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="explore1.html">Explore</a></li>
                     <li><a href="Aboutus.html">About</a></li>
                     <li><a href="#">Contact</a></li>
 					<li><a href="enquiry.html">Enquiry</a></li>
+                    <li><a href="acknowledge.html">Acknowledgement</a></li>
                 </ul>
             </section>
         </div>

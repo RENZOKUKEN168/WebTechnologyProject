@@ -941,7 +941,8 @@ footer {
 .enquiry-page,
 .aboutus-page,
 .login-page,
-.register-page {
+.register-page,
+.acknowledge-page {
     --explore-dark: #1d633d;
     --explore-light: #f2f7ec;
     --explore-white: #ffffff;
@@ -952,7 +953,8 @@ footer {
 .enquiry-page header,
 .aboutus-page header,
 .login-page header,
-.register-page header { /* Match the Contribution header background and border on Enquiry. */
+.register-page header,
+.acknowledge-page header { /* Match the Contribution header background and border on Enquiry. */
     background: #1d633d;
     border-bottom-color: #2f7950;
 }
@@ -1019,7 +1021,8 @@ footer {
 .aboutus-page .brand img,
 .login-page .brand img,
 .footer-brand img,
-.register-page img {
+.register-page img,
+.acknowledge-page .brand img {
     filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%);
 }
 
@@ -1046,7 +1049,10 @@ footer {
 .explore-footer address span,
 .register-page nav a,
 .register-page nav a:hover,
-.register-page nav a[aria-current="page"] {
+.register-page nav a[aria-current="page"],
+.acknowledge-page nav a,
+.acknowledge-page nav a:hover,
+.acknowledge-page nav a[aria-current="page"] {
     color: var(--explore-white);
 }
 
@@ -1056,7 +1062,8 @@ footer {
 .enquiry-page nav a::after,
 .aboutus-page nav a::after,
 .login-page nav a::after,
-.register-page nav a:after { /* Match the active-link and hover underline colour. */
+.register-page nav a:after,
+.acknowledge-page nav a:after { /* Match the active-link and hover underline colour. */
     background: var(--explore-light);
 }
 
@@ -1066,7 +1073,8 @@ footer {
 .enquiry-page .header-right input,
 .aboutus-page .header-right input,
 .login-page .header-right input,
-.register-page .header-right input { /* Match the Contribution search field text and border. */
+.register-page .header-right input,
+.acknowledge-page .header-right input { /* Match the Contribution search field text and border. */
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
@@ -2732,7 +2740,8 @@ html.home-document {
 .ack-button {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    column-gap: 12px;
+    row-gap: 8px;
 }
 
 .ack-button a {
@@ -2900,3 +2909,19 @@ html.home-document {
     background-color: #1e5738;
     transform: translateY(-2px);
 }
+
+/* Acknowledgement */
+.acknowledge-format div {
+    padding: 0px 48px 12px 48px;
+}
+
+.acknowledge-format h1,
+.acknowledge-format h3,
+.acknowledge-format p {
+    padding: 0px 48px 0px 48px;
+}
+
+.acknowledge-break {
+    flex-basis: 100%;
+    height: 0%;
+} 
