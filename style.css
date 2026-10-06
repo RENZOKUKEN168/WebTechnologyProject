@@ -2915,7 +2915,9 @@ html.home-document {
     padding: 0px 48px 12px 48px;
 }
 
-.acknowledge-format h1, h3, p {
+.acknowledge-format h1,
+.acknowledge-format h3,
+.acknowledge-format p {
     padding: 0px 48px 0px 48px;
 }
 
