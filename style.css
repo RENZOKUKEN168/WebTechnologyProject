@@ -2180,39 +2180,3 @@ html.home-document {
                 0 0 20px #95c0a1,
                 0 0 30px #95c0a1;
 }
-
-/* Contributor Page */
-.contributor-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 50px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 35px;
-}
-
-/* Main title */
-.contributor-page > h1 {
-    grid-column: 1 / -1;
-    color: #173d2b;
-    font-size: 36px;
-    margin: 0 0 10px;
-}
-
-/* Main sections */
-.intro-section,
-.contributions-section,
-.how-to-section {
-    grid-column: 1;
-}
-
-.contributor-page h2 {
-    color: #20352a;
-    border-bottom: 1px solid #cbd8cc;
-    padding-bottom: 10px;
-    margin-top: 20px;
-}
-
-.contributor-page p {
-    line-height: 1.7;
-}
