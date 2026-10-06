@@ -2908,3 +2908,12 @@ html.home-document {
     background-color: #1e5738;
     transform: translateY(-2px);
 }
+
+/* Acknowledgement */
+.acknowledge-format div {
+    padding: 0px 48px 12px 48px;
+}
+
+.acknowledge-format h1, h3, p {
+    padding: 0px 48px 0px 48px;
+}
