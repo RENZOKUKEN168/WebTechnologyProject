@@ -2614,3 +2614,56 @@ html.home-document {
 .explore-dropdown li a:hover {
     background-color: #286b46;
 }
+
+nav a:focus-visible {
+    outline: 3px solid rgba(79, 147, 106, 0.35);
+    outline-offset: 4px;
+}
+
+nav a:focus-visible {
+    outline: 3px solid rgba(79, 147, 106, 0.35);
+    outline-offset: 4px;
+}
+
+/* Navigation dropdown */
+.nav-explore {
+    position: relative;
+}
+
+.explore-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    min-width: 170px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.nav-explore:hover .explore-dropdown,
+.nav-explore:focus-within .explore-dropdown {
+    display: block;
+}
+
+.explore-dropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+.explore-dropdown li a {
+    display: block;
+    padding: 10px 16px;
+    color: #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.explore-dropdown li a:hover {
+    background-color: #286b46;
+}
+
