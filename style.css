@@ -2937,9 +2937,10 @@ html.home-document {
 
 /* Main title */
 .contributor-page > h1 {
+    text-align: center;
     grid-column: 1 / -1;
     color: #173d2b;
-    font-size: 36px;
+    font-size: 40px;
     margin: 0 0 10px;
 }
 
