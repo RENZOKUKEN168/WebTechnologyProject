@@ -2972,6 +2972,8 @@ html.home-document {
     height: 320px;
     object-fit: cover;
     border-radius: 8px;
+    display: block;
+    margin: 0 auto;
 }
 
 .intro-section figcaption {
