@@ -942,7 +942,8 @@ footer {
 .aboutus-page,
 .login-page,
 .register-page,
-.acknowledge-page {
+.acknowledge-page,
+.enhancement-page {
     --explore-dark: #1d633d;
     --explore-light: #f2f7ec;
     --explore-white: #ffffff;
@@ -954,7 +955,8 @@ footer {
 .aboutus-page header,
 .login-page header,
 .register-page header,
-.acknowledge-page header { /* Match the Contribution header background and border on Enquiry. */
+.acknowledge-page header,
+.enhancement-page header { /* Match the Contribution header background and border on Enquiry. */
     background: #1d633d;
     border-bottom-color: #2f7950;
 }
@@ -1022,7 +1024,8 @@ footer {
 .login-page .brand img,
 .footer-brand img,
 .register-page img,
-.acknowledge-page .brand img {
+.acknowledge-page .brand img,
+.enhancement-page .brand img {
     filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%);
 }
 
@@ -1052,7 +1055,10 @@ footer {
 .register-page nav a[aria-current="page"],
 .acknowledge-page nav a,
 .acknowledge-page nav a:hover,
-.acknowledge-page nav a[aria-current="page"] {
+.acknowledge-page nav a[aria-current="page"],
+.enhancement-page nav a,
+.enhancement-page nav a:hover,
+.enhancement-page nav a[aria-current="page"] {
     color: var(--explore-white);
 }
 
@@ -1063,7 +1069,8 @@ footer {
 .aboutus-page nav a::after,
 .login-page nav a::after,
 .register-page nav a:after,
-.acknowledge-page nav a:after { /* Match the active-link and hover underline colour. */
+.acknowledge-page nav a:after,
+.enhancement-page nav a:after { /* Match the active-link and hover underline colour. */
     background: var(--explore-light);
 }
 
@@ -1074,7 +1081,8 @@ footer {
 .aboutus-page .header-right input,
 .login-page .header-right input,
 .register-page .header-right input,
-.acknowledge-page .header-right input { /* Match the Contribution search field text and border. */
+.acknowledge-page .header-right input,
+.enhancement-page .header-right input { /* Match the Contribution search field text and border. */
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
