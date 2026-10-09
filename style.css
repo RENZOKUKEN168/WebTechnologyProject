@@ -1840,6 +1840,8 @@ html.home-document {
 /* Index heading & video*/
 .hero-content {
     max-width: 720px;
+    text-transform: none !important;
+    letter-spacing: 0.15em !important;
 }
 
 #bg-video {
