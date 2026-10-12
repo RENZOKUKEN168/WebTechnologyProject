@@ -2897,7 +2897,7 @@ html.home-document {
 
 /* User 3 */
 .course-user3 {
-    color: rgb(93, 173, 226);
+    color: #1f4a7e;
 }
 
 .contribute-btn {
@@ -3528,4 +3528,79 @@ html.home-document {
     }
 }
 
+
+/* User 3 theme  - will edit comments out later */
+/* Card around the page */
+.user3-theme main {
+    border-color: #dfe7f1 !important;
+    box-shadow: 0 14px 34px rgba(31, 60, 100, 0.09) !important;
+}
+
+/* Headings */
+.user3-theme main h1,
+.user3-theme main h2,
+.user3-theme .profile-name {
+    color: #17325c !important;
+}
+
+.user3-theme main h1::after {
+    background-color: #4a86c5 !important;
+}
+
+/* Summary section + photo box */
+.user3-theme .profile-summary {
+    border-bottom-color: #c8d6e6 !important;
+}
+
+.user3-theme .profile-photo {
+    border-color: #2563a8 !important;
+    background-color: #dce8f5 !important;
+    box-shadow: 0 12px 24px rgba(31, 60, 100, 0.14) !important;
+}
+
+.user3-theme .profile-photo:hover {
+    box-shadow: 0 18px 32px rgba(31, 60, 100, 0.22) !important;
+}
+
+/* Table */
+.user3-theme .profile-table th,
+.user3-theme .profile-table td {
+    border-color: #9db3cc !important;
+}
+
+.user3-theme .profile-table th {
+    background-color: #dce8f5 !important;
+}
+
+.user3-theme .profile-table td {
+    background-color: #f2f6fb !important;
+}
+
+.user3-theme .profile-table td:first-child {
+    color: #1f4a7e !important;
+}
+
+.user3-theme .profile-table tbody tr:hover td {
+    background-color: #e3eef9 !important;
+}
+
+.user3-theme .profile-table tfoot td {
+    background: linear-gradient(135deg, #edf4fb, #dce8f5) !important;
+}
+
+/* Email button */
+.user3-theme .email-button {
+    background-color: #2563a8 !important;
+    box-shadow: 0 5px 12px rgba(37, 99, 168, 0.22) !important;
+}
+
+.user3-theme .email-button:hover {
+    background-color: #1e4f87 !important;
+    box-shadow: 0 8px 16px rgba(37, 99, 168, 0.3) !important;
+}
+
+.user3-theme .email-button:focus-visible,
+.user3-theme nav a:focus-visible {
+    outline-color: rgba(74, 134, 197, 0.35) !important;
+}
 
