@@ -51,9 +51,9 @@
 			<legend>Username</legend>
 			<p>
 				First Name*
-				<input type="text" id="firstname" name="firstname" maxlength="25" pattern="[A-Za-z]" placeholder="Enter your first name" required>
+				<input type="text" id="firstname" name="firstname" maxlength="25" pattern="[A-Za-z ]+" title="Use alphabetic characters only." placeholder="Enter your first name" required>
 				Last Name*
-				<input type="text" id="lastname" name="lastname" maxlength="25" pattern="[A-Za-z]" placeholder="Enter your last name" required>
+				<input type="text" id="lastname" name="lastname" maxlength="25" pattern="[A-Za-z ]+" title="Use alphabetic characters only." placeholder="Enter your last name" required>
 			</p>
 			<p>
 				Email Address*
@@ -61,7 +61,7 @@
 			</p>
 			<p>
 				<label for="phone">Phone Number*</label>
-				<input type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]" placeholder="e.g. 012-3456789" required>
+				<input type="tel" id="phone" name="phone" maxlength="11" pattern="[0-9]{10,11}" title="Enter 10 or 11 digits, no spaces or hyphens." placeholder="e.g. 012-3456789" required>
 			</p>
 		</fieldset>
 		<fieldset>
