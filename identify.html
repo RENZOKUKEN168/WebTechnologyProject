@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how to identify Malaysian plants using photographs and their visible characteristics with Plantify.">
+    <meta name="keywords" content="Plantify, plant identifier, biodiversity, Malaysia">
+    <meta name="author" content="Plantify Team">
+    <title>Identify Plants - Plantify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="contribute-page identify-page">
+    <header id=header>
+        <div class="brand">
+            <a href="index.html">
+                <img src="Photos/plantify_logo.png" alt="Plantify">
+            </a>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <div class="nav-explore">
+                <a href="explore1.html" >Explore</a>
+                <ul class="explore-dropdown" aria-label="Explore categories">
+                    <li><a href="families.html#families-list">Families</a></li>
+                    <li><a href="genera.html#genera-list">Genera</a></li>
+                    <li><a href="species.html#species-list">Species</a></li>
+                </ul>
+            </div>
+            <a href="identify.html" aria-current="page">Identifier</a>
+            <div class="nav-explore">
+                <a href="contribute.html">Contribution</a>
+                <ul class="explore-dropdown" aria-label="Explore categories">
+                    <li><a href="contribute_form.html#contribute-form">Contribute Form</a></li>
+                </ul>
+            </div>
+            <a href="aboutus.html">About Us</a>
+            <a href="enquiry.html">Enquiry</a>
+
+        </nav>
+
+        <div class="header-right">
+            <input type="search" aria-label="Search Plantify" placeholder="Search">
+            <a class="header-account" href="login.html" aria-label="Login">
+                <img src="Photos/user/unknown.png" alt="" width="44" height="44">
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="identifier-hero" aria-labelledby="identifier-heading">
+            <div class="identifier-hero-copy">
+                <p class="identifier-eyebrow">DISCOVER THE WORLD AROUND YOU</p>
+                <h1 id="identifier-heading">Identify a plant</h1>
+                <p>Not sure which plant you have discovered? Start with a clear photograph, observe its unique features, and explore the plant families, genera and species documented by Plantify.</p>
+                <a class="identifier-hero-link" href="#identify-form">Get started <span aria-hidden="true">↗</span></a>
+            </div>
+            <figure class="identifier-hero-photo">
+                <img src="Photos/explore-background1.png" alt="A close-up view of green plant leaves">
+                <figcaption>Look closely at leaf shape, colour and other visible characteristics.</figcaption>
+            </figure>
+        </section>
+
+        <div class="identifier-layout">
+            <section class="identifier-form-section" id="identify-form" aria-labelledby="identify-form-heading">
+                <p class="identifier-eyebrow">STEP 01 · RECORD YOUR DISCOVERY</p>
+                <h2 id="identify-form-heading">Tell us about your plant</h2>
+                <p>Use this demonstration form to prepare information for identification. This Assignment 1 prototype does not automatically analyse photos or store submissions.</p>
+                <form action="#identify-form" method="get" class="identifier-form">
+                    <fieldset>
+                        <legend>Plant observations</legend>
+                        <div class="identifier-field">
+                            <label for="identifier-photo">Choose a plant photo</label>
+                            <input type="file" id="identifier-photo" name="plant_photo" accept="image/*" required>
+                            <small>A clear photo showing leaves, flowers or fruit is best.</small>
+                        </div>
+                        <div class="identifier-field">
+                            <label for="identifier-location">Where did you find it?</label>
+                            <input type="text" id="identifier-location" name="location" maxlength="80" placeholder="e.g. Kuching, Sarawak" required>
+                        </div>
+                        <div class="identifier-field">
+                            <label for="identifier-feature">Most noticeable feature</label>
+                            <select id="identifier-feature" name="feature" required>
+                                <option value="">Choose one feature</option>
+                                <option value="leaves">Leaf shape or pattern</option>
+                                <option value="flowers">Flowers</option>
+                                <option value="fruit">Fruit or seeds</option>
+                                <option value="bark">Bark or trunk</option>
+                            </select>
+                        </div>
+                        <div class="identifier-field">
+                            <label for="identifier-notes">Additional observations</label>
+                            <textarea id="identifier-notes" name="notes" rows="4" cols="35" maxlength="500" placeholder="Describe the plant's colour, size, habitat or other details." required></textarea>
+                        </div>
+                    </fieldset>
+                    <div class="identifier-actions">
+                        <button type="reset">Clear form</button>
+                        <a href="explore1.html" class="identifier-browse-link">Browse plant classifications →</a>
+                    </div>
+                </form>
+                <p class="identifier-form-note"><strong>Prototype notice:</strong> Photo selection works locally, but there is no identification engine or form submission in this HTML/CSS-only website.</p>
+            </section>
+            <aside class="identifier-tips" aria-labelledby="identifier-tips-heading">
+                <p class="identifier-eyebrow">FIELD NOTES</p>
+                <h2 id="identifier-tips-heading">Tips for a useful photograph</h2>
+                <ol>
+                    <li>Choose a well-lit image with the plant in focus.</li>
+                    <li>Include a close-up of leaves or flowers if possible.</li>
+                    <li>Record where the plant was growing.</li>
+                    <li>Avoid removing rare or protected plants from their habitat.</li>
+                </ol>
+                <p>Different species can look alike. Treat visual comparisons as a starting point, not a confirmed scientific identification.</p>
+            </aside>
+        </div>
+
+        <section class="identifier-explore" aria-labelledby="identifier-explore-heading">
+            <p class="identifier-eyebrow">STEP 02 · COMPARE AND EXPLORE</p>
+            <h2 id="identifier-explore-heading">Start with the plant's features</h2>
+            <p>Look at the examples below and follow the links to the corresponding classification pages.</p>
+            <div class="identifier-cards">
+                <article class="identifier-card">
+                    <figure><img src="Photos/families/dipterocarpaceae.jpg" alt="Tropical trees from the Dipterocarpaceae family"><figcaption>Example: dipterocarp family</figcaption></figure>
+                    <h3>Families</h3>
+                    <p>Compare broad characteristics shared by related groups of plants.</p>
+                    <a href="families.html#families-list">Explore families →</a>
+                </article>
+                <article class="identifier-card">
+                    <figure><img src="Photos/explore-genera.jpg" alt="Green leaves and small flowers"><figcaption>Example: plants grouped by genus</figcaption></figure>
+                    <h3>Genera</h3>
+                    <p>Narrow the possibilities by looking at more specific shared features.</p>
+                    <a href="genera.html#genera-list">Explore genera →</a>
+                </article>
+                <article class="identifier-card">
+                    <figure><img src="Photos/explore-species.jpg" alt="A colourful flowering plant"><figcaption>Example: individual plant species</figcaption></figure>
+                    <h3>Species</h3>
+                    <p>Read descriptions and compare images of individual species.</p>
+                    <a href="species.html#species-list">Explore species →</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="identifier-glossary" aria-labelledby="identifier-glossary-heading">
+            <h2 id="identifier-glossary-heading">A quick identification glossary</h2>
+            <dl>
+                <div><dt>Family</dt><dd>A broad group of related plant genera.</dd></div>
+                <div><dt>Genus</dt><dd>A group of closely related species.</dd></div>
+                <div><dt>Species</dt><dd>A particular kind of plant within a genus.</dd></div>
+            </dl>
+        </section>
+    </main>
+
+    <footer class="explore-footer" id="footer">
+        <div class="footer-grid">
+            <section class="footer-brand" aria-label="About Plantify">
+                <img src="Photos/plantify_logo.png" alt="Plantify">
+                <p>Explore. Learn. Appreciate.<br>Plants make our world greener, healthier and more beautiful.</p>
+            </section>
+            <section>
+                <h2>Contact Us</h2>
+                <address>
+                    <p><span aria-hidden="true">●</span> Kuching, Sarawak, Malaysia</p>
+                    <p><span aria-hidden="true">✉</span> <a href="mailto:info@plantify.com">info@plantify.com</a></p>
+                    <p><span aria-hidden="true">☎</span> <a href="tel:+6082123456">+60 82 123 456</a></p>
+                </address>
+            </section>
+            <section>
+                <h2>Find Us</h2>
+                <p>Visit Swinburne University of Technology Sarawak Campus, Kuching.</p>
+                <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Swinburne+University+Sarawak">View location on Google Maps ↗</a></p>
+            </section>
+
+            <section>
+                <h2>Quick Links</h2>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="explore1.html">Explore</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                    <li><a href="acknowledge.html">Acknowledgement</a></li>
+                    <li><a href="enhancement.html">Enhancement</a></li>
+                </ul>
+            </section>
+        </div>
+        <p class="footer-copy">&copy; 2026 Plantify. All rights reserved.</p>
+    </footer>
+</body>
+</html>
