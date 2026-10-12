@@ -3192,3 +3192,340 @@ html.home-document {
   background: #ddeee1;
 }
 
+
+/* ==========================================================
+   IDENTIFIER PAGE -suvasis-
+   All new layout rules are scoped to .identify-page
+   ========================================================== */
+
+.identify-page {
+    background: #f3f5ed;
+    color: #20352a;
+}
+
+/* Hero section */
+
+.identify-page .identifier-hero {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    min-height: 410px;
+    align-items: center;
+    gap: 5%;
+    padding: 58px max(5vw, 24px);
+    background: #e7f0e7;
+}
+
+.identify-page .identifier-hero-copy {
+    max-width: 690px;
+}
+
+.identify-page .identifier-eyebrow {
+    margin: 0 0 13px;
+    color: #317752;
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.identify-page .identifier-hero h1 {
+    margin: 0 0 18px;
+    font-size: clamp(2.5rem, 5vw, 4.6rem);
+    line-height: 1.1;
+    color: #174c33;
+}
+
+.identify-page .identifier-hero-copy > p:not(.identifier-eyebrow) {
+    font-size: 1.09rem;
+    max-width: 610px;
+}
+
+.identify-page .identifier-hero-link,
+.identify-page .identifier-card a {
+    display: inline-block;
+    color: #fff;
+    background: #1d633d;
+    text-decoration: none;
+    padding: 12px 19px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.identify-page .identifier-hero-link:hover,
+.identify-page .identifier-card a:hover {
+    background: #10452c;
+}
+
+.identify-page .identifier-hero-photo {
+    margin: 0;
+}
+
+.identify-page .identifier-hero-photo img {
+    display: block;
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.identify-page figcaption {
+    font-size: .84rem;
+    color: #536e5b;
+    padding-top: 9px;
+}
+
+/* Identifier form and tips */
+
+.identify-page .identifier-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.75fr) minmax(250px, .8fr);
+    gap: 30px;
+    max-width: 1220px;
+    padding: 70px 25px;
+    margin: 0 auto;
+}
+
+.identify-page .identifier-form-section,
+.identify-page .identifier-tips {
+    padding: clamp(24px, 3vw, 42px);
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 12px 32px rgba(20,60,38,.07);
+}
+
+.identify-page .identifier-form-section h2,
+.identify-page .identifier-tips h2,
+.identify-page .identifier-explore h2,
+.identify-page .identifier-glossary h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.6rem, 2.7vw, 2.3rem);
+    line-height: 1.2;
+    color: #174c33;
+}
+
+.identify-page .identifier-form {
+    margin-top: 24px;
+}
+
+.identify-page .identifier-form fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.identify-page .identifier-form legend {
+    font-size: 1.04rem;
+    font-weight: 700;
+    margin-bottom: 13px;
+    color: #174c33;
+}
+
+.identify-page .identifier-field {
+    margin-bottom: 19px;
+}
+
+.identify-page .identifier-field label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 700;
+}
+
+.identify-page .identifier-field input,
+.identify-page .identifier-field select,
+.identify-page .identifier-field textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #b8cec0;
+    border-radius: 8px;
+    background: #fff;
+    color: #20352a;
+    font: inherit;
+    padding: 11px 12px;
+}
+
+.identify-page .identifier-field input[type=file] {
+    padding: 13px;
+}
+
+.identify-page .identifier-field small {
+    display: block;
+    padding-top: 6px;
+    color: #52675a;
+}
+
+.identify-page .identifier-field textarea {
+    resize: vertical;
+}
+
+.identify-page .identifier-field :focus-visible,
+.identify-page a:focus-visible,
+.identify-page button:focus-visible {
+    outline: 3px solid #5fa77b;
+    outline-offset: 3px;
+}
+
+.identify-page .identifier-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 17px;
+}
+
+.identify-page .identifier-actions button {
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 7px;
+    color: white;
+    background: #1d633d;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.identify-page .identifier-browse-link {
+    color: #1d633d;
+    font-weight: 700;
+}
+
+.identify-page .identifier-form-note {
+    margin-top: 24px;
+    padding: 13px 15px;
+    border-left: 4px solid #5fa77b;
+    background: #eef5ef;
+    font-size: .92rem;
+}
+
+/* Identification tips */
+
+.identify-page .identifier-tips {
+    align-self: start;
+    background: #e6efe6;
+    border: 1px solid #c8dfcd;
+}
+
+.identify-page .identifier-tips ol {
+    padding-left: 22px;
+}
+
+.identify-page .identifier-tips li {
+    margin-bottom: 15px;
+}
+
+/* Plant classification cards */
+
+.identify-page .identifier-explore {
+    padding: 65px max(5vw, 24px);
+    background: #eaf1e7;
+    text-align: center;
+}
+
+.identify-page .identifier-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+    max-width: 1240px;
+    margin: 30px auto 0;
+    text-align: left;
+}
+
+.identify-page .identifier-card {
+    overflow: hidden;
+    padding-bottom: 25px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(20,60,38,.06);
+}
+
+.identify-page .identifier-card figure {
+    margin: 0;
+}
+
+.identify-page .identifier-card img {
+    display: block;
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+}
+
+.identify-page .identifier-card figcaption,
+.identify-page .identifier-card h3,
+.identify-page .identifier-card p,
+.identify-page .identifier-card a {
+    margin-left: 23px;
+    margin-right: 23px;
+}
+
+.identify-page .identifier-card h3 {
+    color: #174c33;
+    font-size: 1.35rem;
+    margin-bottom: 7px;
+}
+
+.identify-page .identifier-card p {
+    min-height: 60px;
+}
+
+.identify-page .identifier-card a {
+    margin-top: 7px;
+}
+
+/* Botanical glossary */
+
+.identify-page .identifier-glossary {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 55px 25px 75px;
+}
+
+.identify-page .identifier-glossary dl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.identify-page .identifier-glossary dl div {
+    border-left: 4px solid #60a377;
+    background: #fff;
+    padding: 16px 18px;
+}
+
+.identify-page .identifier-glossary dt {
+    font-weight: 800;
+    color: #174c33;
+}
+
+.identify-page .identifier-glossary dd {
+    margin: 5px 0 0;
+}
+
+/* Responsive layout for identifier */
+
+@media (max-width: 850px) {
+    .identify-page .identifier-hero,
+    .identify-page .identifier-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .identify-page .identifier-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .identify-page .identifier-hero {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .identify-page .identifier-cards,
+    .identify-page .identifier-glossary dl {
+        grid-template-columns: 1fr;
+    }
+
+    .identify-page .identifier-hero-photo img {
+        height: 230px;
+    }
+}
+
+
