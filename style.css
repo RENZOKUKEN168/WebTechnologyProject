@@ -3603,4 +3603,96 @@ html.home-document {
 .user3-theme nav a:focus-visible {
     outline-color: rgba(74, 134, 197, 0.35) !important;
 }
+/* User 2 theme - Gold and White (colours only) */
 
+/* Headings and name */
+.user2-theme main h1,
+.user2-theme main h2,
+.user2-theme .profile-name {
+    color: #8a6508 !important;
+}
+
+.user2-theme main h1::after {
+    background-color: #d4a017 !important;
+}
+
+/* Course text */
+.user2-theme .course {
+    color: #b8860b !important;
+}
+
+/* Side rail text */
+.user2-theme .userprofile-title {
+    color: #8a6508 !important;
+}
+
+.user2-theme .userprofile-rail nav a {
+    color: #8c7a4a !important;
+}
+
+.user2-theme .userprofile-rail nav a:hover,
+.user2-theme .userprofile-rail nav a:focus-visible {
+    color: #b8860b !important;
+}
+
+.user2-theme .userprofile-rail nav a[aria-current="page"] {
+    color: #b8860b !important;
+    border-bottom-color: #d4a017 !important;
+}
+
+/* Summary divider line */
+.user2-theme .profile-summary {
+    border-bottom-color: #e6d28a !important;
+}
+
+/* Table */
+.user2-theme .profile-table th,
+.user2-theme .profile-table td {
+    border-color: #d4b24c !important;
+}
+
+.user2-theme .profile-table th {
+    background-color: #f3d36b !important;
+    color: #4a3600 !important;
+}
+
+.user2-theme .profile-table td {
+    background-color: #ffffff !important;
+    color: #3d2f0a !important;
+}
+
+.user2-theme .profile-table td:first-child {
+    background-color: #fff8e1 !important;
+    color: #8a6508 !important;
+}
+
+.user2-theme .profile-table tbody tr:hover td {
+    background-color: #fff3c4 !important;
+}
+
+.user2-theme .profile-table tfoot td {
+    background: linear-gradient(135deg, #ffffff, #fbe9a8) !important;
+    color: #3d2f0a !important;
+}
+
+/* Email button */
+.user2-theme .email-button {
+    background-color: #b8860b !important;
+    box-shadow: 0 5px 12px rgba(184, 134, 11, 0.28) !important;
+    color: #ffffff !important;
+}
+
+.user2-theme .email-button:hover {
+    background-color: #8a6508 !important;
+    box-shadow: 0 8px 16px rgba(138, 101, 8, 0.35) !important;
+}
+
+.user2-theme .email-button:focus-visible,
+.user2-theme nav a:focus-visible {
+    outline-color: rgba(212, 160, 23, 0.45) !important;
+}
+
+.user2-theme .profile-photo {
+    border-color: #d4a017 !important;
+    background-color: #fff8e1 !important;
+}
