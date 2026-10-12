@@ -711,11 +711,10 @@ footer {
     text-decoration: underline;
 }
 
-/* Classification links inherit the typography of their label or heading. */
+/* Links for small classification labels and selected names. */
 .family-label a,
-.family-copy h3 a,
 .family-genera a,
-.classification-divider a {
+.classification-divider p a {
     color: inherit;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -723,15 +722,14 @@ footer {
 }
 
 .family-label a:hover,
-.family-copy h3 a:hover,
 .family-genera a:hover,
-.classification-divider a:hover {
+.classification-divider p a:hover {
     color: #1d633d;
     text-decoration-thickness: 2px;
 }
 
 .family-copy a:focus-visible,
-.classification-divider a:focus-visible {
+.classification-divider p a:focus-visible {
     outline: 2px solid #1d633d;
     outline-offset: 4px;
     border-radius: 2px;
