@@ -468,8 +468,7 @@ footer {
     box-sizing: border-box;
 }
 
-.classification-rail-title,
-.userprofile-rail-title{
+.classification-rail-title {
     margin: 0 0 34px;
     color: #154c31;
     font-size: clamp(1.35rem, 2vw, 1.9rem);
@@ -488,8 +487,7 @@ footer {
     margin: 0;
 }
 
-.explore-page .classification-rail nav a,
-.explore-page .userprofile-rail nav a{
+.explore-page .classification-rail nav a {
     align-self: flex-start;
     padding: 5px 0 4px;
     border-bottom: 2px solid transparent;
@@ -506,14 +504,11 @@ footer {
 }
 
 .explore-page .classification-rail nav a:hover,
-.explore-page .classification-rail nav a:focus-visible,
-.explore-page .userprofile-rail nav a:hover,
-.explore-page .userprofile-rail nav a:focus-visible {
+.explore-page .classification-rail nav a:focus-visible {
     color: #1d633d;
 }
 
-.explore-page .classification-rail nav a[aria-current="page"],
-.explore-page .userprofile-rail nav a[aria-current="page"] {
+.explore-page .classification-rail nav a[aria-current="page"] {
     color: #1d633d;
     border-bottom-color: #1d633d;
 }
@@ -716,6 +711,36 @@ footer {
     text-decoration: underline;
 }
 
+/* Classification links inherit the typography of their label or heading. */
+.family-label a,
+.family-copy h3 a,
+.family-genera a,
+.classification-divider a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.family-label a:hover,
+.family-copy h3 a:hover,
+.family-genera a:hover,
+.classification-divider a:hover {
+    color: #1d633d;
+    text-decoration-thickness: 2px;
+}
+
+.family-copy a:focus-visible,
+.classification-divider a:focus-visible {
+    outline: 2px solid #1d633d;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.family-row[id] {
+    scroll-margin-top: 100px;
+}
+
 .family-copy small {
     display: block;
     margin-top: 16px;
@@ -763,7 +788,7 @@ footer {
         border-bottom: 1px solid #dce7dc;
     }
 
-    .classification-rail-title,.userprofile-rail-title{
+    .classification-rail-title {
         display: none;
     }
 
@@ -773,8 +798,7 @@ footer {
         gap: 12px;
     }
 
-    .explore-page .classification-rail nav a,
-    .explore-page .userprofile-rail nav a{
+    .explore-page .classification-rail nav a {
         padding: 4px 0;
         font-size: 0.9rem;
     }
@@ -1045,20 +1069,16 @@ footer {
 .aboutus-page nav a[aria-current="page"],
 .login-page nav a,
 .login-page nav a:hover,
-.login-page nav a[aria-current="page"],
 .explore-footer,
 .explore-footer h2,
 .explore-footer a,
 .explore-footer address span,
 .register-page nav a,
 .register-page nav a:hover,
-.register-page nav a[aria-current="page"],
 .acknowledge-page nav a,
 .acknowledge-page nav a:hover,
-.acknowledge-page nav a[aria-current="page"],
 .enhancement-page nav a,
-.enhancement-page nav a:hover,
-.enhancement-page nav a[aria-current="page"] {
+.enhancement-page nav a:hover {
     color: var(--explore-white);
 }
 
@@ -2198,25 +2218,7 @@ html.home-document {
     color: #405047;
 }
 
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    aspect-ratio: 16 / 9;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 15px 38px rgba(20, 70, 43, 0.11);
-}
 
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
 
 /* Index register */
 .register-section {
@@ -2403,29 +2405,10 @@ html.home-document {
 .register-form input[type="email"],
 .register-form input[type="tel"],
 .register-form select,
-.register-form textarea {
-    display: block;
-    width: 100%;
-    padding: 11px 12px;
-    box-sizing: border-box;
 
-    border: 1px solid #cbd8cc;
-    border-radius: 7px;
-
-    font: inherit;
-    background-color: #ffffff;
-    color: #20352a;
-}
-
-.register-form textarea {
-    min-height: 120px;
-    resize: vertical;
-    margin-bottom: 20px;
-}
 
 .register-form input:focus,
-.register-form select:focus,
-.register-form textarea:focus {
+.register-form select:focus {
     border-color: #4f936a;
     outline: 3px solid #dcefe2;
 }
@@ -2511,9 +2494,6 @@ html.home-document {
     font-size: 20px;
 }
 
-.user-profile br {
-    display: none;
-}
 
 .user-page main {
     width: min(100% - 40px, 900px);
@@ -2705,22 +2685,8 @@ html.home-document {
 }
 
 @media (max-width: 760px) {
-    .user1-page header {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
 
-    .user1-page nav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-left: 0;
-    }
 
-    .user1-page main {
-        padding: 28px 22px;
-    }
 
     .profile-photo {
         float: none;

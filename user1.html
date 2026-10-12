@@ -4,15 +4,207 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plant Contribution Form">
-    <meta name="keywords" content="contribution, form">
+    <meta name="description" content="Meet Darren Chong Khai Chen, a Computer Science student from Kuching, Sarawak.">
+    <meta name="keywords" content="Plantify, Darren, user profile, computer science">
     <meta name="author" content="Darren">
-    <title>Contribution Form</title>
+    <title>Darren's Profile - Plantify</title>
 
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Kept in this file so the other user profiles retain their own design. */
+        .darren-profile .profile-summary {
+            min-height: 0;
+            padding: 0 0 32px;
+        }
+
+        .darren-profile .profile-name {
+            margin-bottom: 24px;
+            font-size: clamp(1.5rem, 2.6vw, 2rem);
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+        }
+
+        .darren-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 240px;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .darren-bio {
+            min-width: 0;
+        }
+
+        .darren-eyebrow {
+            margin: 0 0 12px;
+            color: #4f7c5d;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .darren-profile main .darren-bio h2 {
+            margin: 0 0 12px;
+            font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+            text-align: left;
+        }
+
+        .darren-bio > p:not(.darren-eyebrow) {
+            margin: 0 0 20px;
+            color: #405047;
+            line-height: 1.75;
+        }
+
+        .darren-details {
+            display: grid;
+            gap: 12px;
+            margin: 0 0 22px;
+        }
+
+        .darren-details > div {
+            padding: 12px 16px;
+            border-left: 3px solid #4f936a;
+            border-radius: 0 8px 8px 0;
+            background: #f1f6f0;
+        }
+
+        .darren-details dt {
+            margin-bottom: 4px;
+            color: #52685a;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .darren-details dd {
+            margin: 0;
+            color: #173d2b;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .darren-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .darren-interests li {
+            padding: 6px 12px;
+            border: 1px solid #d3e2d6;
+            border-radius: 20px;
+            color: #286b46;
+            font-size: 0.8rem;
+        }
+
+        .darren-portrait {
+            min-width: 0;
+            margin: 0;
+        }
+
+        .darren-profile .darren-portrait .profile-photo {
+            display: block;
+            float: none;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: none;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            margin: 0;
+            padding: 12px;
+            border: 1px solid #a3bea9;
+            border-radius: 14px;
+            object-fit: cover;
+        }
+
+        .darren-portrait figcaption {
+            margin-top: 12px;
+            color: #52685a;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .darren-education {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 26px 0 0;
+            padding: 20px;
+            border: 1px solid #d3e2d6;
+            border-radius: 12px;
+            background: linear-gradient(110deg, #eaf3e9, #f8faf5);
+        }
+
+        .darren-education > div + div {
+            padding-left: 20px;
+            border-left: 1px solid #c5d9c8;
+        }
+
+        .darren-education dt {
+            margin-bottom: 7px;
+            color: #4f7c5d;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .darren-education dd {
+            margin: 0;
+            color: #173d2b;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .darren-profile main .personal-profile h2 {
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 1100px) {
+            .darren-intro {
+                grid-template-columns: minmax(0, 1fr) 190px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .darren-intro {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .darren-portrait {
+                grid-row: 1;
+                width: min(100%, 240px);
+                justify-self: center;
+            }
+
+            .darren-profile .profile-summary {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .darren-education {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 16px;
+            }
+
+            .darren-education > div + div {
+                padding: 16px 0 0;
+                border-top: 1px solid #c5d9c8;
+                border-left: 0;
+            }
+        }
+    </style>
 </head>
 
-<body class="contribute-page user-page">
+<body class="contribute-page user-page darren-profile">
 
     <header id=header>
         <div class="brand">
@@ -37,7 +229,7 @@
                     <li><a href="contribute_form.html#contribute-form">Contribute Form</a></li>
                 </ul>
             </div>
-            <a href="aboutus.html" aria-current="page">About Us</a>
+            <a href="Aboutus.html" aria-current="page">About Us</a>
             <a href="enquiry.html">Enquiry</a>
 
         </nav>
@@ -63,11 +255,32 @@
         <section class="userprofile-content">
         <h1>User Profile</h1>
 
-        <section class="profile-summary">
-            <p class="profile-name">DARREN CHONG KHAI CHEN</p>
-            <img class="profile-photo" src="Photos/darren-profile-photo.jpg" alt="Photo of Darren Chong Khai Chen">
-            <p><strong>Student Number:</strong> 104406534</p>
-            <p class="course"><strong>Course:</strong> Bachelor in Computer Science</p>
+        <section class="profile-summary" aria-labelledby="darren-name">
+            <p class="profile-name" id="darren-name">DARREN CHONG KHAI CHEN</p>
+            <div class="darren-intro">
+                <div class="darren-bio">
+                    <p class="darren-eyebrow">Kuching, Sarawak · Computer Science</p>
+                    <h2>A little about me</h2>
+                    <p>I'm Darren, a Computer Science student who enjoys gaming, travelling and exploring AI-generated content. I keep working towards my goals, one step at a time.</p>
+                    <dl class="darren-details">
+                        <div><dt>Student number</dt><dd>104406534</dd></div>
+                        <div><dt>Current course</dt><dd>Bachelor in Computer Science</dd></div>
+                    </dl>
+                    <ul class="darren-interests" aria-label="My interests">
+                        <li>Gaming</li>
+                        <li>Travel</li>
+                        <li>AI-generated content</li>
+                    </ul>
+                </div>
+                <figure class="darren-portrait">
+                    <img class="profile-photo" src="Photos/user/user1.jpeg" alt="Photo of Darren Chong Khai Chen">
+                    <figcaption>Computer Science student<br>From Kuching, Sarawak</figcaption>
+                </figure>
+            </div>
+            <dl class="darren-education" aria-label="My education journey">
+                <div><dt>2025 · Graduated</dt><dd>Diploma in Computer Science</dd></div>
+                <div><dt>Now · Continuing my studies</dt><dd>Bachelor in Computer Science</dd></div>
+            </dl>
         </section>
 
         <section class="personal-profile">
@@ -83,11 +296,9 @@
                 <tbody>
                     <tr>
                         <td>Demographic Information</td>
-                        <td>I am currently 22 years old, Male, Introvert guy, but also extrovert in sometimes.
-                            I am studying Bachelor in Computer Science.
-                            I have officially graduated my Diploma in Computer Science in 2025.
-                            I wish I can make a lot of money in the future and be a successful person in my life. 
-                            I am also a very hardworking person and I will never give up on my dreams.</td>
+                        <td>I am a 22-year-old male. I tend to be introverted, but I also have an outgoing side.
+                            Looking ahead, I hope to achieve financial independence and build a stable,
+                            successful future for myself.</td>
                     </tr>
                     <tr>
                         <td>Hometown</td>
@@ -145,8 +356,8 @@
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="explore1.html">Explore</a></li>
-                    <li><a href="aboutus.html">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="Aboutus.html">About</a></li>
+                    <li><a href="mailto:info@plantify.com">Contact</a></li>
                     <li><a href="enquiry.html">Enquiry</a></li>
                     <li><a href="acknowledge.html">Acknowledgement</a></li>
                     <li><a href="enhancement.html">Enhancement</a></li>
