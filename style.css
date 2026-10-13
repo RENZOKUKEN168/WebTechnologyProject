@@ -6,7 +6,6 @@ body {
     line-height: 1.5;
 }
 
-/* Header */
 header {
     position: relative;
     z-index: 10;
@@ -19,7 +18,6 @@ header {
     gap: 32px;
 }
 
-/* Brand logo */
 .brand {
     display: flex;
     align-items: center;
@@ -32,7 +30,6 @@ header {
     height: auto;
 }
 
-/* Navigation */
 nav {
     display: flex;
     align-items: center;
@@ -40,7 +37,6 @@ nav {
     margin-left: auto;
 }
 
-/* Fill the center of the header with evenly spaced links. */
 @media (min-width: 1200px) {
     header {
         display: grid;
@@ -96,7 +92,6 @@ nav a:focus-visible {
     outline-offset: 4px;
 }
 
-/* Explore dropdown: a full-width panel beneath the existing navigation. */
 header > nav {
     align-self: stretch;
 }
@@ -108,7 +103,6 @@ header > nav {
     align-self: stretch;
 }
 
-/* Keep hover active while the pointer moves from Explore into its dropdown. */
 .nav-explore::before {
     position: absolute;
     top: 100%;
@@ -197,7 +191,6 @@ header:has(.nav-explore:focus-within)::before {
     }
 }
 
-/* Right side */
 .header-right {
     display: flex;
     align-items: center;
@@ -221,7 +214,7 @@ header:has(.nav-explore:focus-within)::before {
     width: 44px;
     height: 44px;
     object-fit: cover;
-    /* Clip the PNG to its silhouette and tint it white, without background blending. */
+
     clip-path: path("M 29.7 12.83 A 7.7 7.7 0 1 0 14.3 12.83 A 7.7 7.7 0 1 0 29.7 12.83 Z M 6.6 38.85 C 8.5 28.8 13.8 23.45 22 23.45 C 30.2 23.45 35.5 28.8 37.4 38.85 Z");
     filter: brightness(0) invert(1);
 }
@@ -248,7 +241,6 @@ textarea:focus {
     outline: 3px solid #dcefe2;
 }
 
-/* Main Form */
 main {
     width: min(100% - 40px, 600px);
     margin: 56px auto;
@@ -311,7 +303,6 @@ textarea {
     box-sizing: border-box;
 }
 
-/* Buttons */
 input[type="submit"],
 input[type="reset"] {
     padding: 11px 17px;
@@ -342,7 +333,6 @@ input[type="reset"]:hover {
     background-color: #f2f7f2;
 }
 
-/* Footer */
 footer {
     font-size: 0.9rem;
 }
@@ -363,18 +353,6 @@ footer {
 
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Shared navigation behaviour for Families, Genera and Species only */
 :is(.families-page, .genera-page, .species-page):has(.explore-cover) header {
     position: absolute;
     top: 0;
@@ -404,9 +382,6 @@ footer {
     to { transform: translateY(-100%); }
 }
 
-/* Families page: inspired by Explore with an alternating editorial layout */
-
-/* Restore full-screen covers on the three classification pages. */
 :is(.families-page, .genera-page, .species-page) .explore-cover {
     min-height: 100vh;
     min-height: 100svh;
@@ -441,11 +416,10 @@ footer {
     scroll-margin-top: 90px;
 }
 
-/* Sticky page switcher: its grid area keeps it inside main only. */
 .explore-page main.classification-main {
     display: grid;
-    /* Used in families.html, genera.html and species.html. */
-    grid-template-columns: clamp(150px, 12vw, 190px) minmax(0, 1fr); /* Side nav: 12% of viewport width, limited to 150–190px; content fills the remaining space and can shrink without overflowing. */
+
+    grid-template-columns: clamp(150px, 12vw, 190px) minmax(0, 1fr);
     align-items: start;
 }
 
@@ -455,8 +429,7 @@ footer {
     min-width: 0;
 }
 
-.classification-rail,
-.userprofile-rail{
+.classification-rail {
     position: sticky;
     top: max(24px, calc(50vh - 120px));
     z-index: 8;
@@ -478,8 +451,7 @@ footer {
     text-transform: uppercase;
 }
 
-.classification-rail nav,
-.userprofile-rail nav{
+.classification-rail nav {
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
@@ -498,8 +470,7 @@ footer {
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.classification-rail nav a::after,
-.userprofile-rail nav a::after{
+.classification-rail nav a::after {
     display: none;
 }
 
@@ -520,16 +491,16 @@ footer {
     text-align: center;
 }
 
-@media (min-width: 761px) { /* Apply only while the side navigation occupies a separate column. */
-    .classification-main .families-intro, /* Title and subtitle in families.html, genera.html and species.html. */
-    .classification-main .classification-index { /* Centre the classification buttons with the title on the same three pages. */
-        position: relative; /* Adjust visual alignment without changing the surrounding layout. */
-        left: calc(clamp(150px, 12vw, 190px) / -2); /* Offset half the side-nav width to centre this block in the whole page. */
+@media (min-width: 761px) {
+    .classification-main .families-intro,
+    .classification-main .classification-index {
+        position: relative;
+        left: calc(clamp(150px, 12vw, 190px) / -2);
     }
 
-    .classification-main .family-list { /* Plant cards and group dividers on the same three classification pages. */
-        position: relative; /* Keep the existing card sizes and vertical spacing. */
-        left: clamp(-32px, -2vw, -16px); /* Move cards slightly left while preserving space beside the navigation. */
+    .classification-main .family-list {
+        position: relative;
+        left: clamp(-32px, -2vw, -16px);
     }
 }
 
@@ -711,7 +682,6 @@ footer {
     text-decoration: underline;
 }
 
-/* Links for small classification labels and selected names. */
 .family-label a,
 .family-genera a,
 .classification-divider p a {
@@ -745,7 +715,6 @@ footer {
     color: #718074;
 }
 
-/* Keep long botanical names inside their available column. */
 .classification-main .families-intro,
 .classification-main .classification-index,
 .classification-main .classification-divider {
@@ -779,7 +748,7 @@ footer {
         grid-row: 2;
     }
 
-    .classification-rail,.userprofile-rail {
+    .classification-rail {
         top: 0;
         padding: 14px 20px;
         background: #f3f5ed;
@@ -790,7 +759,7 @@ footer {
         display: none;
     }
 
-    .classification-rail nav,.userprofile-rail nav{
+    .classification-rail nav {
         flex-direction: row;
         justify-content: space-around;
         gap: 12px;
@@ -818,7 +787,6 @@ footer {
 
 }
 
-/* Explore page */
 .explore-page header,
 .home-page header {
     top: 0;
@@ -826,7 +794,6 @@ footer {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Place the Explore landing navigation over its cover, matching Families. */
 .explore-landing-page header {
     position: absolute;
     right: 0;
@@ -922,7 +889,7 @@ footer {
 }
 
 .footer-copy {
-    font-style:italic; /*copyright edit to italic*/
+    font-style:italic;
     max-width: 1320px;
     margin: 25px auto 0;
     padding-top: 15px;
@@ -949,7 +916,6 @@ footer {
     }
 }
 
-/* Shared Plantify colours for the home and Explore pages */
 .explore-page,
 .home-page {
     --explore-dark: #1d633d;
@@ -971,14 +937,13 @@ footer {
     --explore-white: #ffffff;
 }
 
-/* Keep both form-page headers solid on their light backgrounds. */
 .contribute-page header,
 .enquiry-page header,
 .aboutus-page header,
 .login-page header,
 .register-page header,
 .acknowledge-page header,
-.enhancement-page header { /* Match the Contribution header background and border on Enquiry. */
+.enhancement-page header {
     background: #1d633d;
     border-bottom-color: #2f7950;
 }
@@ -993,7 +958,6 @@ footer {
     box-sizing: border-box;
 }
 
-/* Keep the homepage title clear of the overlaid navigation. */
 .home-page .cover-content {
     padding-top: max(140px, 15vh);
 }
@@ -1037,11 +1001,10 @@ footer {
     outline-offset: 4px;
 }
 
-/* Lighten only the original logo images on the dark green background */
 .explore-page .brand img,
 .home-page .brand img,
 .contribute-page .brand img,
-.enquiry-page .brand img, /* Match the pale green header logo on Enquiryform.html. */
+.enquiry-page .brand img,
 .aboutus-page .brand img,
 .login-page .brand img,
 .footer-brand img,
@@ -1059,9 +1022,9 @@ footer {
 .contribute-page nav a,
 .contribute-page nav a:hover,
 .contribute-page nav a[aria-current="page"],
-.enquiry-page nav a, /* Match the white navigation text on Enquiryform.html. */
-.enquiry-page nav a:hover, /* Preserve the same text colour when hovering. */
-.enquiry-page nav a[aria-current="page"], /* Keep the current Enquiry link white. */
+.enquiry-page nav a,
+.enquiry-page nav a:hover,
+.enquiry-page nav a[aria-current="page"],
 .aboutus-page nav a,
 .aboutus-page nav a:hover,
 .aboutus-page nav a[aria-current="page"],
@@ -1088,7 +1051,7 @@ footer {
 .login-page nav a::after,
 .register-page nav a:after,
 .acknowledge-page nav a:after,
-.enhancement-page nav a:after { /* Match the active-link and hover underline colour. */
+.enhancement-page nav a:after {
     background: var(--explore-light);
 }
 
@@ -1100,17 +1063,15 @@ footer {
 .login-page .header-right input,
 .register-page .header-right input,
 .acknowledge-page .header-right input,
-.enhancement-page .header-right input { /* Match the Contribution search field text and border. */
+.enhancement-page .header-right input {
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
 
-/* Full-screen Explore landing page */
 html {
     scroll-behavior: smooth;
 }
 
-/* Prevent vertical overscroll bounce on the homepage. */
 html.home-document {
     overscroll-behavior-y: none;
 }
@@ -1312,7 +1273,6 @@ html.home-document {
     50% { transform: translateY(7px); }
 }
 
-/* Hide the navigation on scroll and reveal it when hovering at the top edge. */
 @supports (animation-timeline: scroll()) {
     .explore-page header,
     .home-page header {
@@ -1348,7 +1308,6 @@ html.home-document {
     }
 }
 
-/* Keep transparent headers and their open dropdowns free of separator lines. */
 :is(.home-page, .explore-page) header {
     border-bottom: none;
 }
@@ -1392,7 +1351,6 @@ html.home-document {
     }
 }
 
-/* Detailed Family → Genus → Species hierarchy */
 .explore-page .explore-cards,
 .taxonomy-map {
     width: min(100% - 48px, 1240px);
@@ -1863,7 +1821,6 @@ html.home-document {
 
 }
 
-/* Index heading & video*/
 .hero-content {
     max-width: 720px;
     text-transform: none !important;
@@ -1871,10 +1828,9 @@ html.home-document {
 }
 
 #bg-video {
-    filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
+    filter: brightness(0.65);
 }
 
-/* Index text*/
 .ifeature-section {
     text-align: center;
     padding: 60px 20px;
@@ -1890,7 +1846,7 @@ html.home-document {
     justify-content: center;
     gap: 15px;
     margin: 10px auto 40px auto;
-    max-width: 800px; /* controls how wide the whole divider is */
+    max-width: 800px;
 }
 
 .feature-line {
@@ -1982,7 +1938,6 @@ html.home-document {
     }
 }
 
-/* Index plant care & identify */
 .care-banner {
     position: relative;
     border-radius: 20px;
@@ -1994,8 +1949,8 @@ html.home-document {
     background-position: center;
     display: flex;
     align-items: center;
-    width: min(100% - 48px, 1350px); /* leaves a gap on both sides */
-    margin-inline: auto; /* centers the banner horizontally */
+    width: min(100% - 48px, 1350px);
+    margin-inline: auto;
 }
 
 .banner-overlay {
@@ -2004,7 +1959,7 @@ html.home-document {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(20, 40, 20, 0.55); /* dark green tint over the image */
+    background: rgba(20, 40, 20, 0.55);
     z-index: 0;
 }
 
@@ -2082,7 +2037,6 @@ html.home-document {
     }
 }
 
-/*Enquiry Form */
 .enquiry-form {
     max-width: 700px;
     margin: 30px auto;
@@ -2197,7 +2151,6 @@ html.home-document {
     transform: scale(1.1) rotate(3deg);
 }
 
-/* Index page video */
 .video-section {
     width: min(100% - 48px, 1200px);
     margin-inline: auto;
@@ -2216,9 +2169,6 @@ html.home-document {
     color: #405047;
 }
 
-
-
-/* Index register */
 .register-section {
     position: relative;
     width: 100%;
@@ -2299,7 +2249,6 @@ html.home-document {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Explore links to the plant tools */
 .explore-tool-links {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2367,7 +2316,6 @@ html.home-document {
     }
 }
 
-/* Register form*/
 .register-form {
     max-width: 700px;
     margin: 30px auto;
@@ -2403,7 +2351,6 @@ html.home-document {
 .register-form input[type="email"],
 .register-form input[type="tel"],
 .register-form select,
-
 
 .register-form input:focus,
 .register-form select:focus {
@@ -2452,7 +2399,7 @@ html.home-document {
                 0 0 20px #95c0a1,
                 0 0 30px #95c0a1;
 }
-/* User Profile section */
+
 .user-profile {
     text-align: center;
     padding: 30px;
@@ -2492,12 +2439,7 @@ html.home-document {
     font-size: 20px;
 }
 
-
 .user-page main {
-    width: min(100% - 40px, 900px);
-    margin: 56px auto;
-    padding: 42px;
-    box-sizing: border-box;
     border: 1px solid #e1e9e1;
     border-radius: 16px;
     background-color: #ffffff;
@@ -2684,8 +2626,6 @@ html.home-document {
 
 @media (max-width: 760px) {
 
-
-
     .profile-photo {
         float: none;
         display: block;
@@ -2709,8 +2649,6 @@ html.home-document {
     }
 }
 
-
-/* Acknowledgement */
 .ack-button {
     display: flex;
     flex-wrap: wrap;
@@ -2733,7 +2671,6 @@ html.home-document {
   background: #ddeee1;
 }
 
-/* User Profile layout */
 .contribute-page main.classification-main {
     width: min(100% - 40px, 1200px);
     margin: 56px auto;
@@ -2746,7 +2683,6 @@ html.home-document {
     align-items: start;
 }
 
-/* User Profile sidebar */
 .contribute-page main.classification-main .userprofile-rail {
     position: sticky;
     top: max(24px, calc(50vh - 120px));
@@ -2761,13 +2697,11 @@ html.home-document {
     box-sizing: border-box;
 }
 
-/* User Profile main content */
 .userprofile-content {
     grid-column: 2;
     min-width: 0;
 }
 
-/* Sidebar title */
 .userprofile-title {
     margin: 0 0 34px;
     color: #154c31;
@@ -2778,7 +2712,6 @@ html.home-document {
     text-transform: uppercase;
 }
 
-/* Sidebar navigation */
 .userprofile-rail nav {
     display: flex;
     flex-direction: column;
@@ -2813,7 +2746,6 @@ html.home-document {
     border-bottom-color: #1d633d;
 }
 
-/* Mobile User Profile layout */
 @media (max-width: 760px) {
 
     .contribute-page main.classification-main {
@@ -2859,31 +2791,16 @@ html.home-document {
     }
 }
 
-/* User 3 */
 .course-user3 {
     color: #1f4a7e;
 }
 
 .contribute-btn {
-    display: inline-block;
-    background-color: #286b46;
-    color: white;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 8px;
     font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s ease;
     text-align: center;
     margin: 30px 0;
 }
 
-.contribute-btn:hover {
-    background-color: #1e5738;
-    transform: translateY(-2px);
-}
-
-/* Acknowledgement */
 .acknowledge-format > .ack-button {
     padding: 0 clamp(20px, 4vw, 48px) 12px;
 }
@@ -2899,7 +2816,6 @@ html.home-document {
     padding: 0 clamp(20px, 4vw, 48px);
 }
 
-/* Contributor Page */
 .contributor-page {
     max-width: 1200px;
     margin: 0 auto;
@@ -2909,7 +2825,6 @@ html.home-document {
     gap: 35px;
 }
 
-/* Main title */
 .contributor-page > h1 {
     text-align: center;
     grid-column: 1 / -1;
@@ -2918,7 +2833,6 @@ html.home-document {
     margin: 0 0 10px;
 }
 
-/* Main sections */
 .intro-section,
 .contributions-section,
 .how-to-section {
@@ -2941,27 +2855,8 @@ html.home-document {
 }
 
 .intro-section figure img {
-    width: 100%;
-    max-width: 700px;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 8px;
     display: block;
     margin: 0 auto;
-}
-
-.intro-section figcaption {
-    text-align: center;
-    font-style: italic;
-    color: #555;
-    margin-top: 8px;
-}
-
-.intro-section figure {
-    margin: 25px 0;
-}
-
-.intro-section figure img {
     width: 100%;
     max-width: 700px;
     height: 320px;
@@ -2976,7 +2871,6 @@ html.home-document {
     margin-top: 8px;
 }
 
-/* Full-width Contribution page */
 .contribute-page main.contributor-page {
     width: 100%;
     max-width: none;
@@ -3156,18 +3050,10 @@ html.home-document {
   background: #ddeee1;
 }
 
-
-/* ==========================================================
-   IDENTIFIER PAGE -suvasis-
-   All new layout rules are scoped to .identify-page
-   ========================================================== */
-
 .identify-page {
     background: #f3f5ed;
     color: #20352a;
 }
-
-/* Hero section */
 
 .identify-page .identifier-hero {
     display: grid;
@@ -3236,8 +3122,6 @@ html.home-document {
     color: #536e5b;
     padding-top: 9px;
 }
-
-/* Identifier form and tips */
 
 .identify-page .identifier-layout {
     display: grid;
@@ -3360,8 +3244,6 @@ html.home-document {
     font-size: .92rem;
 }
 
-/* Identification tips */
-
 .identify-page .identifier-tips {
     align-self: start;
     background: #e6efe6;
@@ -3375,8 +3257,6 @@ html.home-document {
 .identify-page .identifier-tips li {
     margin-bottom: 15px;
 }
-
-/* Plant classification cards */
 
 .identify-page .identifier-explore {
     padding: 65px max(5vw, 24px);
@@ -3434,8 +3314,6 @@ html.home-document {
     margin-top: 7px;
 }
 
-/* Botanical glossary */
-
 .identify-page .identifier-glossary {
     max-width: 1220px;
     margin: 0 auto;
@@ -3462,8 +3340,6 @@ html.home-document {
 .identify-page .identifier-glossary dd {
     margin: 5px 0 0;
 }
-
-/* Responsive layout for identifier */
 
 @media (max-width: 850px) {
     .identify-page .identifier-hero,
@@ -3492,15 +3368,11 @@ html.home-document {
     }
 }
 
-
-/* User 3 theme  - will edit comments out later */
-/* Card around the page */
 .user3-theme main {
     border-color: #dfe7f1 !important;
     box-shadow: 0 14px 34px rgba(31, 60, 100, 0.09) !important;
 }
 
-/* Headings */
 .user3-theme main h1,
 .user3-theme main h2,
 .user3-theme .profile-name {
@@ -3511,7 +3383,6 @@ html.home-document {
     background-color: #4a86c5 !important;
 }
 
-/* Summary section + photo box */
 .user3-theme .profile-summary {
     border-bottom-color: #c8d6e6 !important;
 }
@@ -3526,7 +3397,6 @@ html.home-document {
     box-shadow: 0 18px 32px rgba(31, 60, 100, 0.22) !important;
 }
 
-/* Table */
 .user3-theme .profile-table th,
 .user3-theme .profile-table td {
     border-color: #9db3cc !important;
@@ -3552,7 +3422,6 @@ html.home-document {
     background: linear-gradient(135deg, #edf4fb, #dce8f5) !important;
 }
 
-/* Email button */
 .user3-theme .email-button {
     background-color: #2563a8 !important;
     box-shadow: 0 5px 12px rgba(37, 99, 168, 0.22) !important;
@@ -3567,9 +3436,7 @@ html.home-document {
 .user3-theme nav a:focus-visible {
     outline-color: rgba(74, 134, 197, 0.35) !important;
 }
-/* User 2 theme - Gold and White (colours only) */
 
-/* Headings and name */
 .user2-theme main h1,
 .user2-theme main h2,
 .user2-theme .profile-name {
@@ -3580,12 +3447,10 @@ html.home-document {
     background-color: #d4a017 !important;
 }
 
-/* Course text */
 .user2-theme .course {
     color: #b8860b !important;
 }
 
-/* Side rail text */
 .user2-theme .userprofile-title {
     color: #8a6508 !important;
 }
@@ -3604,12 +3469,10 @@ html.home-document {
     border-bottom-color: #d4a017 !important;
 }
 
-/* Summary divider line */
 .user2-theme .profile-summary {
     border-bottom-color: #e6d28a !important;
 }
 
-/* Table */
 .user2-theme .profile-table th,
 .user2-theme .profile-table td {
     border-color: #d4b24c !important;
@@ -3639,7 +3502,6 @@ html.home-document {
     color: #3d2f0a !important;
 }
 
-/* Email button */
 .user2-theme .email-button {
     background-color: #b8860b !important;
     box-shadow: 0 5px 12px rgba(184, 134, 11, 0.28) !important;
@@ -3659,4 +3521,194 @@ html.home-document {
 .user2-theme .profile-photo {
     border-color: #d4a017 !important;
     background-color: #fff8e1 !important;
+}
+
+.darren-profile .profile-summary {
+    min-height: 0;
+    padding: 0 0 32px;
+}
+
+.darren-profile .profile-name {
+    margin-bottom: 24px;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.darren-profile .darren-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 28px;
+    align-items: start;
+}
+
+.darren-profile .darren-bio {
+    min-width: 0;
+}
+
+.darren-profile .darren-eyebrow {
+    margin: 0 0 12px;
+    color: #4f7c5d;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.darren-profile main .darren-bio h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+    text-align: left;
+}
+
+.darren-profile .darren-bio > p:not(.darren-eyebrow) {
+    margin: 0 0 20px;
+    color: #405047;
+    line-height: 1.75;
+}
+
+.darren-profile .darren-details {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 22px;
+}
+
+.darren-profile .darren-details > div {
+    padding: 12px 16px;
+    border-left: 3px solid #4f936a;
+    border-radius: 0 8px 8px 0;
+    background: #f1f6f0;
+}
+
+.darren-profile .darren-details dt {
+    margin-bottom: 4px;
+    color: #52685a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.darren-profile .darren-details dd {
+    margin: 0;
+    color: #173d2b;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.darren-profile .darren-interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.darren-profile .darren-interests li {
+    padding: 6px 12px;
+    border: 1px solid #d3e2d6;
+    border-radius: 20px;
+    color: #286b46;
+    font-size: 0.8rem;
+}
+
+.darren-profile .darren-portrait {
+    min-width: 0;
+    margin: 0;
+}
+
+.darren-profile .darren-portrait .profile-photo {
+    display: block;
+    float: none;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid #a3bea9;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.darren-profile .darren-portrait figcaption {
+    margin-top: 12px;
+    color: #52685a;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.darren-profile .darren-education {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 26px 0 0;
+    padding: 20px;
+    border: 1px solid #d3e2d6;
+    border-radius: 12px;
+    background: linear-gradient(110deg, #eaf3e9, #f8faf5);
+}
+
+.darren-profile .darren-education > div + div {
+    padding-left: 20px;
+    border-left: 1px solid #c5d9c8;
+}
+
+.darren-profile .darren-education dt {
+    margin-bottom: 7px;
+    color: #4f7c5d;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.darren-profile .darren-education dd {
+    margin: 0;
+    color: #173d2b;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.darren-profile main .personal-profile h2 {
+    margin-bottom: 18px;
+}
+
+@media (max-width: 1100px) {
+    .darren-profile .darren-intro {
+        grid-template-columns: minmax(0, 1fr) 190px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .darren-profile .darren-intro {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .darren-profile .darren-portrait {
+        grid-row: 1;
+        width: min(100%, 240px);
+        justify-self: center;
+    }
+
+    .darren-profile .profile-summary {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .darren-profile .darren-education {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .darren-profile .darren-education > div + div {
+        padding: 16px 0 0;
+        border-top: 1px solid #c5d9c8;
+        border-left: 0;
+    }
 }
