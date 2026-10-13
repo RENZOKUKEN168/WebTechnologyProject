@@ -1944,7 +1944,7 @@ html.home-document {
     overflow: hidden;
     padding: 50px 40px;
     min-height: 280px;
-    background-image: url('Photos/care-bg.jpg');
+    background-image: url('../Photos/care-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -2173,7 +2173,7 @@ html.home-document {
     position: relative;
     width: 100%;
     min-height: 70vh;
-    background-image: url('Photos/indexregister-bg.jpg');
+    background-image: url('../Photos/indexregister-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -2350,7 +2350,19 @@ html.home-document {
 .register-form input[type="text"],
 .register-form input[type="email"],
 .register-form input[type="tel"],
-.register-form select,
+.register-form select {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    box-sizing: border-box;
+
+    border: 1px solid #cbd8cc;
+    border-radius: 7px;
+
+    font: inherit;
+    background-color: #ffffff;
+    color: #20352a;
+}
 
 .register-form input:focus,
 .register-form select:focus {
