@@ -1944,7 +1944,7 @@ html.home-document {
     overflow: hidden;
     padding: 50px 40px;
     min-height: 280px;
-    background-image: url('../images/care-bg.jpg');
+    background-image: url('../styles/images/care-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -2173,7 +2173,7 @@ html.home-document {
     position: relative;
     width: 100%;
     min-height: 70vh;
-    background-image: url('../images/indexregister-bg.jpg');
+    background-image: url('../styles/images/indexregister-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
