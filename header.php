@@ -3,7 +3,7 @@
     
     <header id=header>
         <div class='brand'>
-            <a href='index.html'>
+            <a href='index.php'>
                 <img src='images/plantify_logo.png' alt='Plantify'>
             </a>
         </div>
