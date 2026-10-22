@@ -28,7 +28,7 @@
                 Welcome to Plantify, your sanctuary for discovering all striking, mysterious and fascinating plants from around the globe. With our platform, you can explore, learn and contribute meaningful infographics in the botany world. We also provide a plant-identifying service, which gives instant plant identification via photographs, yielding plant care instructions and best natural environments. Investigate the captivating realm of plants organized by family, genus, and species. Last but not least, connect with fellow plant lovers and share your enthusiasm.
             </p>
 
-            <a class="home-explore-button" href="explore1.html" id="home-explore">Explore</a>
+            <a class="home-explore-button" href="explore1.php" id="home-explore">Explore</a>
         </div>
     </section>
 
@@ -100,7 +100,7 @@
     <div class="banner-text">
         <h2>Plant Care Made Simple</h2>
         <p>Struggling to keep your plants alive? Discover the simple care habits and watch your greenery flourish.</p>
-        <a class="home-explore-button" href="identify.html">Identify your plants</a>
+        <a class="home-explore-button" href="identify.php">Identify your plants</a>
     </div>
 
     <div class="banner-cards">
@@ -146,7 +146,7 @@
         </div>
         <h2>Stay Updated! Join us in our adventure</h2>
         <p>Get the latest plant tips, care guides, and exclusive updates in your inbox!</p>
-        <a href="register.html" class="register-btn">Join the Community</a>
+        <a href="register.php" class="register-btn">Join the Community</a>
     </div>
 </section>    
 
@@ -154,7 +154,7 @@
 <?php
     include ("footer.php");
     ?>
-    
+
 </body>
 
 

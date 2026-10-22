@@ -10,28 +10,28 @@
 
         <nav aria-label='Main navigation'>
             <div class='nav-explore'>
-                <a href='explore1.html'>Explore</a>
+                <a href='explore1.php'>Explore</a>
                 <ul class='explore-dropdown' aria-label='Explore categories'>
-                    <li><a href='families.html#families-list'>Families</a></li>
-                    <li><a href='genera.html#genera-list'>Genera</a></li>
-                    <li><a href='species.html#species-list'>Species</a></li>
+                    <li><a href='families.php#families-list'>Families</a></li>
+                    <li><a href='genera.php#genera-list'>Genera</a></li>
+                    <li><a href='species.php#species-list'>Species</a></li>
                 </ul>
             </div>
-            <a href='identify.html'>Identifier</a>
+            <a href='identify.php'>Identifier</a>
             <div class='nav-explore'>
-                <a href='contribute.html'>Contribution</a>
+                <a href='contribute.php'>Contribution</a>
                 <ul class='explore-dropdown' aria-label='Explore categories'>
-                    <li><a href='contribute_form.html#contribute-form'>Contribute Form</a></li>
+                    <li><a href='contribute_form.php#contribute-form'>Contribute Form</a></li>
                 </ul>
             </div>
-            <a href='Aboutus.html'>About Us</a>
-            <a href='enquiry.html'>Enquiry</a>
+            <a href='Aboutus.php'>About Us</a>
+            <a href='enquiry.php'>Enquiry</a>
 
         </nav>
 
         <div class='header-right'>
             <input type='search' aria-label='Search Plantify' placeholder='Search'>
-            <a class='header-account' href='login.html' aria-label='Login'>
+            <a class='header-account' href='login.php' aria-label='Login'>
                 <img src='images/user/unknown.png' alt='' width='44' height='44'>
             </a>
         </div>

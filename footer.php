@@ -30,13 +30,13 @@
             <section>
                 <h2>Quick Links</h2>
                 <ul class='footer-links'>
-                    <li><a href='index.html'>Home</a></li>
-                    <li><a href='explore1.html'>Explore</a></li>
-                    <li><a href='Aboutus.html'>About</a></li>
+                    <li><a href='index.php'>Home</a></li>
+                    <li><a href='explore1.php'>Explore</a></li>
+                    <li><a href='Aboutus.php'>About</a></li>
                     <li><a href='mailto:info@plantify.com'>Contact</a></li>
-                    <li><a href='enquiry.html'>Enquiry</a></li>
+                    <li><a href='enquiry.php'>Enquiry</a></li>
                     <li><a href='acknowledge.php'>Acknowledgement</a></li>
-                    <li><a href='enhancement.html'>Enhancement</a></li>
+                    <li><a href='enhancement.php'>Enhancement</a></li>
                 </ul>
             </section>
         </div>
