@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="home-document">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plantify home page.">
+    <title>Index Page - Plantify</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body class="home-page">
+    <header id=header>
+        <div class="brand">
+            <a href="index.html">
+                <img src="images/plantify_logo.png" alt="Plantify" width="2160" height="728">
+            </a>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <div class="nav-explore">
+                <a href="explore1.html">Explore</a>
+                <ul class="explore-dropdown" aria-label="Explore categories">
+                    <li><a href="families.html#families-list">Families</a></li>
+                    <li><a href="genera.html#genera-list">Genera</a></li>
+                    <li><a href="species.html#species-list">Species</a></li>
+                </ul>
+            </div>
+            <a href="identify.html">Identifier</a>
+            <div class="nav-explore">
+                <a href="contribute.html">Contribution</a>
+                <ul class="explore-dropdown" aria-label="Explore categories">
+                    <li><a href="contribute_form.html#contribute-form">Contribute Form</a></li>
+                </ul>
+            </div>
+            <a href="Aboutus.html">About Us</a>
+            <a href="enquiry.html">Enquiry</a>
+
+        </nav>
+
+        <div class="header-right">
+            <input type="search" aria-label="Search Plantify" placeholder="Search">
+            <a class="header-account" href="login.html" aria-label="Login">
+                <img src="images/user/unknown.png" alt="" width="44" height="44">
+            </a>
+        </div>
+    </header>
+
+    <section class="explore-cover" aria-labelledby="index-heading">
+        <video class="cover-background" autoplay muted loop playsinline id="bg-video">
+            <source src="images/index-bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
+        <div class="cover-shade" aria-hidden="true"></div>
+
+        <div class="cover-content">
+            <h1 id="index-heading">Uncover Rare Flora</h1>
+            <p class="hero-content">
+                Welcome to Plantify, your sanctuary for discovering all striking, mysterious and fascinating plants from around the globe. With our platform, you can explore, learn and contribute meaningful infographics in the botany world. We also provide a plant-identifying service, which gives instant plant identification via photographs, yielding plant care instructions and best natural environments. Investigate the captivating realm of plants organized by family, genus, and species. Last but not least, connect with fellow plant lovers and share your enthusiasm.
+            </p>
+
+            <a class="home-explore-button" href="explore1.html" id="home-explore">Explore</a>
+        </div>
+    </section>
+
+    <section class="ifeature-section">
+    <h2>With the help of Plantify, you are able to: </h2>
+    <div class="feature-divider">
+        <span class="feature-line"></span>
+        <span class="feature-leaf">&#x1F33F;</span>
+        <span class="feature-line"></span>
+    </div>
+
+    <div class="ifeature-layout">
+
+        <div class="ifeature-column ifeature-left">
+        <div class="ifeature-item">
+            <div class="ifeature-icon">
+            <img src="images/features/binoculars.png" alt="Discover icon">
+            </div>
+            <div class="ifeature-text">
+            <h3>Discover</h3>
+            <p>the wonders of nature</p>
+            </div>
+        </div>
+
+        <div class="ifeature-item">
+            <div class="ifeature-icon">
+            <img src="images/features/sprout.png" alt="Identify icon">
+            </div>
+            <div class="ifeature-text">
+            <h3>Identify</h3>
+            <p>unique plants</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="ifeature-center-image">
+        <img src="images/index-centre.png" alt="Image of a plant">
+        </div>
+
+        <div class="ifeature-column ifeature-right">
+        <div class="ifeature-item">
+            <div class="ifeature-icon">
+            <img src="images/features/book.png" alt="Learn icon">
+            </div>
+            <div class="ifeature-text">
+            <h3>Learn</h3>
+            <p>from the community</p>
+            </div>
+        </div>
+
+        <div class="ifeature-item">
+            <div class="ifeature-icon">
+            <img src="images/features/write.png" alt="write icon">
+            </div>
+            <div class="ifeature-text">
+            <h3>Contribute</h3>
+            <p>to Plantify's encyclopedia</p>
+            </div>
+        </div>
+        </div>
+
+    </div>
+    </section>
+
+    <section class="care-banner">
+    <div class="banner-overlay"></div>
+
+    <div class="banner-content">
+    <div class="banner-text">
+        <h2>Plant Care Made Simple</h2>
+        <p>Struggling to keep your plants alive? Discover the simple care habits and watch your greenery flourish.</p>
+        <a class="home-explore-button" href="identify.html">Identify your plants</a>
+    </div>
+
+    <div class="banner-cards">
+        <div class="care-card">
+        <div class="care-icon">
+          <img src="images/features/droplet.png" alt="droplet">
+        </div>
+        <h3>Watering Guide</h3>
+        <p>Learn the right way to water your plants.</p>
+      </div>
+
+      <div class="care-card">
+        <div class="care-icon">
+          <img src="images/features/care-tips.png" alt="healing plant">
+        </div>
+        <h3>Care Tips</h3>
+        <p>Expert tips for thriving plants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+    
+<section id="video-wrapper" class="video-section">
+  <h2>See Plantify in Action</h2>
+  <p>Watch how easy it is to identify and care for your plants.</p>
+
+  <div>
+    <iframe 
+        src="https://www.youtube.com/embed/xHol7u90Bew" 
+        title="YouTube video player" frameborder="0" allow="accelerometer; 
+        autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+        web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<section class="register-section" id="register">
+    <div class="register-overlay"></div>
+
+    <div class="register-content">
+        <div class="register-logo-white">
+            <img src="images/plantify_logo.png" alt="Plantify" class="register-logo">
+        </div>
+        <h2>Stay Updated! Join us in our adventure</h2>
+        <p>Get the latest plant tips, care guides, and exclusive updates in your inbox!</p>
+        <a href="register.html" class="register-btn">Join the Community</a>
+    </div>
+</section>    
+
+
+    <footer class="explore-footer" id="footer">
+        <div class="footer-grid">
+            <section class="footer-brand" aria-label="About Plantify">
+                <img src="images/plantify_logo.png" alt="Plantify" width="2160" height="728">
+                <p>Explore. Learn. Appreciate.<br>Plants make our world greener, healthier and more beautiful.</p>
+            </section>
+            <section>
+                <h2>Contact Us</h2>
+                <address>
+                    <p><span aria-hidden="true">●</span> Kuching, Sarawak, Malaysia</p>
+                    <p><span aria-hidden="true">✉</span> <a href="mailto:info@plantify.com">info@plantify.com</a></p>
+                    <p><span aria-hidden="true">☎</span> <a href="tel:+6082123456">+60 82 123 456</a></p>
+                </address>
+            </section>
+            <section>
+                <h2>Find Us</h2>
+                <div class="map-card">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Swinburne%20University%20of%20Technology%20Sarawak%20Campus&amp;z=16&amp;output=embed"
+                        title="Map showing Swinburne University of Technology Sarawak Campus"
+                        loading="lazy"
+                        tabindex="0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+
+            <section>
+                <h2>Quick Links</h2>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="explore1.html">Explore</a></li>
+                    <li><a href="Aboutus.html">About</a></li>
+                    <li><a href="mailto:info@plantify.com">Contact</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                    <li><a href="acknowledge.html">Acknowledgement</a></li>
+                    <li><a href="enhancement.html">Enhancement</a></li>
+                </ul>
+            </section>
+        </div>
+        <p class="footer-copy">&copy; 2026 Plantify. All rights reserved.</p>
+    </footer>
+</body>
+
+
+</html>
