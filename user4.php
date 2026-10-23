@@ -17,50 +17,18 @@
 
 <body class="contribute-page user-page">
 
-    <header id=header>
-        <div class="brand">
-            <a href="index.html">
-                <img src="images/plantify_logo.png" alt="Plantify">
-            </a>
-        </div>
-
-        <nav aria-label="Main navigation">
-            <div class="nav-explore">
-                <a href="explore1.html">Explore</a>
-                <ul class="explore-dropdown" aria-label="Explore categories">
-                    <li><a href="families.html#families-list">Families</a></li>
-                    <li><a href="genera.html#genera-list">Genera</a></li>
-                    <li><a href="species.html#species-list">Species</a></li>
-                </ul>
-            </div>
-            <a href="identify.html">Identifier</a>
-            <div class="nav-explore">
-                <a href="contribute.html">Contribution</a>
-                <ul class="explore-dropdown" aria-label="Explore categories">
-                    <li><a href="contribute_form.html#contribute-form">Contribute Form</a></li>
-                </ul>
-            </div>
-            <a href="Aboutus.html" aria-current="page">About Us</a>
-            <a href="enquiry.html">Enquiry</a>
-
-        </nav>
-
-        <div class="header-right">
-            <input type="search" aria-label="Search Plantify" placeholder="Search">
-            <a class="header-account" href="login.html" aria-label="Login">
-                <img src="images/user/unknown.png" alt="" width="44" height="44">
-            </a>
-        </div>
-    </header>
+    <?php
+        include("header.php");
+        ?>
         <main class="explore-main classification-main">
             <aside class="userprofile-rail" id="rail">
                 <p class="userprofile-title">User Profile<br>Levels</p>
 
                 <nav aria-label="User Profile pages">
-                    <a href="user1.html">User 1</a>
-                    <a href="user2.html">User 2</a>
-                    <a href="user3.html">User 3</a>
-                    <a href="user4.html" aria-current="page">User 4</a>
+                    <a href="user1.php">User 1</a>
+                    <a href="user2.php">User 2</a>
+                    <a href="user3.php">User 3</a>
+                    <a href="user4.php" aria-current="page">User 4</a>
                 </nav>
             </aside>
 
