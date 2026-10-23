@@ -2350,6 +2350,7 @@ html.home-document {
 .register-form input[type="text"],
 .register-form input[type="email"],
 .register-form input[type="tel"],
+.register-form input[type="password"],
 .register-form select {
     display: block;
     width: 100%;

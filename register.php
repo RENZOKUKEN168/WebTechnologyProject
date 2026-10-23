@@ -21,22 +21,21 @@
 <form id="form" action="mailto:106766492@students.swinburne.edu.my?subject=New%20Registration" enctype="text/plain" method="post" class="register-form">
     <h2>Create an Account</h2>
     <fieldset>
-        <p>
-            <label for="username"><strong>Username:</strong></label>
-            <input type="text" id="username" name="username" maxlength="20">
-            <label for="password"><strong>Password:</strong></label>
-            <input type="text" id="password" name="password" minlength="8" maxlength="20">
-        </p>
+        
         <legend>Personal information: </legend>
         <p>
             <label for="firstname">First Name:</label>
             <input type="text" id="firstname" name="firstname" maxlength="25" pattern="[A-Za-z\s]+" title="Alphabetical characters only" required>
             <label for="lastname">Last Name:</label>
             <input type="text" id="lastname" name="lastname" maxlength="25" pattern="[A-Za-z\s]+" title="Alphabetical characters only" required>
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" maxlength="10" placeholder="e.g. 0123456789" pattern="\d{1,10}" title="Maximum of 10 digits" required>
+        </p>
+        <p>
+            <label for="username"><strong>Username/email:</strong></label>
+            <input type="text" id="username" name="username" maxlength="20">
+            <label for="password"><strong>Password:</strong></label>
+            <input type="password" id="password" name="password" minlength="8" maxlength="20">
         </p>
         <p>
             <label for="stadd">Street Address:</label>
