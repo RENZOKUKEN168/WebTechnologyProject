@@ -106,7 +106,7 @@
                 <li>Submit your contribution to Plantify.</li>
             </ol>
 
-            <a href="contribute_form.html" id="contribute-btn" class="contribute-btn">
+            <a href="contribute_form.php" id="contribute-btn" class="contribute-btn">
                 Contribute a Plant
             </a>
 
@@ -130,7 +130,7 @@
 
             <p>
                 Ready to share?
-                <a href="contribute_form.html">Add a plant now.</a>
+                <a href="contribute_form.php">Add a plant now.</a>
             </p>
 
         </aside>

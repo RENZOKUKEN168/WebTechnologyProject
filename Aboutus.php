@@ -21,28 +21,28 @@
     <div class="user-list">
 
         <div class="user">
-            <a href="user1.html">
+            <a href="user1.php">
                 <img src="images/user/unknown.png" alt="User 1">
             </a>
             <h2>User 1</h2>
         </div>
 
         <div class="user">
-            <a href="user2.html">
+            <a href="user2.php">
                 <img src="images/user/unknown.png" alt="User 2">
             </a>
             <h2>User 2</h2>
         </div>
 
         <div class="user">
-            <a href="user3.html">
+            <a href="user3.php">
                 <img src="images/user/unknown.png" alt="User 3">
             </a>
             <h2>User 3</h2>
         </div>
 
         <div class="user">
-            <a href="user4.html">
+            <a href="user4.php">
                 <img src="images/user/unknown.png" alt="User 4">
             </a>
             <h2>User 4</h2>
