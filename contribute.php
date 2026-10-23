@@ -9,7 +9,7 @@
     <meta name="description" content="Plantify User Profile">
     <meta name="keywords" content="Plantify, user profile, profile">
     <meta name="author" content="Chin Jii Ann">
-    <title>User Profile - Chin Jii Ann</title>
+    <title>Contribute - Chin Jii Ann</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="contribute-page">
@@ -106,7 +106,7 @@
                 <li>Submit your contribution to Plantify.</li>
             </ol>
 
-            <a href="contribute_form.html" id="contribute-btn" class="contribute-btn">
+            <a href="contribute_form.php" id="contribute-btn" class="contribute-btn">
                 Contribute a Plant
             </a>
 
@@ -130,7 +130,7 @@
 
             <p>
                 Ready to share?
-                <a href="contribute_form.html">Add a plant now.</a>
+                <a href="contribute_form.php">Add a plant now.</a>
             </p>
 
         </aside>
