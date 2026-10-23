@@ -21,6 +21,12 @@
 <form id="form" action="mailto:106766492@students.swinburne.edu.my?subject=New%20Registration" enctype="text/plain" method="post" class="register-form">
     <h2>Create an Account</h2>
     <fieldset>
+        <p>
+            <label for="username"><strong>Username:</strong></label>
+            <input type="text" id="username" name="username" maxlength="20">
+            <label for="password"><strong>Password:</strong></label>
+            <input type="text" id="password" name="password" minlength="8" maxlength="20">
+        </p>
         <legend>Personal information: </legend>
         <p>
             <label for="firstname">First Name:</label>
