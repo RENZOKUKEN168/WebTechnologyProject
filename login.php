@@ -37,8 +37,7 @@ session_start();
                             type="text"
                             id="login"
                             name="login"
-                            maxlength="10"
-                            pattern="[A-Za-z]+"
+                            maxlength="50"
                             required>
                     </p>
 
@@ -49,7 +48,6 @@ session_start();
                             id="password"
                             name="password"
                             maxlength="25"
-                            pattern="[A-Za-z]+"
                             required>
                     </p>
 
