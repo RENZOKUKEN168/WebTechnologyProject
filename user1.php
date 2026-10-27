@@ -1,3 +1,6 @@
+<?php
+    session_start();
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,52 +17,14 @@
 
 <body class="contribute-page user-page darren-profile">
 
-    <header id=header>
-        <div class="brand">
-            <a href="index.html">
-                <img src="images/plantify_logo.png" alt="Plantify">
-            </a>
-        </div>
-
-        <nav aria-label="Main navigation">
-            <div class="nav-explore">
-                <a href="explore1.html">Explore</a>
-                <ul class="explore-dropdown" aria-label="Explore categories">
-                    <li><a href="families.html#families-list">Families</a></li>
-                    <li><a href="genera.html#genera-list">Genera</a></li>
-                    <li><a href="species.html#species-list">Species</a></li>
-                </ul>
-            </div>
-            <a href="identify.html">Identifier</a>
-            <div class="nav-explore">
-                <a href="contribute.html">Contribution</a>
-                <ul class="explore-dropdown" aria-label="Explore categories">
-                    <li><a href="contribute_form.html#contribute-form">Contribute Form</a></li>
-                </ul>
-            </div>
-            <a href="Aboutus.html" aria-current="page">About Us</a>
-            <a href="enquiry.html">Enquiry</a>
-
-        </nav>
-
-        <div class="header-right">
-            <input type="search" aria-label="Search Plantify" placeholder="Search">
-            <a class="header-account" href="login.html" aria-label="Login">
-                <img src="images/user/unknown.png" alt="" width="44" height="44">
-            </a>
-        </div>
-    </header>
+    <?php
+        include("header.php");
+        ?>
         <main class="explore-main classification-main">
-        <aside class="userprofile-rail" id="rail">
-            <p class="userprofile-title">User Profile<br>Levels</p>
 
-            <nav aria-label="User Profile pages">
-                <a href="user1.html" aria-current="page">User 1</a>
-                <a href="user2.html">User 2</a>
-                <a href="user3.html">User 3</a>
-                <a href="user4.html">User 4</a>
-            </nav>
-        </aside>
+        <?php
+            include("user-aside.php");
+            ?>
         <section class="userprofile-content">
         <h1>User Profile</h1>
 
@@ -133,47 +98,9 @@
         </section>
         </section>
     </main>
-        <footer class="explore-footer" id="footer">
-        <div class="footer-grid">
-            <section class="footer-brand" aria-label="About Plantify">
-                <img src="images/plantify_logo.png" alt="Plantify">
-                <p>Explore. Learn. Appreciate.<br>Plants make our world greener, healthier and more beautiful.</p>
-            </section>
-            <section>
-                <h2>Contact Us</h2>
-                <address>
-                    <p><span aria-hidden="true">●</span> Kuching, Sarawak, Malaysia</p>
-                    <p><span aria-hidden="true">✉</span> <a href="mailto:104406534@student.swinburne.edu.my">Email Us</a></p>
-                    <p><span aria-hidden="true">☎</span> <a href="tel:+6082123456">+60 82 123 456</a></p>
-                </address>
-            </section>
-            <section>
-                <h2>Find Us</h2>
-                <div class="map-card">
-                    <iframe
-                        src="https://maps.google.com/maps?q=Swinburne%20University%20of%20Technology%20Sarawak%20Campus&amp;z=16&amp;output=embed"
-                        title="Map showing Swinburne University of Technology Sarawak Campus"
-                        loading="lazy"
-                        tabindex="0"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </section>
-            <section>
-                <h2>Quick Links</h2>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="explore1.html">Explore</a></li>
-                    <li><a href="Aboutus.html">About</a></li>
-                    <li><a href="mailto:info@plantify.com">Contact</a></li>
-                    <li><a href="enquiry.html">Enquiry</a></li>
-                    <li><a href="acknowledge.html">Acknowledgement</a></li>
-                    <li><a href="enhancement.html">Enhancement</a></li>
-                </ul>
-            </section>
-        </div>
-        <p class="footer-copy">&copy; 2026 Plantify. All rights reserved.</p>
-    </footer>
+        <?php
+        include("footer.php");
+        ?>
 
 </body>
 

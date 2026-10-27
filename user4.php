@@ -55,7 +55,7 @@
                 <tbody>
                     <tr>
                         <td>Demographic Information</td>
-                        <td>Hey, I'm Suvasis, currently pursuing to enter the realms of Computer Science and hopefully not end up homeless. Until then, I feel free as a bird!!</td>
+                        <td>Hey, I'm Suvasis, currently pursuing to enter the realms of Computer Science and hopefully not end up homeless. The reason why I dived this this realm is because of tech videos and software obsession during lockdown. Until then, I feel free as a bird!!</td>
                     </tr>
                     <tr>
                         <td>Hometown</td>
