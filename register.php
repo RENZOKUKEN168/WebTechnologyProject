@@ -39,7 +39,7 @@
         </p>
         <p>
             <label for="stadd">Street Address:</label>
-            <input type="text" id="stadd" name="street address" maxlength="40" required>
+            <input type="text" id="stadd" name="street_address" maxlength="40" required>
         </p>
         <p>
             <label for="city">City/Town:</label>
