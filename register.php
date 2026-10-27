@@ -18,7 +18,7 @@
         include("header.php")
         ?>
 
-<form id="form" action="mailto:106766492@students.swinburne.edu.my?subject=New%20Registration" enctype="text/plain" method="post" class="register-form">
+<form id="form" method="post" action="register_process.php" class="register-form">
     <h2>Create an Account</h2>
     <fieldset>
         
@@ -33,9 +33,9 @@
         </p>
         <p>
             <label for="username"><strong>Username/email:</strong></label>
-            <input type="text" id="username" name="username" maxlength="20">
+            <input type="text" id="username" name="username" maxlength="50" required>
             <label for="password"><strong>Password:</strong></label>
-            <input type="password" id="password" name="password" minlength="8" maxlength="20">
+            <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
         </p>
         <p>
             <label for="stadd">Street Address:</label>
