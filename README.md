@@ -1,6 +1,6 @@
 # Biodiversity Monitoring & Plant Data Collection Website
 
-A static web application developed as a prototype redesign to assist scientists in tracking, managing, and conserving Malaysia's rich yet threatened plant biodiversity. Built entirely using validated **HTML5** and **CSS3**, focusing on clean structural semantics and responsive visual layouts without JavaScript.
+A static web application developed as a prototype redesign to assist scientists in tracking, managing, and conserving Malaysia's rich yet threatened plant biodiversity. Built entirely using validated **HTML5** and **CSS3**, focusing on clean structural semantics and responsive visual layouts without JavaScript.(For now)
 
 This project was developed for the unit **COS10026 Web Technology Project (Assignment 1)** at **Swinburne University of Technology Sarawak**.
 
@@ -52,13 +52,13 @@ WebTechnologyProject/
 
 ## 📄 Core Interface Modules
 
-### 🌿 Taxonomy Tree (`explore1.html`, `families.html`, etc.)
+### 🌿 Taxonomy Tree (`explore1.php`, `families.php`, etc.)
 * **Families**: Categorizes 4 specific plant groups.
 * **Genera**: Houses 2 distinct plant genera under each family branch.
 * **Species**: Tracks 2 unique plant species under each genus node.
 * Contains structural asides, definition lists, ordered lists, and figures with captions.
 
-### 📝 Citizen Portals (`contribute.html`)
+### 📝 Citizen Portals (`contribute.php`)
 * Natively managed form submission platform mapping name data, file types, and text area summaries.
 * Utilizes explicit validation boundary controls strictly using native browser engines.
 
@@ -69,8 +69,10 @@ To run this application workspace locally:
    ```bash
    git clone https://github.com/RENZOKUKEN168/WebTechnologyProject
    ```
-2. Open the directory workspace in your preferred source editor (e.g., **VS Code**).
-3. Open any active HTML file (such as `explore1.html`) using a live server execution plugin or drag the file into your local web browser.
+2. Start your local Apache and MySQL database server services.
+3. Import the required database structure using the configuration details specified in connection.php.
+4. Open the directory workspace in your preferred source editor (e.g., VS Code).
+5. Navigate to http://localhost/WebTechnologyProject/index.php in your web browser.
 
 ## 👥 Project Details
 * **Unit:** COS10026 Web Technology Project
