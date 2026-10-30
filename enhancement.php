@@ -1,8 +1,8 @@
 <?php
     session_start();
     ?>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE php>
+<php lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="enhancement">
@@ -26,27 +26,27 @@
     <section class="enhancement-format">
         <h2>Dropdown bar</h2>
         <ul>
-            <li>Users hover over the designated words using their mouse to "Dropdown" the list of text, which will bring the user to the other pages once clicked because it is linked to other HTML pages. </li>
+            <li>Users hover over the designated words using their mouse to "Dropdown" the list of text, which will bring the user to the other pages once clicked because it is linked to other php pages. </li>
             <li>Applied to:
                 <div class="ack-button">
-                    <a href="index.html#header">Index header</a>
-                    <a href="explore1.html#header">Explore header</a>
-                    <a href="families.html#header">Families header</a>
-                    <a href="genera.html#header">Genera header</a>
-                    <a href="species.html#header">Species header</a>
-                    <a href="contribute.html#header">Contribute header</a>
-                    <a href="contribute_form.html#header">Contribute form header</a>
-                    <a href="Aboutus.html#header">About Us header</a>
-                    <a href="enquiry.html#header">Enquiry header</a>
-                    <a href="login.html#header">Login header</a>
-                    <a href="identify.html#header">Identify header</a>
-                    <a href="register.html#header">Register header</a>
-                    <a href="acknowledge.html#header">Acknowledgement header</a>
-                    <a href="enhancement.html#header">Enhancement header</a>
-                    <a href="user1.html#header">User 1 header</a>
-                    <a href="user2.html#header">User 2 header</a>
-                    <a href="user3.html#header">User 3 header</a>
-                    <a href="user4.html#header">User 4 header</a>
+                    <a href="index.php#header">Index header</a>
+                    <a href="explore1.php#header">Explore header</a>
+                    <a href="families.php#header">Families header</a>
+                    <a href="genera.php#header">Genera header</a>
+                    <a href="species.php#header">Species header</a>
+                    <a href="contribute.php#header">Contribute header</a>
+                    <a href="contribute_form.php#header">Contribute form header</a>
+                    <a href="Aboutus.php#header">About Us header</a>
+                    <a href="enquiry.php#header">Enquiry header</a>
+                    <a href="login.php#header">Login header</a>
+                    <a href="identify.php#header">Identify header</a>
+                    <a href="register.php#header">Register header</a>
+                    <a href="acknowledge.php#header">Acknowledgement header</a>
+                    <a href="enhancement.php#header">Enhancement header</a>
+                    <a href="user1.php#header">User 1 header</a>
+                    <a href="user2.php#header">User 2 header</a>
+                    <a href="user3.php#header">User 3 header</a>
+                    <a href="user4.php#header">User 4 header</a>
                 </div>
             </li>
             <li>Reference(s): <a href="https://www.w3schools.com/css/css_dropdowns.asp">CSS Dropdowns</a></li>
@@ -60,115 +60,115 @@
             <li>Applied to:
                 <h3>Main navigation links (animated underline, colour fade)</h3>
                 <div class="enh-button">
-                    <a href="index.html#header">Index</a>
-                    <a href="explore1.html#header">Explore</a>
-                    <a href="families.html#header">Families</a>
-                    <a href="genera.html#header">Genera</a>
-                    <a href="species.html#header">Species</a>
-                    <a href="contribute.html#header">Contribute</a>
-                    <a href="contribute_form.html#header">Contribute form</a>
-                    <a href="Aboutus.html#header">About Us</a>
-                    <a href="enquiry.html#header">Enquiry</a>
-                    <a href="login.html#header">Login</a>
-                    <a href="identify.html#header">Identify</a>
-                    <a href="register.html#header">Register</a>
-                    <a href="acknowledge.html#header">Acknowledgement</a>
-                    <a href="enhancement.html#header">Enhancement</a>
-                    <a href="user1.html#header">User 1</a>
-                    <a href="user2.html#header">User 2</a>
-                    <a href="user3.html#header">User 3</a>
-                    <a href="user4.html#header">User 4</a>
+                    <a href="index.php#header">Index</a>
+                    <a href="explore1.php#header">Explore</a>
+                    <a href="families.php#header">Families</a>
+                    <a href="genera.php#header">Genera</a>
+                    <a href="species.php#header">Species</a>
+                    <a href="contribute.php#header">Contribute</a>
+                    <a href="contribute_form.php#header">Contribute form</a>
+                    <a href="Aboutus.php#header">About Us</a>
+                    <a href="enquiry.php#header">Enquiry</a>
+                    <a href="login.php#header">Login</a>
+                    <a href="identify.php#header">Identify</a>
+                    <a href="register.php#header">Register</a>
+                    <a href="acknowledge.php#header">Acknowledgement</a>
+                    <a href="enhancement.php#header">Enhancement</a>
+                    <a href="user1.php#header">User 1</a>
+                    <a href="user2.php#header">User 2</a>
+                    <a href="user3.php#header">User 3</a>
+                    <a href="user4.php#header">User 4</a>
                 </div>
 
                 <h3>Footer links (underline)</h3>
                 <div class="enh-button">
-                    <a href="index.html#footer">Index</a>
-                    <a href="explore1.html#footer">Explore</a>
-                    <a href="families.html#footer">Families</a>
-                    <a href="genera.html#footer">Genera</a>
-                    <a href="species.html#footer">Species</a>
-                    <a href="contribute.html#footer">Contribute</a>
-                    <a href="contribute_form.html#footer">Contribute form</a>
-                    <a href="Aboutus.html#footer">About Us</a>
-                    <a href="enquiry.html#footer">Enquiry</a>
-                    <a href="login.html#footer">Login</a>
-                    <a href="identify.html#footer">Identify</a>
-                    <a href="register.html#footer">Register</a>
-                    <a href="acknowledge.html#footer">Acknowledgement</a>
-                    <a href="enhancement.html#footer">Enhancement</a>
-                    <a href="user1.html#footer">User 1</a>
-                    <a href="user2.html#footer">User 2</a>
-                    <a href="user3.html#footer">User 3</a>
-                    <a href="user4.html#footer">User 4</a>
+                    <a href="index.php#footer">Index</a>
+                    <a href="explore1.php#footer">Explore</a>
+                    <a href="families.php#footer">Families</a>
+                    <a href="genera.php#footer">Genera</a>
+                    <a href="species.php#footer">Species</a>
+                    <a href="contribute.php#footer">Contribute</a>
+                    <a href="contribute_form.php#footer">Contribute form</a>
+                    <a href="Aboutus.php#footer">About Us</a>
+                    <a href="enquiry.php#footer">Enquiry</a>
+                    <a href="login.php#footer">Login</a>
+                    <a href="identify.php#footer">Identify</a>
+                    <a href="register.php#footer">Register</a>
+                    <a href="acknowledge.php#footer">Acknowledgement</a>
+                    <a href="enhancement.php#footer">Enhancement</a>
+                    <a href="user1.php#footer">User 1</a>
+                    <a href="user2.php#footer">User 2</a>
+                    <a href="user3.php#footer">User 3</a>
+                    <a href="user4.php#footer">User 4</a>
                 </div>
 
                 <h3>Side rail links (text turns green)</h3>
                 <div class="enh-button">
-                    <a href="families.html#rail">Explore</a>
-                    <a href="families.html#rail">Families</a>
-                    <a href="genera.html#rail">Genera</a>
-                    <a href="species.html#rail">Species</a>
-                    <a href="user1.html#rail">User 1</a>
-                    <a href="user2.html#rail">User 2</a>
-                    <a href="user3.html#rail">User 3</a>
-                    <a href="user4.html#rail">User 4</a>
+                    <a href="families.php#rail">Explore</a>
+                    <a href="families.php#rail">Families</a>
+                    <a href="genera.php#rail">Genera</a>
+                    <a href="species.php#rail">Species</a>
+                    <a href="user1.php#rail">User 1</a>
+                    <a href="user2.php#rail">User 2</a>
+                    <a href="user3.php#rail">User 3</a>
+                    <a href="user4.php#rail">User 4</a>
                 </div>
 
                 <h3>Jump links (green background, white text, lifts up)</h3>
                 <div class="enh-button">
-                    <a href="families.html#jump-links">Families</a>
-                    <a href="genera.html#jump-links">Genera</a>
-                    <a href="species.html#jump-links">Species</a>
+                    <a href="families.php#jump-links">Families</a>
+                    <a href="genera.php#jump-links">Genera</a>
+                    <a href="species.php#jump-links">Species</a>
                 </div>
 
                 <h3>"Explore on iNaturalist" links (underline)</h3>
                 <div class="enh-button">
-                    <a href="families.html#dipterocarpaceae-family">Families</a>
-                    <a href="genera.html#dipterocarpaceae-genera">Genera</a>
-                    <a href="species.html#vatica-species">Species</a>
-                    <a href="explore1.html#taxonomy-map">Explore</a>
+                    <a href="families.php#dipterocarpaceae-family">Families</a>
+                    <a href="genera.php#dipterocarpaceae-genera">Genera</a>
+                    <a href="species.php#vatica-species">Species</a>
+                    <a href="explore1.php#taxonomy-map">Explore</a>
                 </div>
 
                 <h3>Explore page links and buttons</h3>
                 <div class="enh-button">
-                    <a href="explore1.html#categories">Category cards</a>
-                    <a href="explore1.html#tools">Tool links</a>
-                    <a href="explore1.html#taxonomy-map">Genus and species links</a>
-                    <a href="explore1.html#back-to-overview">Back to overview</a>
+                    <a href="explore1.php#categories">Category cards</a>
+                    <a href="explore1.php#tools">Tool links</a>
+                    <a href="explore1.php#taxonomy-map">Genus and species links</a>
+                    <a href="explore1.php#back-to-overview">Back to overview</a>
                 </div>
 
                 <h3>Buttons</h3>
                 <div class="enh-button">
-                    <a href="index.html#home-explore">Index Explore button</a>
-                    <a href="index.html#register">Join the Community</a>
-                    <a href="contribute.html#contribute-btn">Contribute a Plant</a>
-                    <a href="identify.html">Get Started button</a>
-                    <a href="user1.html#email-button">Email Me (User 1)</a>
-                    <a href="user2.html#email-button">Email Me (User 2)</a>
-                    <a href="user3.html#email-button">Email Me (User 3)</a>
-                    <a href="user4.html#email-button">Email Me (User 4)</a>
+                    <a href="index.php#home-explore">Index Explore button</a>
+                    <a href="index.php#register">Join the Community</a>
+                    <a href="contribute.php#contribute-btn">Contribute a Plant</a>
+                    <a href="identify.php">Get Started button</a>
+                    <a href="user1.php#email-button">Email Me (User 1)</a>
+                    <a href="user2.php#email-button">Email Me (User 2)</a>
+                    <a href="user3.php#email-button">Email Me (User 3)</a>
+                    <a href="user4.php#email-button">Email Me (User 4)</a>
                 </div>
 
                 <h3>Profile table rows (highlight, text shifts right)</h3>
                 <div class="enh-button">
-                    <a href="user1.html#profile-table">User 1</a>
-                    <a href="user2.html#profile-table">User 2</a>
-                    <a href="user3.html#profile-table">User 3</a>
-                    <a href="user4.html#profile-table">User 4</a>
+                    <a href="user1.php#profile-table">User 1</a>
+                    <a href="user2.php#profile-table">User 2</a>
+                    <a href="user3.php#profile-table">User 3</a>
+                    <a href="user4.php#profile-table">User 4</a>
                 </div>
 
                 <h3>Link chips (darker background)</h3>
                 <div class="enh-button">
-                    <a href="acknowledge.html#ack-links">Acknowledgement</a>
-                    <a href="enhancement.html#header">Enhancement</a>
+                    <a href="acknowledge.php#ack-links">Acknowledgement</a>
+                    <a href="enhancement.php#header">Enhancement</a>
                 </div>
 
                 <h3>Form buttons (colour change, glow)</h3>
                 <div class="enh-button">
-                    <a href="login.html#form">Login</a>
-                    <a href="contribute_form.html#form">Contribute form</a>
-                    <a href="enquiry.html#form">Enquiry</a>
-                    <a href="register.html#form">Register</a>
+                    <a href="login.php#form">Login</a>
+                    <a href="contribute_form.php#form">Contribute form</a>
+                    <a href="enquiry.php#form">Enquiry</a>
+                    <a href="register.php#form">Register</a>
                 </div>
             </li>
             <li>Reference(s):
@@ -184,28 +184,28 @@
             <li>Users can see a Google Map at the footer, where the Plantify home base is located.</li>
             <li>Applied to: 
                 <div class="ack-button">
-                <a href="index.html#footer">Index footer</a>
-                <a href="Aboutus.html#footer">About Us footer</a>
-                <a href="acknowledge.html#footer">Acknowledgement footer</a>
-                <a href="contribute_form.html#footer">Contribute form footer</a>
-                <a href="contribute.html#footer">Contribute footer</a>
-                <a href="enhancement.html#footer">Enhancement footer</a>
-                <a href="enquiry.html#footer">Enquiry footer</a>
-                <a href="explore1.html#footer">Explore footer</a>
-                <a href="families.html#footer">Families footer</a>
-                <a href="genera.html#footer">Genera footer</a>
-                <a href="login.html#footer">Login footer</a>
-                <a href="identify.html#footer">Identify footer</a>
-                <a href="register.html#footer">Register footer</a>
-                <a href="species.html#footer">Species footer</a>
-                <a href="user1.html#footer">User 1 footer</a>
-                <a href="user2.html#footer">User 2 footer</a>
-                <a href="user3.html#footer">User 3 footer</a>
-                <a href="user4.html#footer">User 4 footer</a>
+                <a href="index.php#footer">Index footer</a>
+                <a href="Aboutus.php#footer">About Us footer</a>
+                <a href="acknowledge.php#footer">Acknowledgement footer</a>
+                <a href="contribute_form.php#footer">Contribute form footer</a>
+                <a href="contribute.php#footer">Contribute footer</a>
+                <a href="enhancement.php#footer">Enhancement footer</a>
+                <a href="enquiry.php#footer">Enquiry footer</a>
+                <a href="explore1.php#footer">Explore footer</a>
+                <a href="families.php#footer">Families footer</a>
+                <a href="genera.php#footer">Genera footer</a>
+                <a href="login.php#footer">Login footer</a>
+                <a href="identify.php#footer">Identify footer</a>
+                <a href="register.php#footer">Register footer</a>
+                <a href="species.php#footer">Species footer</a>
+                <a href="user1.php#footer">User 1 footer</a>
+                <a href="user2.php#footer">User 2 footer</a>
+                <a href="user3.php#footer">User 3 footer</a>
+                <a href="user4.php#footer">User 4 footer</a>
                 </div>            
             </li>
             <li>Reference(s): 
-                <a href="https://www.educative.io/answers/how-to-embed-a-google-map-into-html">Embed a Google Map into HTML</a>
+                <a href="https://www.educative.io/answers/how-to-embed-a-google-map-into-php">Embed a Google Map into php</a>
             </li>
         </ul>
     </section>
@@ -216,10 +216,10 @@
             <li>Users can see a video playing in the background without having to click any button to play or pause the video.</li>
             <li>Applied to:
                 <div class="ack-button">
-                    <a href="index.html#bg-video">Index home video</a>
+                    <a href="index.php#bg-video">Index home video</a>
                 </div>
             </li>
-            <li>Reference(s): <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video">HTML Video Embed Element</a> </li>
+            <li>Reference(s): <a href="https://developer.mozilla.org/en-US/docs/Web/php/Reference/Elements/video">php Video Embed Element</a> </li>
         </ul>
     </section>
 
@@ -229,7 +229,7 @@
             <li>Users can click a button to bring them back to the top of the page.</li>
             <li>Applied to:
                 <div class="ack-button">
-                    <a href="explore1.html#back-to-overview">Explore &ndash; Back to Overview</a>
+                    <a href="explore1.php#back-to-overview">Explore &ndash; Back to Overview</a>
                 </div>
             </li>
             <li>Reference(s): <a href="https://moderncss.dev/pure-css-smooth-scroll-back-to-top/">Create a Scroll Back to Top Button</a></li>
@@ -242,23 +242,23 @@
             <li>Users can hover over the top part of the screen, whereby the header will appear when doing so.</li>
             <li>Applied to:
                 <div class="ack-button">
-                    <a href="index.html#header">Index</a>
-                    <a href="explore1.html#header">Explore</a>
-                    <a href="families.html#header">Families</a>
-                    <a href="genera.html#header">Genera</a>
-                    <a href="species.html#header">Species</a>
-                    <a href="contribute.html#header">Contribute</a>
-                    <a href="contribute_form.html#header">Contribute form</a>
-                    <a href="Aboutus.html#header">About Us</a>
-                    <a href="enquiry.html#header">Enquiry</a>
-                    <a href="login.html#header">Login</a>
-                    <a href="register.html#header">Register</a>
-                    <a href="acknowledge.html#header">Acknowledgement</a>
-                    <a href="enhancement.html#header">Enhancement</a>
-                    <a href="user1.html#header">User 1</a>
-                    <a href="user2.html#header">User 2</a>
-                    <a href="user3.html#header">User 3</a>
-                    <a href="user4.html#header">User 4</a>
+                    <a href="index.php#header">Index</a>
+                    <a href="explore1.php#header">Explore</a>
+                    <a href="families.php#header">Families</a>
+                    <a href="genera.php#header">Genera</a>
+                    <a href="species.php#header">Species</a>
+                    <a href="contribute.php#header">Contribute</a>
+                    <a href="contribute_form.php#header">Contribute form</a>
+                    <a href="Aboutus.php#header">About Us</a>
+                    <a href="enquiry.php#header">Enquiry</a>
+                    <a href="login.php#header">Login</a>
+                    <a href="register.php#header">Register</a>
+                    <a href="acknowledge.php#header">Acknowledgement</a>
+                    <a href="enhancement.php#header">Enhancement</a>
+                    <a href="user1.php#header">User 1</a>
+                    <a href="user2.php#header">User 2</a>
+                    <a href="user3.php#header">User 3</a>
+                    <a href="user4.php#header">User 4</a>
                 </div>
             </li>
             <li>Reference(s): <a href="https://www.w3schools.com/howto/howto_css_display_element_hover.asp">Display an Element on Hover</a></li>
