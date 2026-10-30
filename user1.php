@@ -31,7 +31,7 @@
                 <a href="user3.php">User 3</a>
                 <a href="user4.php">User 4</a>
             </nav>
-        </aside>';
+        </aside>
         <section class="userprofile-content">
         <h1>User Profile</h1>
 
