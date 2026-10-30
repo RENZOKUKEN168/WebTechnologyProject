@@ -12,24 +12,35 @@ The project architecture maps out the current source file development space:
 
 ```text
 WebTechnologyProject/
-├── contribute.html      # Form to submit new plant observations
-├── explore1.html        # Plant Categories landing page
-├── families.html        # Plant Families directory
-├── genera.html          # Plant Genera directory
-├── species.html         # Plant Species directory
-├── .gitignore           # Git ignore rules configuration file
-├── style.css            # Core global CSS stylesheet
-└── Photos/              # Directory containing project image assets
-    ├── families/        # Nested photo sets for plant family examples
-    ├── genera/          # Nested photo sets for plant genus examples
-    ├── species/         # Nested photo sets for plant species examples
-    ├── explore-background1.png
-    ├── explore-families.jpg
-    ├── explore-genera.jpg
-    ├── explore-species.jpg
-    ├── index-page-concept.png
-    ├── plantify_logo.png
-    └── profile-photo.jpg
+├── .vscode/                 # Editor configuration settings
+├── images/                  # Directory containing project image assets
+├── styles/                  # Directory containing CSS stylesheets
+├── .gitignore               # Git ignore rules configuration file
+├── Aboutus.php              # About the project and development team page
+├── acknowledge.php          # Submission acknowledgement page
+├── connection.php           # Database connection configuration
+├── contribute_form.php      # Form component for plant observation submissions
+├── contribute.php           # Observation contribution portal landing page
+├── enhancement.php          # Documentation of applied web enhancements
+├── enquiry.php              # User enquiry and contact form
+├── explore1.php             # Plant Categories exploration landing page
+├── families.php             # Plant Families directory
+├── footer.php               # Shared footer template component
+├── genera.php               # Plant Genera directory
+├── header.php               # Shared navigation and header template component
+├── identify.php             # Plant identification assistance portal
+├── index.php                # Homepage and main portal landing page
+├── login.php                # User authentication interface
+├── README.md                # Project documentation file
+├── register_process.php     # Registration form processing script
+├── register.php             # User registration form
+├── species.php              # Plant Species directory
+├── user-aside.php           # Shared user dashboard sidebar component
+├── user1.php                # User Profile page 1
+├── user2.php                # User Profile page 2
+├── user3.php                # User Profile page 3
+└── user4.php                # User Profile page 4
+
 ```
 
 *Note: Before final server deployment, these files must be reorganized into standard root `assign1/`, `images/`, and `styles/` subdirectories to prevent assignment compliance deductions.*
