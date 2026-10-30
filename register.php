@@ -17,6 +17,8 @@
     <?php
         include("header.php")
         ?>
+    <?php include 'connection.php'; ?>
+    
 
 <form id="form" method="post" action="register_process.php" class="register-form">
     <h2>Create an Account</h2>
