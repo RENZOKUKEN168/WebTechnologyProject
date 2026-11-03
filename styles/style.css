@@ -3932,3 +3932,13 @@ html.home-document {
 .logout-page .logout-card { text-align: center; }
 .logout-page .logout-ok { display: inline-block; margin-top: 12px; padding: 11px 28px; border-radius: 7px; background: #286b46; color: #fff; font: inherit; font-weight: 700; text-decoration: none; }
 .logout-page .logout-ok:hover, .logout-page .logout-ok:focus-visible { background: #1e5738; }
+
+/* Member role bulk controls (works without JavaScript). */
+.member-bulk-controls { display: flex; flex-wrap: wrap; align-items: end; gap: .7rem; margin: 0 0 1rem; padding: 1rem; background: #f5f8f5; border-radius: .5rem; }
+.member-bulk-controls label { flex-basis: 100%; font-weight: 700; }
+.member-bulk-controls select { min-width: 220px; padding: .6rem; border: 1px solid #9aac9f; border-radius: .3rem; font: inherit; }
+.member-bulk-controls .bulk-role-submit { display: none; padding: .65rem .9rem; border: 0; border-radius: .35rem; background: #17634c; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.member-management:has(.member-select:checked):has(.bulk-role-select:valid) .bulk-role-submit { display: inline-block; }
+.member-bulk-controls .bulk-role-help { color: #53665c; }
+.member-management .member-select { width: 1.15rem; height: 1.15rem; accent-color: #17634c; }
+@media (max-width: 760px) { .member-bulk-controls { align-items: stretch; flex-direction: column; } .member-bulk-controls select { width: 100%; } }

@@ -29,18 +29,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             mysqli_stmt_execute($adminStmt);
             $adminAccount = mysqli_fetch_assoc(mysqli_stmt_get_result($adminStmt));
 
-            if ($adminAccount && hash_equals((string)$adminAccount["password"], $password)) {
+            if ($adminAccount && (password_verify($password, (string)$adminAccount["password"]) || hash_equals((string)$adminAccount["password"], $password))) {
                 session_regenerate_id(true);
                 $_SESSION["user_id"] = $adminAccount["username"];
                 $_SESSION["username"] = $adminAccount["username"];
                 $_SESSION["role"] = "admin";
+                $_SESSION["auth_source"] = "admin_table";
                 header("Location: admin.php");
                 exit;
             }
         }
 
         // Regular member credentials remain in the register table.
-        $memberStmt = mysqli_prepare($conn, "SELECT id, username, password FROM register WHERE username = ? LIMIT 1");
+        $memberStmt = mysqli_prepare($conn, "SELECT id, username, password, role FROM register WHERE username = ? LIMIT 1");
         if ($memberStmt) {
             mysqli_stmt_bind_param($memberStmt, "s", $username);
             mysqli_stmt_execute($memberStmt);
@@ -50,8 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 session_regenerate_id(true);
                 $_SESSION["user_id"] = (int)$memberAccount["id"];
                 $_SESSION["username"] = $memberAccount["username"];
-                $_SESSION["role"] = "user";
-                header("Location: index.php");
+                $_SESSION["role"] = ($memberAccount["role"] ?? "user") === "admin" ? "admin" : "user";
+                $_SESSION["auth_source"] = "register";
+                header("Location: " . ($_SESSION["role"] === "admin" ? "admin.php" : "index.php"));
                 exit;
             }
         }

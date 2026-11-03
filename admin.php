@@ -20,6 +20,16 @@ if (($_SESSION["role"] ?? "") !== "admin" || empty($_SESSION["user_id"])) {
     header("Location: login.php");
     exit;
 }
+if (!isset($_SESSION["auth_source"])) {
+    $sourceCheck = mysqli_prepare($conn, "SELECT username FROM admin WHERE username = ? LIMIT 1");
+    if ($sourceCheck) {
+        $sessionUsername = (string)($_SESSION["username"] ?? "");
+        mysqli_stmt_bind_param($sourceCheck, "s", $sessionUsername);
+        mysqli_stmt_execute($sourceCheck);
+        $_SESSION["auth_source"] = mysqli_fetch_assoc(mysqli_stmt_get_result($sourceCheck)) ? "admin_table" : "register";
+    }
+}
+$isFullAdmin = ($_SESSION["auth_source"] ?? "") === "admin_table";
 
 function adminEscape($value): string
 {
@@ -113,6 +123,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $tab = ($_POST["tab"] ?? "submissions") === "users" ? "users" : "submissions";
     try {
         $action = $_POST["action"] ?? "";
+        if (in_array($action, ["save_user", "delete_user"], true) && !$isFullAdmin) {
+            throw new RuntimeException("You do not have permission to manage member accounts.");
+        }
         if ($action === "save_submission") {
             $id = (int)($_POST["id"] ?? 0);
             $contributor = adminText("contributor", 25);
@@ -226,7 +239,7 @@ if (isset($_GET["edit_user"])) {
 $states = ["Johor","Kedah","Kelantan","Melaka","Negeri Sembilan","Pahang","Penang","Perak","Perlis","Sabah","Sarawak","Selangor","Terengganu","Kuala Lumpur","Labuan","Putrajaya"];
 $submissionCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contributions"))["total"] ?? 0);
 $pendingCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contributions WHERE status='pending'"))["total"] ?? 0);
-$userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM register WHERE role='user'"))["total"] ?? 0);
+$userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM register"))["total"] ?? 0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -245,7 +258,7 @@ $userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS to
         <section class="admin-summary" aria-label="Plantify totals">
             <p><strong><?= $submissionCount ?></strong><span>Submissions</span></p>
             <p><strong><?= $pendingCount ?></strong><span>Waiting for review</span></p>
-            <p><strong><?= $userCount ?></strong><span>Regular accounts</span></p>
+            <p><strong><?= $userCount ?></strong><span>Registered accounts</span></p>
         </section>
         <nav class="admin-tabs" aria-label="Admin sections">
             <a class="<?= $tab === "submissions" ? "is-active" : "" ?>" href="admin.php?tab=submissions">Plant submissions</a>
@@ -305,8 +318,8 @@ $userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS to
             </section>
         <?php else: ?>
             <section class="admin-card">
-                <div class="admin-section-heading"><h2>User accounts</h2><a class="admin-button" href="admin.php?tab=users&new_user=1">Add user</a></div>
-                <?php if (isset($_GET["new_user"]) || $userEdit): ?>
+                <div class="admin-section-heading"><h2>User accounts</h2><?php if ($isFullAdmin): ?><a class="admin-button" href="admin.php?tab=users&new_user=1">Add user</a><?php endif; ?></div>
+                <?php if ($isFullAdmin && (isset($_GET["new_user"]) || $userEdit)): ?>
                     <?php $editingUser = (bool)$userEdit; ?>
                     <form class="admin-form" method="post" action="admin.php">
                         <input type="hidden" name="csrf_token" value="<?= adminEscape($csrf) ?>"><input type="hidden" name="tab" value="users"><input type="hidden" name="action" value="save_user"><input type="hidden" name="id" value="<?= (int)($userEdit["id"] ?? 0) ?>">
@@ -323,14 +336,14 @@ $userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS to
                     </form>
                 <?php endif; ?>
                 <?php
-                $users = mysqli_query($conn, "SELECT id, firstname, lastname, phone, username, city, state, created_at FROM register WHERE role = 'user' ORDER BY created_at DESC, id DESC");
+                $users = mysqli_query($conn, "SELECT id, firstname, lastname, phone, username, city, state, role, created_at FROM register ORDER BY created_at DESC, id DESC");
                 ?>
                 <?php if ($users && mysqli_num_rows($users) > 0): ?>
                     <div class="admin-table-wrap"><table class="admin-table">
-                        <thead><tr><th>Name</th><th>Username</th><th>Phone</th><th>Location</th><th>Joined</th><th>Actions</th></tr></thead>
+                        <thead><tr><th>Name</th><th>Username</th><th>Phone</th><th>Location</th><th>Permission</th><th>Joined</th><th>Actions</th></tr></thead>
                         <tbody><?php while ($user = mysqli_fetch_assoc($users)): ?>
-                            <tr><td><?= adminEscape($user["firstname"] . " " . $user["lastname"]) ?></td><td><?= adminEscape($user["username"]) ?></td><td><?= adminEscape($user["phone"]) ?></td><td><?= adminEscape($user["city"] . ", " . $user["state"]) ?></td><td><?= adminEscape($user["created_at"]) ?></td>
-                                <td class="admin-row-actions"><a href="admin.php?tab=users&edit_user=<?= (int)$user["id"] ?>">Edit</a> <a href="admin.php?tab=users&confirm_delete_user=<?= (int)$user["id"] ?>">Delete</a></td></tr>
+                            <tr><td><?= adminEscape($user["firstname"] . " " . $user["lastname"]) ?></td><td><?= adminEscape($user["username"]) ?></td><td><?= adminEscape($user["phone"]) ?></td><td><?= adminEscape($user["city"] . ", " . $user["state"]) ?></td><td><?= adminEscape(ucfirst($user["role"] ?? "user")) ?></td><td><?= adminEscape($user["created_at"]) ?></td>
+                                <td class="admin-row-actions"><?php if (!$isFullAdmin): ?><small>You do not have permission to manage member accounts.</small><?php elseif (($user["role"] ?? "user") === "admin"): ?><a href="view_member.php">Manage role</a><?php else: ?><a href="admin.php?tab=users&edit_user=<?= (int)$user["id"] ?>">Edit</a> <a href="admin.php?tab=users&confirm_delete_user=<?= (int)$user["id"] ?>">Delete</a><?php endif; ?></td></tr>
                         <?php endwhile; ?></tbody>
                     </table></div>
                 <?php else: ?><p>No registered user accounts yet.</p><?php endif; ?>
