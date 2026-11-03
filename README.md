@@ -6,8 +6,9 @@ Plantify is a responsive website prototype for exploring Malaysian plant familie
 ## Project Contributors
 
 | Name | Student ID |
+| --- | --- |
 | Suvasis Giri | 106759735 |
-| Darren Chong Khai Chen| 104406534 |
+| Darren Chong Khai Chen | 104406534 |
 | Chin Jii Ann | 106764962 |
 | Tiaw Le-San | 106766492 |
 
