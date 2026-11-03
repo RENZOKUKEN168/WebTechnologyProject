@@ -1,5 +1,11 @@
 <?php
     session_start();
+    require "connection.php";
+    mysqli_report(MYSQLI_REPORT_OFF);
+    mysqli_query($conn, "CREATE TABLE IF NOT EXISTS contributions (id INT AUTO_INCREMENT PRIMARY KEY, contributor VARCHAR(25) NOT NULL, plantname VARCHAR(25) NOT NULL, photos TEXT NULL, comments TEXT NULL, status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, committed_at DATETIME NULL)");
+    $hasCommitted = mysqli_query($conn, "SHOW COLUMNS FROM contributions LIKE 'committed_at'");
+    if ($hasCommitted && mysqli_num_rows($hasCommitted) === 0) mysqli_query($conn, "ALTER TABLE contributions ADD COLUMN committed_at DATETIME NULL");
+    $publicContributions = mysqli_query($conn, "SELECT contributor, plantname, photos, comments FROM contributions WHERE committed_at IS NOT NULL ORDER BY committed_at DESC");
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,6 +97,13 @@
                 </dl>
 
             </div>
+            <?php if ($publicContributions): while ($communityPlant = mysqli_fetch_assoc($publicContributions)): $communityPhotos = json_decode((string)($communityPlant["photos"] ?? ""), true); $communityPhotos = is_array($communityPhotos) ? $communityPhotos : []; ?>
+            <div class="contributor-card">
+                <?php if ($communityPhotos): ?><figure><img src="<?= htmlspecialchars($communityPhotos[0], ENT_QUOTES, "UTF-8") ?>" alt="Photo of <?= htmlspecialchars($communityPlant["plantname"], ENT_QUOTES, "UTF-8") ?>"><figcaption>Community contribution</figcaption></figure><?php endif; ?>
+                <h3><?= htmlspecialchars($communityPlant["contributor"], ENT_QUOTES, "UTF-8") ?></h3>
+                <dl><dt>Plant Name</dt><dd><?= htmlspecialchars($communityPlant["plantname"], ENT_QUOTES, "UTF-8") ?></dd><dt>Comments</dt><dd><?= nl2br(htmlspecialchars($communityPlant["comments"] ?? "", ENT_QUOTES, "UTF-8")) ?></dd></dl>
+            </div>
+            <?php endwhile; endif; ?>
 
         </section>
 

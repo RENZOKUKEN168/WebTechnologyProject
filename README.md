@@ -1,80 +1,107 @@
-# Biodiversity Monitoring & Plant Data Collection Website
+# Plantify – Plant Biodiversity Website
+## Assignment 2: PHP/MySQL
 
-A static web application developed as a prototype redesign to assist scientists in tracking, managing, and conserving Malaysia's rich yet threatened plant biodiversity. Built entirely using validated **HTML5** and **CSS3**, focusing on clean structural semantics and responsive visual layouts without JavaScript.(For now)
+Plantify is a responsive website prototype for exploring Malaysian plant families, genera and species, sharing plant observations, and sending enquiries. Assignment 2 adds a PHP and MySQLi for reviewing submissions, managing enquiries and members, and publishing approved plant contributions.
 
-This project was developed for the unit **COS10026 Web Technology Project (Assignment 1)** at **Swinburne University of Technology Sarawak**.
+## Project Contributors
 
-## 📌 Project Overview
-Malaysia stands as a key global biodiversity hotspot facing increasing pressure from population growth and agricultural expansion. This portal leverages a citizen science framework, allowing users and researchers to contribute observations, register profiles, and navigate detailed taxonomical hierarchies of plant families, genera, and species.
+| Name | Student ID |
+| Suvasis Giri | 106759735 |
+| Darren Chong Khai Chen| 104406534 |
+| Chin Jii Ann | 106764962 |
+| Tiaw Le-San | 106766492 |
 
-## 📂 Repository Structure
-The project architecture maps out the current source file development space:
+## Implemented Features
 
-```text
-WebTechnologyProject/
-├── .vscode/                 # Editor configuration settings
-├── images/                  # Directory containing project image assets
-├── styles/                  # Directory containing CSS stylesheets
-├── .gitignore               # Git ignore rules configuration file
-├── Aboutus.php              # About the project and development team page
-├── acknowledge.php          # Submission acknowledgement page
-├── connection.php           # Database connection configuration
-├── contribute_form.php      # Form component for plant observation submissions
-├── contribute.php           # Observation contribution portal landing page
-├── enhancement.php          # Documentation of applied web enhancements
-├── enquiry.php              # User enquiry and contact form
-├── explore1.php             # Plant Categories exploration landing page
-├── families.php             # Plant Families directory
-├── footer.php               # Shared footer template component
-├── genera.php               # Plant Genera directory
-├── header.php               # Shared navigation and header template component
-├── identify.php             # Plant identification assistance portal
-├── index.php                # Homepage and main portal landing page
-├── login.php                # User authentication interface
-├── README.md                # Project documentation file
-├── register_process.php     # Registration form processing script
-├── register.php             # User registration form
-├── species.php              # Plant Species directory
-├── user-aside.php           # Shared user dashboard sidebar component
-├── user1.php                # User Profile page 1
-├── user2.php                # User Profile page 2
-├── user3.php                # User Profile page 3
-└── user4.php                # User Profile page 4
+| Area | Pages | Current functionality |
+| --- | --- | --- |
+| Plant discovery | `index.php`, `explore1.php`, `families.php`, `genera.php`, `species.php` | Browse the plant classification pages and explore the family-to-genus-to-species relationships. |
+| Plant identification | `identify.php` | Shows an observation form and guidance. Automatic photo recognition and identification results are not connected yet. |
+| Community contribution | `contribute.php`, `contribute_form.php` | Visitors can submit a plant name, contributor name, comments and optional photos. Submissions are stored for admin review. |
+| Enquiry | `enquiry.php` | Saves enquiry details to MySQL for the admin to review. |
+| Login and accounts | `register.php`, `register_process.php`, `login.php`, `logout.php` | Supports member registration, shared login, role-based admin routing, and a logout success page with an OK link or a five-second return to login. |
+| Admin dashboard | `admin.php`, `admin_header.php` | Provides shared admin navigation and a dashboard for submissions and regular accounts. |
+| Enquiry management | `view_enquiry.php` | Admins can edit or delete enquiries, mark them as read, and save a reply with the enquiry. Replies are stored in the panel and are not emailed automatically. |
+| Contribution review | `view_contribution_form.php` | Admins can inspect photos and submission details, edit, approve or reject, delete, and use **Commit** to publish a plant on `contribute.php`. |
+| Member management | `view_member.php` | Admins can change member roles or remove members. The main account `admin` always has the Admin role and cannot be edited or removed. |
+| Shared layout and profiles | `header.php`, `footer.php`, `user1.php`–`user4.php` | Reuses site navigation/footer and includes member profile page examples. |
 
-```
+## Requirements
 
-*Note: Before final server deployment, these files must be reorganized into standard root `assign1/`, `images/`, and `styles/` subdirectories to prevent assignment compliance deductions.*
+- PHP with MySQLi and the PHP Fileinfo extension for validating uploaded images
+- MySQL or MariaDB
+- XAMPP (Apache and MySQL services)
+- A modern web browser
+- No JavaScript is used for the admin interactions; forms use PHP, HTML and CSS.
 
-## 🛠️ Tech Stack & Key Requirements
-* **HTML5:** Semantic architecture utilizing structure elements (`<header>`, `<nav>`, `<article>`, `<section>`, `<aside>`, `<footer >`). Fully validated against the W3C markup validator.
-* **CSS3:** Written via an external stylesheet managing visual layout, fluid resizing, responsive columns, and typography styles.
-* **No JavaScript:** Form completeness, pattern boundaries, and layout restrictions are managed strictly through standard HTML5 attributes and native browser engines.
+## How to Run
 
-## 📄 Core Interface Modules
+1. Place the project folder in XAMPP's `htdocs` directory. The expected local path is:
 
-### 🌿 Taxonomy Tree (`explore1.php`, `families.php`, etc.)
-* **Families**: Categorizes 4 specific plant groups.
-* **Genera**: Houses 2 distinct plant genera under each family branch.
-* **Species**: Tracks 2 unique plant species under each genus node.
-* Contains structural asides, definition lists, ordered lists, and figures with captions.
-
-### 📝 Citizen Portals (`contribute.php`)
-* Natively managed form submission platform mapping name data, file types, and text area summaries.
-* Utilizes explicit validation boundary controls strictly using native browser engines.
-
-## 🚀 Execution Instructions
-To run this application workspace locally:
-
-1. Clone this repository into your machine's environment:
-   ```bash
-   git clone https://github.com/RENZOKUKEN168/WebTechnologyProject
+   ```text
+   /Applications/XAMPP/xamppfiles/htdocs/Plantify
    ```
-2. Start your local Apache and MySQL database server services.
-3. Import the required database structure using the configuration details specified in connection.php.
-4. Open the directory workspace in your preferred source editor (e.g., VS Code).
-5. Navigate to http://localhost/WebTechnologyProject/index.php in your web browser.
 
-## 👥 Project Details
-* **Unit:** COS10026 Web Technology Project
-* **Semester:** Semester 1, 2026
-* **Institution:** Swinburne University of Technology Sarawak
+2. Start **Apache** and **MySQL** in XAMPP.
+3. Open phpMyAdmin and create a database named `plantify_db`.
+4. Check `connection.php`. Its current local settings are host `localhost`, user `root`, an empty password, and database `plantify_db`. Update these values if your XAMPP configuration differs.
+5. Create the `register` account table by opening `http://localhost/Plantify/register_createtable.php` once.
+6. The login system requires a `role` column. If the column is not already present, run this once in phpMyAdmin's SQL tab:
+7. Login by admin: 
+   Username : admin
+   Password : admin
+
+   ```sql
+   ALTER TABLE register
+   ADD COLUMN role ENUM('user', 'admin') NOT NULL DEFAULT 'user';
+   ```
+
+   Skip this step if `register` already has a `role` column.
+7. In phpMyAdmin, create the main admin account with username `admin`, password `admin`, and role `admin`. The account table also requires the profile fields defined in `register_createtable.php`.
+8. Open the website at:
+
+   ```text
+   http://localhost/Plantify/index.php
+   ```
+
+   Use `http://localhost/Plantify/login.php` to sign in. The contribution and enquiry tables are created by their respective form pages when first opened. Admin links are available after signing in with an account whose role is `admin`.
+
+## Database Tables
+
+| Table | Purpose |
+| --- | --- |
+| `register` | Member details, login credentials and `user`/`admin` role. |
+| `contributions` | Plant submissions, optional photo paths, comments, review status, submission date and publication date. |
+| `enquiry` | Enquiry contact details, message, read status, saved admin reply and dates. |
+
+## Main Project Files
+
+| File or folder | Purpose |
+| --- | --- |
+| `index.php` | Website homepage. |
+| `explore1.php` | Plant exploration landing page and family map. |
+| `families.php`, `genera.php`, `species.php` | Plant classification pages. |
+| `identify.php` | Plant observation and identification prototype. |
+| `contribute.php`, `contribute_form.php` | Public contribution page and submission form. |
+| `enquiry.php` | Public enquiry form. |
+| `login.php`, `register.php`, `register_process.php`, `logout.php` | Account registration and authentication pages. |
+| `admin.php`, `admin_header.php` | Admin dashboard and navigation. |
+| `view_enquiry.php` | Enquiry review and replies. |
+| `view_contribution_form.php` | Plant submission moderation and publishing. |
+| `view_member.php` | Member role and account management. |
+| `connection.php` | MySQL connection settings. |
+| `header.php`, `footer.php` | Shared public site header and footer. |
+| `styles/style.css` | Shared page, responsive and admin styles. |
+| `images/`, `Photos/`, `uploads/` | Site images, profile photos and uploaded plant photos. |
+
+## Current Progress
+
+The Assignment 2 admin pages and form-to-database connections are in place. The main admin account is protected from role changes and removal. Plant submissions can be reviewed before publication, and committed submissions appear on the public Contribution page. The plant identifier remains a visual prototype and does not currently analyze uploaded photos.
+
+There is no automated test suite in the project. Run Apache and MySQL in XAMPP and check the required pages through the browser when validating a local setup.
+
+## Notes
+
+- The public plant classification pages contain the current project content; they are not a complete botanical database.
+- The demonstration admin credentials are `admin` / `admin`, as configured locally in phpMyAdmin.
+- Admin replies are saved for viewing in the admin panel; no email delivery is configured.

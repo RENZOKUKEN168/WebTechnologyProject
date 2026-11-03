@@ -6,6 +6,7 @@ body {
     line-height: 1.5;
 }
 
+/* Header */
 header {
     position: relative;
     z-index: 10;
@@ -18,6 +19,7 @@ header {
     gap: 32px;
 }
 
+/* Brand logo */
 .brand {
     display: flex;
     align-items: center;
@@ -30,6 +32,7 @@ header {
     height: auto;
 }
 
+/* Navigation */
 nav {
     display: flex;
     align-items: center;
@@ -37,6 +40,7 @@ nav {
     margin-left: auto;
 }
 
+/* Fill the center of the header with evenly spaced links. */
 @media (min-width: 1200px) {
     header {
         display: grid;
@@ -92,6 +96,7 @@ nav a:focus-visible {
     outline-offset: 4px;
 }
 
+/* Explore dropdown: a full-width panel beneath the existing navigation. */
 header > nav {
     align-self: stretch;
 }
@@ -103,6 +108,7 @@ header > nav {
     align-self: stretch;
 }
 
+/* Keep hover active while the pointer moves from Explore into its dropdown. */
 .nav-explore::before {
     position: absolute;
     top: 100%;
@@ -191,6 +197,7 @@ header:has(.nav-explore:focus-within)::before {
     }
 }
 
+/* Right side */
 .header-right {
     display: flex;
     align-items: center;
@@ -214,7 +221,7 @@ header:has(.nav-explore:focus-within)::before {
     width: 44px;
     height: 44px;
     object-fit: cover;
-
+    /* Clip the PNG to its silhouette and tint it white, without background blending. */
     clip-path: path("M 29.7 12.83 A 7.7 7.7 0 1 0 14.3 12.83 A 7.7 7.7 0 1 0 29.7 12.83 Z M 6.6 38.85 C 8.5 28.8 13.8 23.45 22 23.45 C 30.2 23.45 35.5 28.8 37.4 38.85 Z");
     filter: brightness(0) invert(1);
 }
@@ -236,11 +243,13 @@ header:has(.nav-explore:focus-within)::before {
 
 .header-right input:focus,
 input[type="text"]:focus,
+input[type="password"]:focus,
 textarea:focus {
     border-color: #4f936a;
     outline: 3px solid #dcefe2;
 }
 
+/* Main Form */
 main {
     width: min(100% - 40px, 600px);
     margin: 56px auto;
@@ -273,7 +282,9 @@ label {
     font-weight: bold;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
+    display: block;
     width: 100%;
     padding: 11px 12px;
     margin-top: 7px;
@@ -303,6 +314,7 @@ textarea {
     box-sizing: border-box;
 }
 
+/* Buttons */
 input[type="submit"],
 input[type="reset"] {
     padding: 11px 17px;
@@ -333,6 +345,7 @@ input[type="reset"]:hover {
     background-color: #f2f7f2;
 }
 
+/* Footer */
 footer {
     font-size: 0.9rem;
 }
@@ -353,6 +366,18 @@ footer {
 
 }
 
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Shared navigation behaviour for Families, Genera and Species only */
 :is(.families-page, .genera-page, .species-page):has(.explore-cover) header {
     position: absolute;
     top: 0;
@@ -382,6 +407,9 @@ footer {
     to { transform: translateY(-100%); }
 }
 
+/* Families page: inspired by Explore with an alternating editorial layout */
+
+/* Restore full-screen covers on the three classification pages. */
 :is(.families-page, .genera-page, .species-page) .explore-cover {
     min-height: 100vh;
     min-height: 100svh;
@@ -416,10 +444,11 @@ footer {
     scroll-margin-top: 90px;
 }
 
+/* Sticky page switcher: its grid area keeps it inside main only. */
 .explore-page main.classification-main {
     display: grid;
-
-    grid-template-columns: clamp(150px, 12vw, 190px) minmax(0, 1fr);
+    /* Used in families.html, genera.html and species.html. */
+    grid-template-columns: clamp(150px, 12vw, 190px) minmax(0, 1fr); /* Side nav: 12% of viewport width, limited to 150–190px; content fills the remaining space and can shrink without overflowing. */
     align-items: start;
 }
 
@@ -429,7 +458,8 @@ footer {
     min-width: 0;
 }
 
-.classification-rail {
+.classification-rail,
+.userprofile-rail{
     position: sticky;
     top: max(24px, calc(50vh - 120px));
     z-index: 8;
@@ -451,7 +481,8 @@ footer {
     text-transform: uppercase;
 }
 
-.classification-rail nav {
+.classification-rail nav,
+.userprofile-rail nav{
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
@@ -470,7 +501,8 @@ footer {
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.classification-rail nav a::after {
+.classification-rail nav a::after,
+.userprofile-rail nav a::after{
     display: none;
 }
 
@@ -491,16 +523,16 @@ footer {
     text-align: center;
 }
 
-@media (min-width: 761px) {
-    .classification-main .families-intro,
-    .classification-main .classification-index {
-        position: relative;
-        left: calc(clamp(150px, 12vw, 190px) / -2);
+@media (min-width: 761px) { /* Apply only while the side navigation occupies a separate column. */
+    .classification-main .families-intro, /* Title and subtitle in families.html, genera.html and species.html. */
+    .classification-main .classification-index { /* Centre the classification buttons with the title on the same three pages. */
+        position: relative; /* Adjust visual alignment without changing the surrounding layout. */
+        left: calc(clamp(150px, 12vw, 190px) / -2); /* Offset half the side-nav width to centre this block in the whole page. */
     }
 
-    .classification-main .family-list {
-        position: relative;
-        left: clamp(-32px, -2vw, -16px);
+    .classification-main .family-list { /* Plant cards and group dividers on the same three classification pages. */
+        position: relative; /* Keep the existing card sizes and vertical spacing. */
+        left: clamp(-32px, -2vw, -16px); /* Move cards slightly left while preserving space beside the navigation. */
     }
 }
 
@@ -682,6 +714,7 @@ footer {
     text-decoration: underline;
 }
 
+/* Links for small classification labels and selected names. */
 .family-label a,
 .family-genera a,
 .classification-divider p a {
@@ -715,6 +748,7 @@ footer {
     color: #718074;
 }
 
+/* Keep long botanical names inside their available column. */
 .classification-main .families-intro,
 .classification-main .classification-index,
 .classification-main .classification-divider {
@@ -748,7 +782,7 @@ footer {
         grid-row: 2;
     }
 
-    .classification-rail {
+    .classification-rail,.userprofile-rail {
         top: 0;
         padding: 14px 20px;
         background: #f3f5ed;
@@ -759,7 +793,7 @@ footer {
         display: none;
     }
 
-    .classification-rail nav {
+    .classification-rail nav,.userprofile-rail nav{
         flex-direction: row;
         justify-content: space-around;
         gap: 12px;
@@ -787,6 +821,7 @@ footer {
 
 }
 
+/* Explore page */
 .explore-page header,
 .home-page header {
     top: 0;
@@ -794,6 +829,7 @@ footer {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* Place the Explore landing navigation over its cover, matching Families. */
 .explore-landing-page header {
     position: absolute;
     right: 0;
@@ -889,7 +925,7 @@ footer {
 }
 
 .footer-copy {
-    font-style:italic;
+    font-style:italic; /*copyright edit to italic*/
     max-width: 1320px;
     margin: 25px auto 0;
     padding-top: 15px;
@@ -916,6 +952,7 @@ footer {
     }
 }
 
+/* Shared Plantify colours for the home and Explore pages */
 .explore-page,
 .home-page {
     --explore-dark: #1d633d;
@@ -937,13 +974,14 @@ footer {
     --explore-white: #ffffff;
 }
 
+/* Keep both form-page headers solid on their light backgrounds. */
 .contribute-page header,
 .enquiry-page header,
 .aboutus-page header,
 .login-page header,
 .register-page header,
 .acknowledge-page header,
-.enhancement-page header {
+.enhancement-page header { /* Match the Contribution header background and border on Enquiry. */
     background: #1d633d;
     border-bottom-color: #2f7950;
 }
@@ -958,6 +996,7 @@ footer {
     box-sizing: border-box;
 }
 
+/* Keep the homepage title clear of the overlaid navigation. */
 .home-page .cover-content {
     padding-top: max(140px, 15vh);
 }
@@ -1001,10 +1040,11 @@ footer {
     outline-offset: 4px;
 }
 
+/* Lighten only the original logo images on the dark green background */
 .explore-page .brand img,
 .home-page .brand img,
 .contribute-page .brand img,
-.enquiry-page .brand img,
+.enquiry-page .brand img, /* Match the pale green header logo on Enquiryform.html. */
 .aboutus-page .brand img,
 .login-page .brand img,
 .footer-brand img,
@@ -1022,9 +1062,9 @@ footer {
 .contribute-page nav a,
 .contribute-page nav a:hover,
 .contribute-page nav a[aria-current="page"],
-.enquiry-page nav a,
-.enquiry-page nav a:hover,
-.enquiry-page nav a[aria-current="page"],
+.enquiry-page nav a, /* Match the white navigation text on Enquiryform.html. */
+.enquiry-page nav a:hover, /* Preserve the same text colour when hovering. */
+.enquiry-page nav a[aria-current="page"], /* Keep the current Enquiry link white. */
 .aboutus-page nav a,
 .aboutus-page nav a:hover,
 .aboutus-page nav a[aria-current="page"],
@@ -1051,7 +1091,7 @@ footer {
 .login-page nav a::after,
 .register-page nav a:after,
 .acknowledge-page nav a:after,
-.enhancement-page nav a:after {
+.enhancement-page nav a:after { /* Match the active-link and hover underline colour. */
     background: var(--explore-light);
 }
 
@@ -1063,15 +1103,17 @@ footer {
 .login-page .header-right input,
 .register-page .header-right input,
 .acknowledge-page .header-right input,
-.enhancement-page .header-right input {
+.enhancement-page .header-right input { /* Match the Contribution search field text and border. */
     border-color: var(--explore-dark);
     color: var(--explore-dark);
 }
 
+/* Full-screen Explore landing page */
 html {
     scroll-behavior: smooth;
 }
 
+/* Prevent vertical overscroll bounce on the homepage. */
 html.home-document {
     overscroll-behavior-y: none;
 }
@@ -1273,6 +1315,7 @@ html.home-document {
     50% { transform: translateY(7px); }
 }
 
+/* Hide the navigation on scroll and reveal it when hovering at the top edge. */
 @supports (animation-timeline: scroll()) {
     .explore-page header,
     .home-page header {
@@ -1308,6 +1351,7 @@ html.home-document {
     }
 }
 
+/* Keep transparent headers and their open dropdowns free of separator lines. */
 :is(.home-page, .explore-page) header {
     border-bottom: none;
 }
@@ -1351,6 +1395,7 @@ html.home-document {
     }
 }
 
+/* Detailed Family → Genus → Species hierarchy */
 .explore-page .explore-cards,
 .taxonomy-map {
     width: min(100% - 48px, 1240px);
@@ -1821,6 +1866,7 @@ html.home-document {
 
 }
 
+/* Index heading & video*/
 .hero-content {
     max-width: 720px;
     text-transform: none !important;
@@ -1828,9 +1874,10 @@ html.home-document {
 }
 
 #bg-video {
-    filter: brightness(0.65);
+    filter: brightness(0.65); /* 1 = normal, lower = darker, e.g. 0.5 = quite dark */
 }
 
+/* Index text*/
 .ifeature-section {
     text-align: center;
     padding: 60px 20px;
@@ -1846,7 +1893,7 @@ html.home-document {
     justify-content: center;
     gap: 15px;
     margin: 10px auto 40px auto;
-    max-width: 800px;
+    max-width: 800px; /* controls how wide the whole divider is */
 }
 
 .feature-line {
@@ -1938,19 +1985,20 @@ html.home-document {
     }
 }
 
+/* Index plant care & identify */
 .care-banner {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
     padding: 50px 40px;
     min-height: 280px;
-    background-image: url('../styles/images/care-bg.jpg');
+    background-image: url('Photos/care-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
-    width: min(100% - 48px, 1350px);
-    margin-inline: auto;
+    width: min(100% - 48px, 1350px); /* leaves a gap on both sides */
+    margin-inline: auto; /* centers the banner horizontally */
 }
 
 .banner-overlay {
@@ -1959,7 +2007,7 @@ html.home-document {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(20, 40, 20, 0.55);
+    background: rgba(20, 40, 20, 0.55); /* dark green tint over the image */
     z-index: 0;
 }
 
@@ -2037,6 +2085,7 @@ html.home-document {
     }
 }
 
+/*Enquiry Form */
 .enquiry-form {
     max-width: 700px;
     margin: 30px auto;
@@ -2151,6 +2200,7 @@ html.home-document {
     transform: scale(1.1) rotate(3deg);
 }
 
+/* Index page video */
 .video-section {
     width: min(100% - 48px, 1200px);
     margin-inline: auto;
@@ -2169,11 +2219,14 @@ html.home-document {
     color: #405047;
 }
 
+
+
+/* Index register */
 .register-section {
     position: relative;
     width: 100%;
     min-height: 70vh;
-    background-image: url('../styles/images/indexregister-bg.jpg');
+    background-image: url('Photos/indexregister-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -2249,6 +2302,7 @@ html.home-document {
   background: rgba(255, 255, 255, 0.15);
 }
 
+/* Explore links to the plant tools */
 .explore-tool-links {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2316,6 +2370,7 @@ html.home-document {
     }
 }
 
+/* Register form*/
 .register-form {
     max-width: 700px;
     margin: 30px auto;
@@ -2350,7 +2405,6 @@ html.home-document {
 .register-form input[type="text"],
 .register-form input[type="email"],
 .register-form input[type="tel"],
-.register-form input[type="password"],
 .register-form select {
     display: block;
     width: 100%;
@@ -2412,7 +2466,7 @@ html.home-document {
                 0 0 20px #95c0a1,
                 0 0 30px #95c0a1;
 }
-
+/* User Profile section */
 .user-profile {
     text-align: center;
     padding: 30px;
@@ -2452,7 +2506,12 @@ html.home-document {
     font-size: 20px;
 }
 
+
 .user-page main {
+    width: min(100% - 40px, 900px);
+    margin: 56px auto;
+    padding: 42px;
+    box-sizing: border-box;
     border: 1px solid #e1e9e1;
     border-radius: 16px;
     background-color: #ffffff;
@@ -2639,6 +2698,8 @@ html.home-document {
 
 @media (max-width: 760px) {
 
+
+
     .profile-photo {
         float: none;
         display: block;
@@ -2662,6 +2723,8 @@ html.home-document {
     }
 }
 
+
+/* Acknowledgement */
 .ack-button {
     display: flex;
     flex-wrap: wrap;
@@ -2684,6 +2747,7 @@ html.home-document {
   background: #ddeee1;
 }
 
+/* User Profile layout */
 .contribute-page main.classification-main {
     width: min(100% - 40px, 1200px);
     margin: 56px auto;
@@ -2696,6 +2760,7 @@ html.home-document {
     align-items: start;
 }
 
+/* User Profile sidebar */
 .contribute-page main.classification-main .userprofile-rail {
     position: sticky;
     top: max(24px, calc(50vh - 120px));
@@ -2710,11 +2775,13 @@ html.home-document {
     box-sizing: border-box;
 }
 
+/* User Profile main content */
 .userprofile-content {
     grid-column: 2;
     min-width: 0;
 }
 
+/* Sidebar title */
 .userprofile-title {
     margin: 0 0 34px;
     color: #154c31;
@@ -2725,6 +2792,7 @@ html.home-document {
     text-transform: uppercase;
 }
 
+/* Sidebar navigation */
 .userprofile-rail nav {
     display: flex;
     flex-direction: column;
@@ -2759,6 +2827,7 @@ html.home-document {
     border-bottom-color: #1d633d;
 }
 
+/* Mobile User Profile layout */
 @media (max-width: 760px) {
 
     .contribute-page main.classification-main {
@@ -2804,16 +2873,31 @@ html.home-document {
     }
 }
 
+/* User 3 */
 .course-user3 {
     color: #1f4a7e;
 }
 
 .contribute-btn {
+    display: inline-block;
+    background-color: #286b46;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
     font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
     text-align: center;
     margin: 30px 0;
 }
 
+.contribute-btn:hover {
+    background-color: #1e5738;
+    transform: translateY(-2px);
+}
+
+/* Acknowledgement */
 .acknowledge-format > .ack-button {
     padding: 0 clamp(20px, 4vw, 48px) 12px;
 }
@@ -2829,6 +2913,7 @@ html.home-document {
     padding: 0 clamp(20px, 4vw, 48px);
 }
 
+/* Contributor Page */
 .contributor-page {
     max-width: 1200px;
     margin: 0 auto;
@@ -2838,6 +2923,7 @@ html.home-document {
     gap: 35px;
 }
 
+/* Main title */
 .contributor-page > h1 {
     text-align: center;
     grid-column: 1 / -1;
@@ -2846,6 +2932,7 @@ html.home-document {
     margin: 0 0 10px;
 }
 
+/* Main sections */
 .intro-section,
 .contributions-section,
 .how-to-section {
@@ -2868,8 +2955,27 @@ html.home-document {
 }
 
 .intro-section figure img {
+    width: 100%;
+    max-width: 700px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
     display: block;
     margin: 0 auto;
+}
+
+.intro-section figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+    margin-top: 8px;
+}
+
+.intro-section figure {
+    margin: 25px 0;
+}
+
+.intro-section figure img {
     width: 100%;
     max-width: 700px;
     height: 320px;
@@ -2884,6 +2990,7 @@ html.home-document {
     margin-top: 8px;
 }
 
+/* Full-width Contribution page */
 .contribute-page main.contributor-page {
     width: 100%;
     max-width: none;
@@ -3064,596 +3171,350 @@ html.home-document {
 }
 
 
+/* ==========================================================
+   IDENTIFIER PAGE -suvasis-
+   All new layout rules are scoped to .identify-page
+   ========================================================== */
+
 .identify-page {
     background: #f3f5ed;
     color: #20352a;
 }
 
-
-.identify-page main.identifier-main {
-    display: block;
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    background: #f3f5ed;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-}
-
+/* Hero section */
 
 .identify-page .identifier-hero {
-    position: relative;
-    display: flex;
-    min-height: clamp(550px, 72vh, 820px);
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    min-height: 410px;
     align-items: center;
-    background: #123d2a;
-    color: #fff;
+    gap: 5%;
+    padding: 58px max(5vw, 24px);
+    background: #e7f0e7;
 }
 
-.identify-page .identifier-hero-background,
-.identify-page .identifier-hero-shade {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.identify-page .identifier-hero-background {
-    object-fit: cover;
-}
-
-.identify-page .identifier-hero-shade {
-    background: linear-gradient(
-        90deg,
-        rgba(3, 31, 20, .87) 0%,
-        rgba(5, 40, 27, .64) 46%,
-        rgba(4, 40, 25, .22) 100%
-    );
-}
-
-.identify-page .identifier-hero-content {
-    position: relative;
-    z-index: 1;
-    width: min(100% - 72px, 1260px);
-    margin: 0 auto;
-    padding: 80px 0 110px;
+.identify-page .identifier-hero-copy {
+    max-width: 690px;
 }
 
 .identify-page .identifier-eyebrow {
-    margin: 0 0 18px;
-    color: #458462;
+    margin: 0 0 13px;
+    color: #317752;
     font-size: .76rem;
     font-weight: 800;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-}
-
-.identify-page .identifier-hero .identifier-eyebrow {
-    color: #d4eacb;
+    letter-spacing: .13em;
 }
 
 .identify-page .identifier-hero h1 {
-    max-width: 770px;
-    margin: 0 0 24px;
-    color: #fff;
-    font: 800 clamp(4.4rem, 8.5vw, 8.4rem)/.91 Arial, sans-serif;
-    letter-spacing: -.06em;
-    text-align: left;
-}
-
-.identify-page .identifier-dot {
-    color: #a3d59e;
-}
-
-.identify-page .identifier-hero-description,
-.identify-page .identifier-hero-detail {
-    max-width: 595px;
-    margin: 0 0 14px;
-    color: #eff9ed;
-    font-size: clamp(.99rem, 1.4vw, 1.18rem);
-    line-height: 1.7;
-}
-
-.identify-page .identifier-hero-detail {
-    margin-bottom: 28px;
-    color: #d0e4d2;
-    font-size: .96rem;
-}
-
-.identify-page .identifier-hero-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 35px;
-    padding: 15px 24px;
-    border: 1px solid rgba(236, 248, 231, .8);
-    border-radius: 4px 19px 4px 19px;
-    background: #edf6e9;
-    color: #154b32;
-    font-weight: 800;
-    text-decoration: none;
-    transition: background .2s ease, transform .2s ease;
-}
-
-.identify-page .identifier-hero-link:hover {
-    background: #d7ead8;
-    transform: translateY(-2px);
-}
-
-.identify-page .identifier-hero-index {
-    position: absolute;
-    right: 6vw;
-    bottom: 32px;
-    color: rgba(255, 255, 255, .78);
-    font-size: .73rem;
-    font-weight: 700;
-    letter-spacing: .14em;
-}
-
-
-.identify-page .identifier-workspace {
-    padding: clamp(65px, 8vw, 118px) 24px;
-}
-
-.identify-page .identifier-section-heading {
-    width: min(100%, 1200px);
-    margin: 0 auto 40px;
-}
-
-.identify-page .identifier-section-heading h2,
-.identify-page .identifier-glossary h2 {
-    margin: 0 0 14px;
-    color: #164d33;
-    font-size: clamp(2.4rem, 4vw, 4.2rem);
-    font-weight: 800;
-    letter-spacing: -.045em;
+    margin: 0 0 18px;
+    font-size: clamp(2.5rem, 5vw, 4.6rem);
     line-height: 1.1;
-    text-align: left;
+    color: #174c33;
 }
 
-.identify-page .identifier-section-heading > p:last-child {
-    max-width: 710px;
-    margin: 0;
-    color: #5b7061;
-    font-size: 1.07rem;
-    line-height: 1.75;
+.identify-page .identifier-hero-copy > p:not(.identifier-eyebrow) {
+    font-size: 1.09rem;
+    max-width: 610px;
 }
+
+.identify-page .identifier-hero-link,
+.identify-page .identifier-card a {
+    display: inline-block;
+    color: #fff;
+    background: #1d633d;
+    text-decoration: none;
+    padding: 12px 19px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.identify-page .identifier-hero-link:hover,
+.identify-page .identifier-card a:hover {
+    background: #10452c;
+}
+
+.identify-page .identifier-hero-photo {
+    margin: 0;
+}
+
+.identify-page .identifier-hero-photo img {
+    display: block;
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.identify-page figcaption {
+    font-size: .84rem;
+    color: #536e5b;
+    padding-top: 9px;
+}
+
+/* Identifier form and tips */
 
 .identify-page .identifier-layout {
     display: grid;
-    grid-template-columns:
-        minmax(0, 1.75fr) minmax(280px, .88fr);
-    gap: 28px;
-    width: min(100%, 1200px);
+    grid-template-columns: minmax(0, 1.75fr) minmax(250px, .8fr);
+    gap: 30px;
+    max-width: 1220px;
+    padding: 70px 25px;
     margin: 0 auto;
-    align-items: stretch;
 }
 
 .identify-page .identifier-form-section,
 .identify-page .identifier-tips {
-    min-width: 0;
-    padding: clamp(26px, 3.4vw, 52px);
-    border: 1px solid #e0e8dd;
-    border-radius: 18px;
-    box-shadow: 0 17px 45px rgba(22, 64, 39, .06);
+    padding: clamp(24px, 3vw, 42px);
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 12px 32px rgba(20,60,38,.07);
 }
 
-.identify-page .identifier-form-section {
-    background: #fff;
-}
-
-.identify-page .identifier-tips {
-    background: #e6efe7;
-}
-
-.identify-page .identifier-form-title {
-    display: flex;
-    gap: 19px;
-    align-items: flex-start;
-    margin: 0 0 30px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #dde8de;
-}
-
-.identify-page .identifier-step {
-    display: grid;
-    width: 46px;
-    height: 46px;
-    flex: 0 0 46px;
-    place-items: center;
-    border-radius: 50%;
-    background: #eaf4e8;
-    color: #195a3a;
-    font-weight: 800;
-}
-
-.identify-page .identifier-form-title h3,
-.identify-page .identifier-tips h3 {
-    margin: 0 0 9px;
-    color: #174b32;
-    font-size: clamp(1.55rem, 2.4vw, 2.3rem);
+.identify-page .identifier-form-section h2,
+.identify-page .identifier-tips h2,
+.identify-page .identifier-explore h2,
+.identify-page .identifier-glossary h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.6rem, 2.7vw, 2.3rem);
     line-height: 1.2;
-    text-align: left;
+    color: #174c33;
 }
 
-.identify-page .identifier-form-title p {
-    margin: 0;
-    color: #66786b;
+.identify-page .identifier-form {
+    margin-top: 24px;
 }
-
-/* Identification form */
 
 .identify-page .identifier-form fieldset {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 24px;
+    border: 0;
     margin: 0;
     padding: 0;
-    border: 0;
 }
 
 .identify-page .identifier-form legend {
-    margin-bottom: 15px;
-    padding: 0;
+    font-size: 1.04rem;
     font-weight: 700;
-    color: #23573b;
+    margin-bottom: 13px;
+    color: #174c33;
 }
 
 .identify-page .identifier-field {
-    min-width: 0;
-}
-
-.identify-page .identifier-field-wide {
-    grid-column: 1 / -1;
+    margin-bottom: 19px;
 }
 
 .identify-page .identifier-field label {
     display: block;
-    margin-bottom: 9px;
-    font-size: .94rem;
+    margin-bottom: 7px;
     font-weight: 700;
-}
-
-.identify-page .identifier-required {
-    color: #aa4633;
 }
 
 .identify-page .identifier-field input,
 .identify-page .identifier-field select,
 .identify-page .identifier-field textarea {
     display: block;
+    box-sizing: border-box;
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 13px 15px;
-    border: 1px solid #bdcfc2;
+    border: 1px solid #b8cec0;
     border-radius: 8px;
-    background: #fbfdfb;
+    background: #fff;
     color: #20352a;
     font: inherit;
+    padding: 11px 12px;
 }
 
-.identify-page .identifier-field input[type="file"] {
-    padding: 21px;
-    border: 2px dashed #9ab9a4;
-    background: #f5faf4;
+.identify-page .identifier-field input[type=file] {
+    padding: 13px;
 }
 
 .identify-page .identifier-field small {
     display: block;
-    margin-top: 8px;
-    color: #607263;
-    line-height: 1.5;
+    padding-top: 6px;
+    color: #52675a;
 }
 
 .identify-page .identifier-field textarea {
     resize: vertical;
 }
 
+.identify-page .identifier-field :focus-visible,
+.identify-page a:focus-visible,
+.identify-page button:focus-visible {
+    outline: 3px solid #5fa77b;
+    outline-offset: 3px;
+}
+
 .identify-page .identifier-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
     align-items: center;
-    margin-top: 25px;
+    gap: 17px;
 }
 
 .identify-page .identifier-actions button {
-    padding: 13px 24px;
-    border: 1px solid #1d633d;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 7px;
+    color: white;
+    background: #1d633d;
     font: inherit;
-    font-weight: 700;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.identify-page .identifier-actions .identifier-submit {
-    background: #1d633d;
-    color: #fff;
-}
-
-.identify-page .identifier-actions .identifier-submit:hover {
-    background: #10452c;
-}
-
-.identify-page .identifier-actions .identifier-reset {
-    border-color: #bfd3c5;
-    background: transparent;
-    color: #245d3e;
+.identify-page .identifier-browse-link {
+    color: #1d633d;
+    font-weight: 700;
 }
 
 .identify-page .identifier-form-note {
-    margin: 28px 0 0;
-    padding: 14px 18px;
-    border-left: 4px solid #7caa89;
-    background: #f1f7f0;
-    color: #496450;
-    font-size: .91rem;
-    line-height: 1.65;
+    margin-top: 24px;
+    padding: 13px 15px;
+    border-left: 4px solid #5fa77b;
+    background: #eef5ef;
+    font-size: .92rem;
 }
 
-/* Photography guide */
+/* Identification tips */
 
-.identify-page .identifier-tips h3 {
-    margin-bottom: 23px;
-}
-
-.identify-page .identifier-tips-photo {
-    margin: 0 0 28px;
-}
-
-.identify-page .identifier-tips-photo img {
-    display: block;
-    width: 100%;
-    height: clamp(160px, 16vw, 235px);
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.identify-page .identifier-tips figcaption {
-    margin-top: 8px;
-    color: #506b5a;
-    font-size: .79rem;
+.identify-page .identifier-tips {
+    align-self: start;
+    background: #e6efe6;
+    border: 1px solid #c8dfcd;
 }
 
 .identify-page .identifier-tips ol {
-    margin: 0;
-    padding-left: 23px;
+    padding-left: 22px;
 }
 
 .identify-page .identifier-tips li {
     margin-bottom: 15px;
-    line-height: 1.65;
 }
 
-.identify-page .identifier-tip-footnote {
-    margin: 25px 0 0;
-    padding-top: 20px;
-    border-top: 1px solid #bfd6c4;
-    font-size: .93rem;
-    line-height: 1.6;
-}
-
-
+/* Plant classification cards */
 
 .identify-page .identifier-explore {
-    padding: clamp(65px, 8vw, 110px) 24px;
-    background: #e7efe4;
+    padding: 65px max(5vw, 24px);
+    background: #eaf1e7;
+    text-align: center;
 }
 
 .identify-page .identifier-cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
-    width: min(100%, 1200px);
-    margin: 0 auto;
+    gap: 23px;
+    max-width: 1240px;
+    margin: 30px auto 0;
+    text-align: left;
 }
 
 .identify-page .identifier-card {
-    min-width: 0;
-    color: inherit;
-    text-decoration: none;
-}
-
-.identify-page .identifier-card article {
-    position: relative;
-    min-height: 355px;
     overflow: hidden;
-    border-radius: 17px;
-    background: #143c2b;
-    box-shadow: 0 14px 35px rgba(23, 68, 38, .16);
-    transition: transform .25s ease, box-shadow .25s ease;
+    padding-bottom: 25px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(20,60,38,.06);
 }
 
-.identify-page .identifier-card:hover article,
-.identify-page .identifier-card:focus-visible article {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 45px rgba(23, 68, 38, .2);
+.identify-page .identifier-card figure {
+    margin: 0;
 }
 
 .identify-page .identifier-card img {
-    position: absolute;
-    inset: 0;
+    display: block;
     width: 100%;
-    height: 100%;
+    height: 195px;
     object-fit: cover;
 }
 
-.identify-page .identifier-card article::after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background: linear-gradient(
-        0deg,
-        rgba(3, 33, 22, .95),
-        rgba(3, 33, 22, .04) 85%
-    );
+.identify-page .identifier-card figcaption,
+.identify-page .identifier-card h3,
+.identify-page .identifier-card p,
+.identify-page .identifier-card a {
+    margin-left: 23px;
+    margin-right: 23px;
 }
 
-.identify-page .identifier-card-content {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    padding: 29px;
-    color: #fff;
+.identify-page .identifier-card h3 {
+    color: #174c33;
+    font-size: 1.35rem;
+    margin-bottom: 7px;
 }
 
-.identify-page .identifier-card-number {
-    margin: 0 0 12px;
-    color: #c1dcc1;
-    font-size: .7rem;
-    font-weight: 800;
-    letter-spacing: .1em;
+.identify-page .identifier-card p {
+    min-height: 60px;
 }
 
-.identify-page .identifier-card-content h3 {
-    margin: 0 0 12px;
-    color: #fff;
-    font-size: 2.25rem;
-    line-height: 1;
-}
-
-.identify-page .identifier-card-content > p:not(.identifier-card-number) {
-    margin: 0 0 20px;
-    color: #edf4ed;
-    line-height: 1.6;
-}
-
-.identify-page .identifier-card-action {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(235, 245, 231, .4);
-    color: #fff;
-    font-size: .94rem;
-    font-weight: 700;
+.identify-page .identifier-card a {
+    margin-top: 7px;
 }
 
 /* Botanical glossary */
 
 .identify-page .identifier-glossary {
-    display: grid;
-    grid-template-columns:
-        minmax(280px, 1fr) minmax(0, 1.65fr);
-    gap: 46px;
-    align-items: center;
-    max-width: 1250px;
+    max-width: 1220px;
     margin: 0 auto;
-    padding: 95px 24px 115px;
-}
-
-.identify-page .identifier-glossary h2 {
-    font-size: clamp(2.1rem, 3vw, 3.1rem);
+    padding: 55px 25px 75px;
 }
 
 .identify-page .identifier-glossary dl {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    margin: 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
 .identify-page .identifier-glossary dl div {
-    min-height: 105px;
-    padding: 23px 20px;
-    border-left: 3px solid #549b69;
-    border-radius: 0 9px 9px 0;
+    border-left: 4px solid #60a377;
     background: #fff;
+    padding: 16px 18px;
 }
 
 .identify-page .identifier-glossary dt {
-    margin-bottom: 8px;
-    color: #195537;
-    font-size: 1.12rem;
     font-weight: 800;
+    color: #174c33;
 }
 
 .identify-page .identifier-glossary dd {
-    margin: 0;
-    color: #597060;
-    font-size: .9rem;
-    line-height: 1.55;
+    margin: 5px 0 0;
 }
 
+/* Responsive layout for identifier */
 
-
-.identify-page a:focus-visible,
-.identify-page button:focus-visible,
-.identify-page input:focus-visible,
-.identify-page textarea:focus-visible,
-.identify-page select:focus-visible {
-    outline: 3px solid #8ec7a2;
-    outline-offset: 3px;
-}
-
-/* Responsive tablet layout */
-
-@media (max-width: 960px) {
+@media (max-width: 850px) {
+    .identify-page .identifier-hero,
     .identify-page .identifier-layout {
         grid-template-columns: 1fr;
     }
 
-    .identify-page .identifier-glossary {
-        grid-template-columns: 1fr;
+    .identify-page .identifier-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* Responsive mobile layout */
-
-@media (max-width: 700px) {
-    .identify-page .identifier-hero-content {
-        width: min(100% - 44px, 1260px);
-        padding: 75px 0 100px;
-    }
-
+@media (max-width: 600px) {
     .identify-page .identifier-hero {
-        min-height: 570px;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 
-    .identify-page .identifier-hero h1 {
-        font-size: clamp(3.8rem, 14vw, 5.8rem);
-    }
-
-    .identify-page .identifier-form fieldset {
-        grid-template-columns: 1fr;
-    }
-
-    .identify-page .identifier-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .identify-page .identifier-card article {
-        min-height: 350px;
-    }
-
+    .identify-page .identifier-cards,
     .identify-page .identifier-glossary dl {
         grid-template-columns: 1fr;
     }
 
-    .identify-page .identifier-workspace,
-    .identify-page .identifier-explore {
-        padding-left: 18px;
-        padding-right: 18px;
-    }
-
-    .identify-page .identifier-glossary {
-        padding-left: 18px;
-        padding-right: 18px;
+    .identify-page .identifier-hero-photo img {
+        height: 230px;
     }
 }
 
 
+/* User 3 theme  - will edit comments out later */
+/* Card around the page */
 .user3-theme main {
     border-color: #dfe7f1 !important;
     box-shadow: 0 14px 34px rgba(31, 60, 100, 0.09) !important;
 }
 
+/* Headings */
 .user3-theme main h1,
 .user3-theme main h2,
 .user3-theme .profile-name {
@@ -3664,6 +3525,7 @@ html.home-document {
     background-color: #4a86c5 !important;
 }
 
+/* Summary section + photo box */
 .user3-theme .profile-summary {
     border-bottom-color: #c8d6e6 !important;
 }
@@ -3678,6 +3540,7 @@ html.home-document {
     box-shadow: 0 18px 32px rgba(31, 60, 100, 0.22) !important;
 }
 
+/* Table */
 .user3-theme .profile-table th,
 .user3-theme .profile-table td {
     border-color: #9db3cc !important;
@@ -3703,6 +3566,7 @@ html.home-document {
     background: linear-gradient(135deg, #edf4fb, #dce8f5) !important;
 }
 
+/* Email button */
 .user3-theme .email-button {
     background-color: #2563a8 !important;
     box-shadow: 0 5px 12px rgba(37, 99, 168, 0.22) !important;
@@ -3717,7 +3581,9 @@ html.home-document {
 .user3-theme nav a:focus-visible {
     outline-color: rgba(74, 134, 197, 0.35) !important;
 }
+/* User 2 theme - Gold and White (colours only) */
 
+/* Headings and name */
 .user2-theme main h1,
 .user2-theme main h2,
 .user2-theme .profile-name {
@@ -3728,10 +3594,12 @@ html.home-document {
     background-color: #d4a017 !important;
 }
 
+/* Course text */
 .user2-theme .course {
     color: #b8860b !important;
 }
 
+/* Side rail text */
 .user2-theme .userprofile-title {
     color: #8a6508 !important;
 }
@@ -3750,10 +3618,12 @@ html.home-document {
     border-bottom-color: #d4a017 !important;
 }
 
+/* Summary divider line */
 .user2-theme .profile-summary {
     border-bottom-color: #e6d28a !important;
 }
 
+/* Table */
 .user2-theme .profile-table th,
 .user2-theme .profile-table td {
     border-color: #d4b24c !important;
@@ -3783,6 +3653,7 @@ html.home-document {
     color: #3d2f0a !important;
 }
 
+/* Email button */
 .user2-theme .email-button {
     background-color: #b8860b !important;
     box-shadow: 0 5px 12px rgba(184, 134, 11, 0.28) !important;
@@ -3803,6 +3674,7 @@ html.home-document {
     border-color: #d4a017 !important;
     background-color: #fff8e1 !important;
 }
+
 
 .darren-profile .profile-summary {
     min-height: 0;
@@ -3993,3 +3865,70 @@ html.home-document {
         border-left: 0;
     }
 }
+
+
+/* Keep the login password field aligned with the username field. */
+.login-page #password {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 7px;
+    padding: 11px 12px;
+    border: 1px solid #cbd8cc;
+    border-radius: 7px;
+    font: inherit;
+}
+
+.login-page #password:focus {
+    border-color: #4f936a;
+    outline: 3px solid #dcefe2;
+}
+
+/* Shared Plantify admin navigation and review pages */
+.admin-page { min-height: 100vh; background: #f2f6f0; color: #173f32; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem clamp(1rem, 4vw, 3rem); background: #124b3b; color: #fff; }
+.admin-header a { color: #fff; }
+.admin-brand { display: block; flex: 0 0 200px; font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+.admin-brand img { display: block; width: 200px; height: auto; }
+.admin-brand img { filter: brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(360%) hue-rotate(75deg) brightness(102%) contrast(90%); }
+.admin-site-header { padding: 16px clamp(24px, 5vw, 72px); gap: 24px; flex-wrap: wrap; }
+.admin-nav { display: flex; flex: 1 1 520px; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px 22px; margin-left: 0; }
+.admin-nav a, .admin-account a { color: #fff; font-weight: 600; text-decoration: none; }
+.admin-nav a:hover, .admin-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 5px; }
+.admin-account { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; margin-left: auto; }
+.admin-shell { width: min(1100px, 94%); margin: 2rem auto; }
+.admin-shell h1 { margin-bottom: .35rem; }
+.admin-summary { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+.admin-summary p { min-width: 150px; flex: 1; margin: 0; padding: 1rem; border-radius: .6rem; background: #fff; box-shadow: 0 2px 10px #173f3212; }
+.admin-summary strong, .admin-summary span { display: block; }
+.admin-summary strong { font-size: 1.7rem; }
+.admin-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0; }
+.admin-tabs a, .admin-button, .admin-actions button, .admin-row-actions button { display: inline-block; padding: .65rem .9rem; border: 0; border-radius: .35rem; background: #dbe9df; color: #124b3b; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+.admin-tabs a.is-active, .admin-button, .admin-actions button { background: #17634c; color: #fff; }
+.admin-card { padding: clamp(1rem, 3vw, 1.6rem); border-radius: .7rem; background: #fff; box-shadow: 0 2px 12px #173f3212; }
+.admin-section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+.admin-table-wrap { width: 100%; overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.admin-table th, .admin-table td { padding: .75rem; border-bottom: 1px solid #dbe4dd; text-align: left; vertical-align: top; }
+.admin-table th { background: #edf4ef; }
+.admin-row-actions { min-width: 150px; }
+.admin-row-actions form { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; margin: .4rem 0; }
+.admin-row-actions a { margin-right: .35rem; }
+.admin-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin: 1rem 0 1.5rem; padding: 1rem; background: #f5f8f5; border-radius: .5rem; }
+.admin-form label { display: grid; gap: .3rem; font-weight: 600; }
+.admin-form input, .admin-form textarea, .admin-form select, .admin-row-actions select { width: 100%; min-width: 0; padding: .55rem; border: 1px solid #9aac9f; border-radius: .3rem; font: inherit; }
+.admin-form textarea, .admin-form label:has(textarea), .admin-form label:has(input[type=file]), .admin-form .admin-actions, .admin-wide { grid-column: 1 / -1; }
+.admin-actions { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.admin-message, .admin-error, .admin-confirm { padding: .8rem 1rem; border-radius: .4rem; }
+.admin-message { background: #e2f3e5; color: #164a2d; }
+.admin-error { background: #fde7e4; color: #78271f; }
+.admin-confirm { margin-top: 1rem; background: #fff2d8; }
+.admin-danger { padding: .6rem .9rem; border: 0; border-radius: .3rem; background: #9e3226; color: #fff; font: inherit; cursor: pointer; }
+.admin-submission-photo { display: block; width: min(150px, 30vw); max-height: 150px; margin: 4px 0; object-fit: cover; border-radius: 6px; }
+@media (max-width: 760px) { .admin-site-header, .admin-header { align-items: flex-start; flex-direction: column; } .admin-shell { width: 94%; margin: 1rem auto; } .admin-brand, .admin-brand img { width: 165px; flex-basis: auto; } .admin-nav { justify-content: flex-start; flex-basis: auto; } .admin-account { justify-content: flex-start; margin-left: 0; } .admin-form { grid-template-columns: 1fr; } .admin-form label, .admin-form textarea, .admin-form label:has(textarea), .admin-form label:has(input[type=file]), .admin-form .admin-actions, .admin-wide { grid-column: 1; } .admin-table th, .admin-table td { padding: .55rem; } }
+
+
+.logout-page .logout-card { text-align: center; }
+.logout-page .logout-ok { display: inline-block; margin-top: 12px; padding: 11px 28px; border-radius: 7px; background: #286b46; color: #fff; font: inherit; font-weight: 700; text-decoration: none; }
+.logout-page .logout-ok:hover, .logout-page .logout-ok:focus-visible { background: #1e5738; }

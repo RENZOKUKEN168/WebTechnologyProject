@@ -1,5 +1,43 @@
 <?php
     session_start();
+    require "connection.php";
+    mysqli_report(MYSQLI_REPORT_OFF);
+    mysqli_query($conn, "CREATE TABLE IF NOT EXISTS contributions (id INT AUTO_INCREMENT PRIMARY KEY, contributor VARCHAR(25) NOT NULL, plantname VARCHAR(25) NOT NULL, photos TEXT NULL, comments TEXT NULL, status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, committed_at DATETIME NULL)");
+    $formMessage = "";
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $contributor = trim((string)($_POST["contributor"] ?? ""));
+        $plantname = trim((string)($_POST["plantname"] ?? ""));
+        $comments = trim((string)($_POST["comments"] ?? ""));
+        if ($contributor === "" || $plantname === "" || strlen($contributor) > 25 || strlen($plantname) > 25 || strlen($comments) > 5000) {
+            $formMessage = "Please check your name, plant name and comment.";
+        } else {
+            $savedPhotos = [];
+            $uploadDir = __DIR__ . "/uploads/contributions";
+            if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
+            $allowedTypes = ["image/jpeg" => "jpg", "image/png" => "png", "image/gif" => "gif", "image/webp" => "webp"];
+            $uploadError = "";
+            if (isset($_FILES["photo"]) && is_array($_FILES["photo"]["name"])) {
+                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                foreach ($_FILES["photo"]["name"] as $i => $originalName) {
+                    $error = $_FILES["photo"]["error"][$i] ?? UPLOAD_ERR_NO_FILE;
+                    if ($error === UPLOAD_ERR_NO_FILE) continue;
+                    $tmp = $_FILES["photo"]["tmp_name"][$i] ?? "";
+                    $mime = $tmp !== "" ? $finfo->file($tmp) : false;
+                    if ($error !== UPLOAD_ERR_OK || !isset($allowedTypes[$mime]) || (int)($_FILES["photo"]["size"][$i] ?? 0) > 5 * 1024 * 1024) { $uploadError = "Use JPG, PNG, GIF or WebP photos up to 5 MB each."; break; }
+                    $filename = bin2hex(random_bytes(12)) . "." . $allowedTypes[$mime];
+                    if (!move_uploaded_file($tmp, $uploadDir . "/" . $filename)) { $uploadError = "A photo could not be saved."; break; }
+                    $savedPhotos[] = "uploads/contributions/" . $filename;
+                }
+            }
+            if ($uploadError !== "") $formMessage = $uploadError;
+            else {
+                $photos = json_encode($savedPhotos, JSON_UNESCAPED_SLASHES);
+                $stmt = mysqli_prepare($conn, "INSERT INTO contributions (contributor, plantname, photos, comments, status) VALUES (?, ?, ?, ?, 'pending')");
+                mysqli_stmt_bind_param($stmt, "ssss", $contributor, $plantname, $photos, $comments);
+                $formMessage = mysqli_stmt_execute($stmt) ? "Thank you. Your plant submission is waiting for admin review." : "Your submission could not be saved. Please try again.";
+            }
+        }
+    }
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +62,9 @@
     <main id="contribute-form">
         <h2>Plant Contribution Form</h2>
         <p class="form-intro">Share a plant you have discovered with the Plantify community.</p>
+        <?php if ($formMessage !== ""): ?><p class="admin-message" role="status"><?= htmlspecialchars($formMessage, ENT_QUOTES, "UTF-8") ?></p><?php endif; ?>
 
-        <form id="form" action="#" method="post" enctype="multipart/form-data">
+        <form id="form" action="contribute_form.php" method="post" enctype="multipart/form-data">
 
 
             <p>

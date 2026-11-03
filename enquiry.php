@@ -1,6 +1,23 @@
 <?php
-	session_start();
-	?>
+    session_start();
+    require "connection.php";
+    mysqli_report(MYSQLI_REPORT_OFF);
+    mysqli_query($conn, "CREATE TABLE IF NOT EXISTS enquiry (id INT AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, email VARCHAR(254) NOT NULL, phone VARCHAR(11) NOT NULL, family VARCHAR(40) NULL, genus VARCHAR(40) NULL, species VARCHAR(80) NULL, comment TEXT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, is_read TINYINT(1) NOT NULL DEFAULT 0, admin_reply TEXT NULL, replied_at DATETIME NULL)");
+    $enquiryMessage = "";
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $first = trim((string)($_POST["firstname"] ?? "")); $last = trim((string)($_POST["lastname"] ?? ""));
+        $email = trim((string)($_POST["email"] ?? "")); $phone = trim((string)($_POST["phone"] ?? ""));
+        $family = trim((string)($_POST["family"] ?? "")); $genus = trim((string)($_POST["genus"] ?? ""));
+        $species = trim((string)($_POST["species"] ?? "")); $comment = trim((string)($_POST["comment"] ?? ""));
+        if ($first === "" || $last === "" || !filter_var($email, FILTER_VALIDATE_EMAIL) || !preg_match("/^[0-9]{10,11}$/", $phone)) {
+            $enquiryMessage = "Please check your name, email and phone number.";
+        } else {
+            $stmt = mysqli_prepare($conn, "INSERT INTO enquiry (firstname, lastname, email, phone, family, genus, species, comment) VALUES (?, ?, ?, ?, NULLIF(?,''), NULLIF(?,''), NULLIF(?,''), ?)");
+            mysqli_stmt_bind_param($stmt, "ssssssss", $first, $last, $email, $phone, $family, $genus, $species, $comment);
+            $enquiryMessage = mysqli_stmt_execute($stmt) ? "Your enquiry was sent. Thank you." : "Your enquiry could not be saved. Please try again.";
+        }
+    }
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +36,7 @@
         ?>
 	<form id="form" method="post" class="enquiry-form">
 		<h2>Got any enquiries?<br>Please drop them below.</h2>
+        <?php if ($enquiryMessage !== ""): ?><p class="admin-message" role="status"><?= htmlspecialchars($enquiryMessage, ENT_QUOTES, "UTF-8") ?></p><?php endif; ?>
 		<fieldset>
 			<legend>Username</legend>
 			<p>
