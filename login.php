@@ -15,29 +15,48 @@ function plantifySetupNotice(string $detail): never
     plantifySetupNotice($detail);
 }
 mysqli_report(MYSQLI_REPORT_OFF);
-$roleColumn = mysqli_query($conn, "SHOW COLUMNS FROM register LIKE 'role'");
-if (!$roleColumn || mysqli_num_rows($roleColumn) === 0) {
-    plantifySetupNotice("The account table has not been upgraded for the admin panel. Create the admin role in the register table using phpMyAdmin.");
-}
 
 $error = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["login"] ?? "");
     $password = $_POST["password"] ?? "";
+
     if ($username !== "" && $password !== "") {
-        $stmt = mysqli_prepare($conn, "SELECT id, username, password, role FROM register WHERE username = ? LIMIT 1");
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_execute($stmt);
-        $account = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
-        if ($account && (password_verify($password, $account["password"]) || ($account["username"] === "admin" && $account["role"] === "admin" && $account["password"] === "admin" && $password === "admin"))) {
-            session_regenerate_id(true);
-            $_SESSION["user_id"] = (int)$account["id"];
-            $_SESSION["username"] = $account["username"];
-            $_SESSION["role"] = $account["role"];
-            header("Location: " . ($account["role"] === "admin" ? "admin.php" : "index.php"));
-            exit;
+        // Admin credentials are stored in the separate admin table.
+        $adminStmt = mysqli_prepare($conn, "SELECT username, password FROM admin WHERE username = ? LIMIT 1");
+        if ($adminStmt) {
+            mysqli_stmt_bind_param($adminStmt, "s", $username);
+            mysqli_stmt_execute($adminStmt);
+            $adminAccount = mysqli_fetch_assoc(mysqli_stmt_get_result($adminStmt));
+
+            if ($adminAccount && hash_equals((string)$adminAccount["password"], $password)) {
+                session_regenerate_id(true);
+                $_SESSION["user_id"] = $adminAccount["username"];
+                $_SESSION["username"] = $adminAccount["username"];
+                $_SESSION["role"] = "admin";
+                header("Location: admin.php");
+                exit;
+            }
+        }
+
+        // Regular member credentials remain in the register table.
+        $memberStmt = mysqli_prepare($conn, "SELECT id, username, password FROM register WHERE username = ? LIMIT 1");
+        if ($memberStmt) {
+            mysqli_stmt_bind_param($memberStmt, "s", $username);
+            mysqli_stmt_execute($memberStmt);
+            $memberAccount = mysqli_fetch_assoc(mysqli_stmt_get_result($memberStmt));
+
+            if ($memberAccount && password_verify($password, $memberAccount["password"])) {
+                session_regenerate_id(true);
+                $_SESSION["user_id"] = (int)$memberAccount["id"];
+                $_SESSION["username"] = $memberAccount["username"];
+                $_SESSION["role"] = "user";
+                header("Location: index.php");
+                exit;
+            }
         }
     }
+
     $error = "The username or password is incorrect.";
 }
 ?>
