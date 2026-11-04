@@ -76,13 +76,13 @@
             </div>
 
             <div class="explore-tool-links" id="tools" aria-label="More ways to explore plants">
-                <a href="identify.html" class="explore-tool-link">
+                <a href="identify.php" class="explore-tool-link">
                     <span class="explore-tool-number">01 / Identify</span>
                     <strong>Found a plant you don't know?</strong>
                     <span>See how photo identification will help you discover its name.</span>
                     <b aria-hidden="true">↗</b>
                 </a>
-                <a href="contribute.html" class="explore-tool-link">
+                <a href="contribute.php" class="explore-tool-link">
                     <span class="explore-tool-number">02 / Contribute</span>
                     <strong>Know a plant worth sharing?</strong>
                     <span>Add a known plant to the Plantify collection.</span>
