@@ -4,6 +4,7 @@
     mysqli_report(MYSQLI_REPORT_OFF);
     mysqli_query($conn, "CREATE TABLE IF NOT EXISTS enquiry (id INT AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, email VARCHAR(254) NOT NULL, phone VARCHAR(11) NOT NULL, family VARCHAR(40) NULL, genus VARCHAR(40) NULL, species VARCHAR(80) NULL, comment TEXT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, is_read TINYINT(1) NOT NULL DEFAULT 0, admin_reply TEXT NULL, replied_at DATETIME NULL)");
     $enquiryMessage = "";
+    $enquirySuccess = false;
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $first = trim((string)($_POST["firstname"] ?? "")); $last = trim((string)($_POST["lastname"] ?? ""));
         $email = trim((string)($_POST["email"] ?? "")); $phone = trim((string)($_POST["phone"] ?? ""));
@@ -14,7 +15,8 @@
         } else {
             $stmt = mysqli_prepare($conn, "INSERT INTO enquiry (firstname, lastname, email, phone, family, genus, species, comment) VALUES (?, ?, ?, ?, NULLIF(?,''), NULLIF(?,''), NULLIF(?,''), ?)");
             mysqli_stmt_bind_param($stmt, "ssssssss", $first, $last, $email, $phone, $family, $genus, $species, $comment);
-            $enquiryMessage = mysqli_stmt_execute($stmt) ? "Your enquiry was sent. Thank you." : "Your enquiry could not be saved. Please try again.";
+            $enquirySuccess = mysqli_stmt_execute($stmt);
+            $enquiryMessage = $enquirySuccess ? "Your enquiry was sent. Thank you." : "Your enquiry could not be saved. Please try again.";
         }
     }
     ?>
@@ -27,7 +29,7 @@
 	<meta name="description" content="Demonstrates some basic HTML form elements" />
 	<meta name="keywords" content="HTML, Form, tags" />
 	<meta name="author" content="Chin Jii Ann"  />
-	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/style.css?v=enquiry-popup-1">
 	<title>Enquiry Form</title>
 </head>
 <body class="enquiry-page"> 
@@ -36,7 +38,7 @@
         ?>
 	<form id="form" method="post" class="enquiry-form">
 		<h2>Got any enquiries?<br>Please drop them below.</h2>
-        <?php if ($enquiryMessage !== ""): ?><p class="admin-message" role="status"><?= htmlspecialchars($enquiryMessage, ENT_QUOTES, "UTF-8") ?></p><?php endif; ?>
+        <?php if ($enquiryMessage !== "" && !$enquirySuccess): ?><p class="admin-error" role="alert"><?= htmlspecialchars($enquiryMessage, ENT_QUOTES, "UTF-8") ?></p><?php endif; ?>
 		<fieldset>
 			<legend>Username</legend>
 			<p>
@@ -107,6 +109,15 @@
 		<input type="submit" value="Submit">
 		<input type="reset" value="Reset">
 	</form>
+    <?php if ($enquirySuccess): ?>
+        <div class="contribution-success-backdrop">
+            <section class="contribution-success-popup" role="dialog" aria-modal="true" aria-labelledby="enquiry-success-title">
+                <h2 id="enquiry-success-title">Enquiry sent</h2>
+                <p><?= htmlspecialchars($enquiryMessage, ENT_QUOTES, "UTF-8") ?></p>
+                <a class="contribution-success-ok" href="enquiry.php">OK</a>
+            </section>
+        </div>
+    <?php endif; ?>
 	<?php
         include("footer.php");
         ?>

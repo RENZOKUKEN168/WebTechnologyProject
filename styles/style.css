@@ -3942,3 +3942,11 @@ html.home-document {
 .member-bulk-controls .bulk-role-help { color: #53665c; }
 .member-management .member-select { width: 1.15rem; height: 1.15rem; accent-color: #17634c; }
 @media (max-width: 760px) { .member-bulk-controls { align-items: stretch; flex-direction: column; } .member-bulk-controls select { width: 100%; } }
+
+/* Success popup for the plant contribution form. */
+.contribution-success-backdrop { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 1rem; background: rgba(11, 35, 26, .62); }
+.contribution-success-popup { width: min(100%, 560px); padding: clamp(1.5rem, 5vw, 2.5rem); border: 1px solid #dbe4dd; border-radius: 1rem; background: #fff; box-shadow: 0 1rem 3rem rgba(0, 0, 0, .25); text-align: center; }
+.contribution-success-popup h2 { margin-top: 0; color: #164a37; }
+.contribution-success-popup p { margin: 1rem 0 1.5rem; }
+.contribution-success-ok { display: inline-block; padding: .7rem 1.5rem; border-radius: .45rem; background: #17634c; color: #fff; font-weight: 700; text-decoration: none; }
+.contribution-success-ok:hover, .contribution-success-ok:focus-visible { background: #124b3b; }

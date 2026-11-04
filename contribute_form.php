@@ -4,6 +4,7 @@
     mysqli_report(MYSQLI_REPORT_OFF);
     mysqli_query($conn, "CREATE TABLE IF NOT EXISTS contributions (id INT AUTO_INCREMENT PRIMARY KEY, contributor VARCHAR(25) NOT NULL, plantname VARCHAR(25) NOT NULL, photos TEXT NULL, comments TEXT NULL, status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, committed_at DATETIME NULL)");
     $formMessage = "";
+    $submissionSuccess = false;
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $contributor = trim((string)($_POST["contributor"] ?? ""));
         $plantname = trim((string)($_POST["plantname"] ?? ""));
@@ -34,7 +35,8 @@
                 $photos = json_encode($savedPhotos, JSON_UNESCAPED_SLASHES);
                 $stmt = mysqli_prepare($conn, "INSERT INTO contributions (contributor, plantname, photos, comments, status) VALUES (?, ?, ?, ?, 'pending')");
                 mysqli_stmt_bind_param($stmt, "ssss", $contributor, $plantname, $photos, $comments);
-                $formMessage = mysqli_stmt_execute($stmt) ? "Thank you. Your plant submission is waiting for admin review." : "Your submission could not be saved. Please try again.";
+                $submissionSuccess = mysqli_stmt_execute($stmt);
+                $formMessage = $submissionSuccess ? "Thank you. Your plant submission is waiting for admin review." : "Your submission could not be saved. Please try again.";
             }
         }
     }
@@ -50,7 +52,7 @@
     <meta name="author" content="Darren">
     <title>Contribution Form</title>
 
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css?v=contribute-popup-1">
 </head>
 
 <body class="contribute-page">
@@ -62,7 +64,7 @@
     <main id="contribute-form">
         <h2>Plant Contribution Form</h2>
         <p class="form-intro">Share a plant you have discovered with the Plantify community.</p>
-        <?php if ($formMessage !== ""): ?><p class="admin-message" role="status"><?= htmlspecialchars($formMessage, ENT_QUOTES, "UTF-8") ?></p><?php endif; ?>
+        <?php if ($formMessage !== "" && !$submissionSuccess): ?><p class="admin-error" role="alert"><?= htmlspecialchars($formMessage, ENT_QUOTES, "UTF-8") ?></p><?php endif; ?>
 
         <form id="form" action="contribute_form.php" method="post" enctype="multipart/form-data">
 
@@ -120,6 +122,16 @@
 
         </form>
     </main>
+
+    <?php if ($submissionSuccess): ?>
+        <div class="contribution-success-backdrop">
+            <section class="contribution-success-popup" role="dialog" aria-modal="true" aria-labelledby="contribution-success-title">
+                <h2 id="contribution-success-title">Contribution submitted</h2>
+                <p><?= htmlspecialchars($formMessage, ENT_QUOTES, "UTF-8") ?></p>
+                <a class="contribution-success-ok" href="contribute_form.php">OK</a>
+            </section>
+        </div>
+    <?php endif; ?>
 
     <?php
         include("footer.php");
