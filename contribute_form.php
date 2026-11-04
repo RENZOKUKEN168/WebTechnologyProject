@@ -17,14 +17,20 @@
             if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
             $allowedTypes = ["image/jpeg" => "jpg", "image/png" => "png", "image/gif" => "gif", "image/webp" => "webp"];
             $uploadError = "";
-            if (isset($_FILES["photo"]) && is_array($_FILES["photo"]["name"])) {
+            if (isset($_FILES["photo"]) && isset($_FILES["photo"]["name"])) {
+                $photoFiles = $_FILES["photo"];
+                if (!is_array($photoFiles["name"])) {
+                    foreach (["name", "type", "tmp_name", "error", "size"] as $fileField) {
+                        $photoFiles[$fileField] = [$photoFiles[$fileField] ?? ""];
+                    }
+                }
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
-                foreach ($_FILES["photo"]["name"] as $i => $originalName) {
-                    $error = $_FILES["photo"]["error"][$i] ?? UPLOAD_ERR_NO_FILE;
+                foreach ($photoFiles["name"] as $i => $originalName) {
+                    $error = $photoFiles["error"][$i] ?? UPLOAD_ERR_NO_FILE;
                     if ($error === UPLOAD_ERR_NO_FILE) continue;
-                    $tmp = $_FILES["photo"]["tmp_name"][$i] ?? "";
+                    $tmp = $photoFiles["tmp_name"][$i] ?? "";
                     $mime = $tmp !== "" ? $finfo->file($tmp) : false;
-                    if ($error !== UPLOAD_ERR_OK || !isset($allowedTypes[$mime]) || (int)($_FILES["photo"]["size"][$i] ?? 0) > 5 * 1024 * 1024) { $uploadError = "Use JPG, PNG, GIF or WebP photos up to 5 MB each."; break; }
+                    if ($error !== UPLOAD_ERR_OK || !isset($allowedTypes[$mime]) || (int)($photoFiles["size"][$i] ?? 0) > 5 * 1024 * 1024) { $uploadError = "Use JPG, PNG, GIF or WebP photos up to 5 MB each."; break; }
                     $filename = bin2hex(random_bytes(12)) . "." . $allowedTypes[$mime];
                     if (!move_uploaded_file($tmp, $uploadDir . "/" . $filename)) { $uploadError = "A photo could not be saved."; break; }
                     $savedPhotos[] = "uploads/contributions/" . $filename;
@@ -52,7 +58,7 @@
     <meta name="author" content="Darren">
     <title>Contribution Form</title>
 
-    <link rel="stylesheet" href="styles/style.css?v=contribute-popup-1">
+    <link rel="stylesheet" href="styles/style.css?v=contribute-popup-2">
 </head>
 
 <body class="contribute-page">
@@ -99,8 +105,8 @@
                 <label for="photo">Upload Plant Photo(s):</label><br>
                 <input type="file"
                     id="photo"
-                    name="photo"
-                    accept="image/*"
+                    name="photo[]"
+                    accept="image/jpeg,image/png,image/gif,image/webp"
                     multiple>
             </p>
 
