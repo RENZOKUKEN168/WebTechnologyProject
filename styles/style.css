@@ -3950,3 +3950,7 @@ html.home-document {
 .contribution-success-popup p { margin: 1rem 0 1.5rem; }
 .contribution-success-ok { display: inline-block; padding: .7rem 1.5rem; border-radius: .45rem; background: #17634c; color: #fff; font-weight: 700; text-decoration: none; }
 .contribution-success-ok:hover, .contribution-success-ok:focus-visible { background: #124b3b; }
+
+/* Show review save only after a new status is chosen. */
+.review-status-form .review-save-status { display: none; }
+.review-status-form:has(select:valid) .review-save-status { display: inline-block; }
