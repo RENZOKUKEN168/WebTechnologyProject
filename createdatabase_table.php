@@ -4,10 +4,15 @@ $username = "root";
 $password = "";
 $dbname = "plantify_db";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+if (!mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS $dbname")) {
+    die("Error creating database: " . mysqli_error($conn));
+}
+mysqli_select_db($conn, $dbname);
 
 $tables = [
     "register" => "CREATE TABLE IF NOT EXISTS register (
@@ -58,10 +63,8 @@ $tables = [
 ];
 
 foreach ($tables as $name => $sql) {
-    if (mysqli_query($conn, $sql)) {
-        echo "Table '$name' is ready.<br>";
-    } else {
-        echo "Error creating '$name': " . mysqli_error($conn) . "<br>";
+    if (!mysqli_query($conn, $sql)) {
+        die("Error creating $name table: " . mysqli_error($conn));
     }
 }
 
