@@ -55,4 +55,15 @@ $tables = [
     comment TEXT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )"
-]
+];
+
+foreach ($tables as $name => $sql) {
+    if (mysqli_query($conn, $sql)) {
+        echo "Table '$name' is ready.<br>";
+    } else {
+        echo "Error creating '$name': " . mysqli_error($conn) . "<br>";
+    }
+}
+
+mysqli_close($conn);
+?>

@@ -9,7 +9,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "CREATE TABLE IF NOT EXISTS register (
+$sql = "CREATE TABLE IF NOT EXISTS contribute (
     id INT AUTO_INCREMENT PRIMARY KEY,
     contributor VARCHAR(25) NOT NULL,
     plantname VARCHAR(25) NOT NULL,
