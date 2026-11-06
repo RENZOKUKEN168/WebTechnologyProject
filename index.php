@@ -1,5 +1,6 @@
 ﻿<?php 
     session_start();
+    include ("createdatabase_table.php");
     ?>
 <!DOCTYPE html>
 <html lang="en" class="home-document">
