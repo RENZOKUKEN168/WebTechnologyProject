@@ -17,7 +17,10 @@
     <?php
         include("header.php")
         ?>
-    <?php include 'connection.php'; ?>
+    <?php 
+        include 'connection.php';
+        include 'createdatabase_table.php';
+        ?>
     
 
 <form id="form" method="post" action="register_process.php" class="register-form">
