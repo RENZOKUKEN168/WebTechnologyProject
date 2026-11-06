@@ -9,20 +9,6 @@ if (($_SESSION["role"] ?? "") !== "admin" || empty($_SESSION["user_id"])) {
 include "connection.php";
 mysqli_report(MYSQLI_REPORT_OFF);
 
-mysqli_query(
-    $conn,
-    "CREATE TABLE IF NOT EXISTS contributions (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        contributor VARCHAR(25) NOT NULL,
-        plantname VARCHAR(25) NOT NULL,
-        photos TEXT NULL,
-        comments TEXT NULL,
-        status ENUM('pending', 'approved', 'rejected') NOT NULL DEFAULT 'pending',
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        committed_at DATETIME NULL
-    )"
-);
-
 function plantEscape($value): string
 {
     return htmlspecialchars((string)$value, ENT_QUOTES, "UTF-8");
@@ -34,18 +20,6 @@ if (empty($_SESSION["admin_csrf"])) {
 
 $csrf = $_SESSION["admin_csrf"];
 $message = "";
-
-$hasCommitted = mysqli_query(
-    $conn,
-    "SHOW COLUMNS FROM contributions LIKE 'committed_at'"
-);
-
-if ($hasCommitted && mysqli_num_rows($hasCommitted) === 0) {
-    mysqli_query(
-        $conn,
-        "ALTER TABLE contributions ADD COLUMN committed_at DATETIME NULL"
-    );
-}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (
@@ -67,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $statement = mysqli_prepare(
                 $conn,
-                "UPDATE contributions SET status = ? WHERE id = ?"
+                "UPDATE contribute SET status = ? WHERE id = ?"
             );
             mysqli_stmt_bind_param($statement, "si", $status, $id);
             $message = mysqli_stmt_execute($statement)
@@ -77,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } elseif ($action === "commit") {
         $statement = mysqli_prepare(
             $conn,
-            "UPDATE contributions
+            "UPDATE contribute
              SET committed_at = NOW()
              WHERE id = ? AND status = 'approved' AND committed_at IS NULL"
         );
@@ -89,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } elseif ($action === "delete") {
         $findStatement = mysqli_prepare(
             $conn,
-            "SELECT photos FROM contributions WHERE id = ?"
+            "SELECT photos FROM contribute WHERE id = ?"
         );
         mysqli_stmt_bind_param($findStatement, "i", $id);
         mysqli_stmt_execute($findStatement);
@@ -97,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $deleteStatement = mysqli_prepare(
             $conn,
-            "DELETE FROM contributions WHERE id = ?"
+            "DELETE FROM contribute WHERE id = ?"
         );
         mysqli_stmt_bind_param($deleteStatement, "i", $id);
         $message = mysqli_stmt_execute($deleteStatement)
@@ -138,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $statement = mysqli_prepare(
                 $conn,
-                "UPDATE contributions
+                "UPDATE contribute
                  SET plantname = ?, contributor = ?, comments = ?
                  WHERE id = ?"
             );
@@ -156,7 +130,7 @@ if (isset($_GET["edit"])) {
     $id = (int)$_GET["edit"];
     $statement = mysqli_prepare(
         $conn,
-        "SELECT * FROM contributions WHERE id = ?"
+        "SELECT * FROM contribute WHERE id = ?"
     );
     mysqli_stmt_bind_param($statement, "i", $id);
     mysqli_stmt_execute($statement);
@@ -166,7 +140,7 @@ if (isset($_GET["edit"])) {
 $rows = mysqli_query(
     $conn,
     "SELECT id, contributor, plantname, photos, comments, status, created_at, committed_at
-     FROM contributions
+     FROM contribute
      ORDER BY created_at DESC, id DESC"
 );
 ?>

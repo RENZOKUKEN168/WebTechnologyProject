@@ -9,25 +9,6 @@ if (($_SESSION["role"] ?? "") !== "admin" || empty($_SESSION["user_id"])) {
 include "connection.php";
 mysqli_report(MYSQLI_REPORT_OFF);
 
-mysqli_query(
-    $conn,
-    "CREATE TABLE IF NOT EXISTS enquiry (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        firstname VARCHAR(25) NOT NULL,
-        lastname VARCHAR(25) NOT NULL,
-        email VARCHAR(254) NOT NULL,
-        phone VARCHAR(11) NOT NULL,
-        family VARCHAR(40) NULL,
-        genus VARCHAR(40) NULL,
-        species VARCHAR(80) NULL,
-        comment TEXT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        is_read TINYINT(1) NOT NULL DEFAULT 0,
-        admin_reply TEXT NULL,
-        replied_at DATETIME NULL
-    )"
-);
-
 function enquiryEscape($value): string
 {
     return htmlspecialchars((string)$value, ENT_QUOTES, "UTF-8");
@@ -41,28 +22,6 @@ function enquiryToken(): string
 
     return $_SESSION["admin_csrf"];
 }
-
-function ensureEnquiryColumns(mysqli $conn): void
-{
-    $columns = [
-        "is_read" => "ALTER TABLE enquiry ADD COLUMN is_read TINYINT(1) NOT NULL DEFAULT 0",
-        "admin_reply" => "ALTER TABLE enquiry ADD COLUMN admin_reply TEXT NULL",
-        "replied_at" => "ALTER TABLE enquiry ADD COLUMN replied_at DATETIME NULL",
-    ];
-
-    foreach ($columns as $column => $sql) {
-        $check = mysqli_query(
-            $conn,
-            "SHOW COLUMNS FROM enquiry LIKE '" . $column . "'"
-        );
-
-        if ($check && mysqli_num_rows($check) === 0) {
-            mysqli_query($conn, $sql);
-        }
-    }
-}
-
-ensureEnquiryColumns($conn);
 
 $message = "";
 

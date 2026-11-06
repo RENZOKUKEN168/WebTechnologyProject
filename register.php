@@ -1,5 +1,6 @@
 ﻿<?php
     session_start();
+    include "createdatabase_table.php";
     ?>
 
 <!DOCTYPE html>
@@ -18,8 +19,6 @@
         include("header.php")
         ?>
     <?php 
-        include 'connection.php';
-        include 'createdatabase_table.php';
         ?>
     
 

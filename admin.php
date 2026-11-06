@@ -142,8 +142,8 @@ if (isset($_GET["edit_user"])) {
     $userEdit = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt)) ?: null;
 }
 $states = ["Johor","Kedah","Kelantan","Melaka","Negeri Sembilan","Pahang","Penang","Perak","Perlis","Sabah","Sarawak","Selangor","Terengganu","Kuala Lumpur","Labuan","Putrajaya"];
-$submissionCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contributions"))["total"] ?? 0);
-$pendingCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contributions WHERE status='pending'"))["total"] ?? 0);
+$submissionCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contribute"))["total"] ?? 0);
+$pendingCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contribute WHERE status='pending'"))["total"] ?? 0);
 $userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM register"))["total"] ?? 0);
 ?>
 <!DOCTYPE html>
@@ -177,7 +177,7 @@ $userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS to
                     <a class="admin-button" href="view_contribution_form.php">Open review page</a>
                 </div>
                 <?php
-                $rows = mysqli_query($conn, "SELECT id, contributor, plantname, photos, comments, status, created_at FROM contributions ORDER BY created_at DESC, id DESC LIMIT 5");
+                $rows = mysqli_query($conn, "SELECT id, contributor, plantname, photos, comments, status, created_at FROM contribute ORDER BY created_at DESC, id DESC LIMIT 5");
                 ?>
                 <?php if ($rows && mysqli_num_rows($rows) > 0): ?>
                     <div class="admin-table-wrap"><table class="admin-table">
