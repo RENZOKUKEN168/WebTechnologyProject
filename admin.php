@@ -1,19 +1,7 @@
 <?php
 session_start();
-function plantifySetupNotice(string $detail): never
-{
-    http_response_code(503);
-    $message = htmlspecialchars($detail, ENT_QUOTES, "UTF-8");
-    echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Plantify database required</title><link rel="stylesheet" href="styles/style.css?v=admin-quick-view-1"></head><body class="admin-page"><main class="admin-shell"><h1>Plantify database setup required</h1><p class="admin-error">' . $message . '</p><ol><li>Start Apache and MySQL from XAMPP.</li><li>Open phpMyAdmin and create the Plantify database tables and admin account there.</li></ol><p>Then return to <a href="login.php">login</a>.</p></main></body></html>';
-    exit;
-}try {
-    require "connection.php";
-} catch (mysqli_sql_exception $exception) {
-    $detail = (int)$exception->getCode() === 1049
-        ? "The Plantify database has not been initialized yet."
-        : "Plantify could not connect to MySQL. Check the XAMPP service.";
-    plantifySetupNotice($detail);
-}
+require "createdatabase_table.php";
+require "connection.php";
 mysqli_report(MYSQLI_REPORT_OFF);
 
 if (($_SESSION["role"] ?? "") !== "admin" || empty($_SESSION["user_id"])) {

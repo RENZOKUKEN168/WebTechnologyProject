@@ -15,6 +15,12 @@ if (!mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS $dbname")) {
 mysqli_select_db($conn, $dbname);
 
 $tables = [
+    "admin" => "CREATE TABLE IF NOT EXISTS admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+    )",
+
     "register" => "CREATE TABLE IF NOT EXISTS register (
     id INT AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(25) NOT NULL,
@@ -66,6 +72,10 @@ foreach ($tables as $name => $sql) {
     if (!mysqli_query($conn, $sql)) {
         die("Error creating $name table: " . mysqli_error($conn));
     }
+}
+
+if (!mysqli_query($conn, "INSERT IGNORE INTO admin (username, password) VALUES ('admin', 'admin')")) {
+    die("Error creating default admin account: " . mysqli_error($conn));
 }
 
 mysqli_close($conn);
