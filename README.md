@@ -44,35 +44,22 @@ Plantify is a responsive website prototype for exploring Malaysian plant familie
    ```
 
 2. Start **Apache** and **MySQL** in XAMPP.
-3. Open phpMyAdmin and create a database named `plantify_db`.
-4. Check `connection.php`. Its current local settings are host `localhost`, user `root`, an empty password, and database `plantify_db`. Update these values if your XAMPP configuration differs.
-5. Create the `register` account table by opening `http://localhost/Plantify/register_createtable.php` once.
-6. The login system requires a `role` column. If the column is not already present, run this once in phpMyAdmin's SQL tab:
-7. Login by admin: 
-   Username : admin
-   Password : admin
-
-   ```sql
-   ALTER TABLE register
-   ADD COLUMN role ENUM('user', 'admin') NOT NULL DEFAULT 'user';
-   ```
-
-   Skip this step if `register` already has a `role` column.
-7. In phpMyAdmin, create the main admin account with username `admin`, password `admin`, and role `admin`. The account table also requires the profile fields defined in `register_createtable.php`.
-8. Open the website at:
+3. Check `connection.php`. Its current local settings are host `localhost`, user `root`, an empty password, and database `plantify_db`. Update these values if your XAMPP configuration differs.
+4. Open the website at:
 
    ```text
    http://localhost/Plantify/index.php
    ```
 
-   Use `http://localhost/Plantify/login.php` to sign in. The contribution and enquiry tables are created by their respective form pages when first opened. Admin links are available after signing in with an account whose role is `admin`.
+   `createdatabase_table.php` creates `plantify_db` and all required tables on the first request. It also creates the default admin account: username `admin`, password `admin`. Use `http://localhost/Plantify/login.php` to sign in.
 
 ## Database Tables
 
 | Table | Purpose |
 | --- | --- |
 | `register` | Member details, login credentials and `user`/`admin` role. |
-| `contributions` | Plant submissions, optional photo paths, comments, review status, submission date and publication date. |
+| `contribute` | Plant submissions, optional photo paths, comments, review status, submission date and publication date. |
+| `admin` | Admin login credentials. |
 | `enquiry` | Enquiry contact details, message, read status, saved admin reply and dates. |
 
 ## Main Project Files

@@ -1,8 +1,8 @@
 <?php
     session_start();
+    include "createdatabase_table.php";
     require "connection.php";
     mysqli_report(MYSQLI_REPORT_OFF);
-    mysqli_query($conn, "CREATE TABLE IF NOT EXISTS enquiry (id INT AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, email VARCHAR(254) NOT NULL, phone VARCHAR(11) NOT NULL, family VARCHAR(40) NULL, genus VARCHAR(40) NULL, species VARCHAR(80) NULL, comment TEXT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, is_read TINYINT(1) NOT NULL DEFAULT 0, admin_reply TEXT NULL, replied_at DATETIME NULL)");
     $enquiryMessage = "";
     $enquirySuccess = false;
     if ($_SERVER["REQUEST_METHOD"] === "POST") {

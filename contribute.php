@@ -1,11 +1,9 @@
 <?php
     session_start();
+    include "createdatabase_table.php";
     require "connection.php";
     mysqli_report(MYSQLI_REPORT_OFF);
-    mysqli_query($conn, "CREATE TABLE IF NOT EXISTS contributions (id INT AUTO_INCREMENT PRIMARY KEY, contributor VARCHAR(25) NOT NULL, plantname VARCHAR(25) NOT NULL, photos TEXT NULL, comments TEXT NULL, status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, committed_at DATETIME NULL)");
-    $hasCommitted = mysqli_query($conn, "SHOW COLUMNS FROM contributions LIKE 'committed_at'");
-    if ($hasCommitted && mysqli_num_rows($hasCommitted) === 0) mysqli_query($conn, "ALTER TABLE contributions ADD COLUMN committed_at DATETIME NULL");
-    $publicContributions = mysqli_query($conn, "SELECT contributor, plantname, photos, comments FROM contributions WHERE committed_at IS NOT NULL ORDER BY committed_at DESC");
+    $publicContributions = mysqli_query($conn, "SELECT contributor, plantname, photos, comments FROM contribute WHERE committed_at IS NOT NULL ORDER BY committed_at DESC");
     ?>
 <!DOCTYPE html>
 <html lang="en">

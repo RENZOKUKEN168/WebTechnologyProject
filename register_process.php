@@ -1,4 +1,5 @@
 <?php
+	include "createdatabase_table.php";
 	$servername = "localhost";
 	$username   = "root";
 	$password   = "";

@@ -1,8 +1,8 @@
 <?php
     session_start();
+    include "createdatabase_table.php";
     require "connection.php";
     mysqli_report(MYSQLI_REPORT_OFF);
-    mysqli_query($conn, "CREATE TABLE IF NOT EXISTS contributions (id INT AUTO_INCREMENT PRIMARY KEY, contributor VARCHAR(25) NOT NULL, plantname VARCHAR(25) NOT NULL, photos TEXT NULL, comments TEXT NULL, status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending', created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, committed_at DATETIME NULL)");
     $formMessage = "";
     $submissionSuccess = false;
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -39,7 +39,7 @@
             if ($uploadError !== "") $formMessage = $uploadError;
             else {
                 $photos = json_encode($savedPhotos, JSON_UNESCAPED_SLASHES);
-                $stmt = mysqli_prepare($conn, "INSERT INTO contributions (contributor, plantname, photos, comments, status) VALUES (?, ?, ?, ?, 'pending')");
+                $stmt = mysqli_prepare($conn, "INSERT INTO contribute (contributor, plantname, photos, comments, status) VALUES (?, ?, ?, ?, 'pending')");
                 mysqli_stmt_bind_param($stmt, "ssss", $contributor, $plantname, $photos, $comments);
                 $submissionSuccess = mysqli_stmt_execute($stmt);
                 $formMessage = $submissionSuccess ? "Thank you. Your plant submission is waiting for admin review." : "Your submission could not be saved. Please try again.";

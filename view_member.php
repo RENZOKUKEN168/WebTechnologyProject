@@ -4,6 +4,7 @@ if (($_SESSION["role"] ?? "") !== "admin" || empty($_SESSION["user_id"])) {
     header("Location: login.php");
     exit;
 }
+
 require "connection.php";
 mysqli_report(MYSQLI_REPORT_OFF);
 if (!isset($_SESSION["auth_source"])) {
