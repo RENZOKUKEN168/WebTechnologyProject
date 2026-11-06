@@ -1,7 +1,7 @@
 <?php
 session_start();
-require "createdatabase_table.php";
-require "connection.php";
+include "createdatabase_table.php";
+include "connection.php";
 mysqli_report(MYSQLI_REPORT_OFF);
 
 if (($_SESSION["role"] ?? "") !== "admin" || empty($_SESSION["user_id"])) {
