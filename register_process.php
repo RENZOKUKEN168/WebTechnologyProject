@@ -119,7 +119,7 @@ mysqli_close($conn);
 
 		<h2>Plantify Registration Confirmation page</h2>
 
-		<fieldset>
+		<fieldset class="register-form">
 			<legend>Your Details</legend>
 			<p>Welcome <?php echo htmlspecialchars($firstname) . ' ' . htmlspecialchars($lastname); ?></p>
 			<p>Your account has been registered. Your details are as followed: </p>
@@ -133,7 +133,7 @@ mysqli_close($conn);
 
 		<h2>Registration Failed</h2>
 
-		<fieldset>
+		<fieldset class="register-form">
 			<legend>Please fix the following</legend>
 			<ul>
 				<?php foreach ($errors as $error): ?>
