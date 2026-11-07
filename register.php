@@ -17,10 +17,7 @@
 <body class="register-page">
     <?php
         include("header.php")
-        ?>
-    <?php 
-        ?>
-    
+        ?>    
 
 <form id="form" method="post" action="register_process.php" class="register-form">
     <h2>Create an Account</h2>
