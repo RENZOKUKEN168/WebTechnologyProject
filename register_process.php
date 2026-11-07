@@ -1,23 +1,13 @@
 <?php
 	session_start();
-	require "connection.php";
 	include "createdatabase_table.php";
-	$servername = "localhost";
-	$username   = "root";
-	$password   = "";
-	$dbname     = "plantify_db";
-
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
+	require "connection.php";
 
 	$firstname      = trim($_POST["firstname"] ?? "");
 	$lastname       = trim($_POST["lastname"] ?? "");
 	$phone          = trim($_POST["phone"] ?? "");
 	$username       = trim($_POST["username"] ?? "");
-	$password_hash  = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	$password       = $_POST['password'] ?? "";
     $street_address = trim($_POST["street_address"] ?? "");
 	$city           = trim($_POST["city"] ?? "");
 	$state          = trim($_POST["state"] ?? "");
@@ -38,7 +28,7 @@
 	if ($username === "" || mb_strlen($username) > 50) {
 		$errors[] = "Username/email is required and must be 50 characters or fewer.";
 	}
-	if (strlen($password) < 8 || strlen($password_hash) > 20) {
+	if (strlen($password) < 8 || strlen($password) > 20) {
 		$errors[] = "Password must be between 8 and 20 characters.";
 	}
 	if ($street_address === "" || mb_strlen($street_address) > 40) {
@@ -94,27 +84,29 @@
 	<meta charset="utf-8"/>
 	<meta name="description" content="Registration confirmation page" />
 	<meta name="keywords"    content="register, confirmation, plantify" />
-	<title>Registration Coonfirmation Page</title>
+	<title>Registration Confirmation Page</title>
+
+	<link rel="stylesheet" href="styles/style.css">
 </head>	
-<body>
+<body class="register-page">
 <?php include ("header.php"); ?>	
 	<h1>Plantify</h1>
 	<?php if ($success): ?>
 	<h2>Plantify Registration Confirmation page</h2>
 
-	<fieldset>
+	<fieldset class="register-form">
 		<legend>Your Details</legend>
 		 <p>Welcome <?php echo htmlspecialchars($firstname) . ' ' . htmlspecialchars($lastname); ?></p>
 		 <p>Your account has been registered. Your details are as followed: </p>
 		 <p>Username: <?php echo htmlspecialchars($username); ?></p>
-		 <p>Phone number: <?php htmlspecialchars($phone); ?></p>
+		 <p>Phone number: <?php echo htmlspecialchars($phone); ?></p>
 	</fieldset>
 	<p><a href="login.php">Sign in</a></p>
 
 	<?php else: ?>
 
 	<h2>Registration Failed</h2>
-	<fieldset>
+	<fieldset class="register-form">
 			<legend>Please fix the following</legend>
 			<ul>
 				<?php foreach ($errors as $error): ?>
