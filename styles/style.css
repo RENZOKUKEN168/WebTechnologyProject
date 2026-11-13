@@ -4140,7 +4140,7 @@ html.home-document {
 
 /* Shared Plantify admin navigation and review pages */
 .admin-page { min-height: 100vh; background: #f2f6f0; color: #173f32; }
-.admin-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem clamp(1rem, 4vw, 3rem); background: #124b3b; color: #fff; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem clamp(1rem, 4vw, 3rem); background: #1d633d; color: #fff; }
 .admin-header a { color: #fff; }
 .admin-brand { display: block; flex: 0 0 200px; font-size: 1.25rem; font-weight: 700; text-decoration: none; }
 .admin-brand img { display: block; width: 200px; height: auto; }
@@ -4157,7 +4157,7 @@ html.home-document {
 .admin-summary strong, .admin-summary span { display: block; }
 .admin-summary strong { font-size: 1.7rem; }
 .admin-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0; }
-.admin-tabs a, .admin-button, .admin-actions button, .admin-row-actions button { display: inline-block; padding: .65rem .9rem; border: 0; border-radius: .35rem; background: #dbe9df; color: #124b3b; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+.admin-tabs a, .admin-button, .admin-actions button, .admin-row-actions button { display: inline-block; padding: .65rem .9rem; border: 0; border-radius: .35rem; background: #dbe9df; color: #1d633d; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
 .admin-button, .admin-actions button { background: #17634c; color: #fff; }
 .admin-card { padding: clamp(1rem, 3vw, 1.6rem); border-radius: .7rem; background: #fff; box-shadow: 0 2px 12px #173f3212; }
 .admin-section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
