@@ -36,7 +36,7 @@
 	 <?php
         include("header.php");
         ?>
-	<form id="form" method="post" class="enquiry-form">
+	<form id="form" method="post" action="enquiry_process.php" class="enquiry-form">
 		<h2>Got any enquiries?<br>Please drop them below.</h2>
         <?php if ($enquiryMessage !== "" && !$enquirySuccess): ?><p class="admin-error" role="alert"><?= htmlspecialchars($enquiryMessage, ENT_QUOTES, "UTF-8") ?></p><?php endif; ?>
 		<fieldset>
