@@ -31,9 +31,9 @@
         <aside class="classification-rail" id="rail">
             <p class="classification-rail-title">Plant<br>Levels</p>
             <nav aria-label="Plant classification pages">
-                <a href="families.html#families-list" aria-current="page">Families</a>
-                <a href="genera.html#genera-list">Genera</a>
-                <a href="species.html#species-list">Species</a>
+                <a href="families.php#families-list" aria-current="page">Families</a>
+                <a href="genera.php#genera-list">Genera</a>
+                <a href="species.php#species-list">Species</a>
             </nav>
         </aside>
         <section class="families-section" id="families-list" aria-labelledby="family-list-heading">
@@ -53,7 +53,7 @@
                     <div class="family-copy">
                         <p class="family-label"><a href="https://www.inaturalist.org/taxa/68691-Dipterocarpaceae" target="_blank" rel="noopener">Dipterocarp family</a></p><h3>Dipterocarpaceae</h3>
                         <p class="family-description">Many of Southeast Asia's tallest rainforest trees belong to this family. Dipterocarps are recognised for resinous wood and fruits with wing-like sepals.</p>
-                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.html#vatica-genus">Vatica</a> · <a href="genera.html#dipterocarpus-genus">Dipterocarpus</a></p>
+                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.php#vatica-genus">Vatica</a> · <a href="genera.php#dipterocarpus-genus">Dipterocarpus</a></p>
                         <a href="https://www.inaturalist.org/taxa/68691-Dipterocarpaceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
                         <small>Photo: Nôm / iNaturalist · CC BY-NC</small>
                     </div>
@@ -63,7 +63,7 @@
                     <div class="family-copy">
                         <p class="family-label"><a href="https://www.inaturalist.org/taxa/48809-Lauraceae" target="_blank" rel="noopener">Laurel family</a></p><h3>Lauraceae</h3>
                         <p class="family-description">Lauraceae consists mainly of aromatic evergreen trees and shrubs. Fragrant oils are often present in their leaves, bark and wood.</p>
-                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.html#actinodaphne-genus">Actinodaphne</a> · <a href="genera.html#endiandra-genus">Endiandra</a></p>
+                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.php#actinodaphne-genus">Actinodaphne</a> · <a href="genera.php#endiandra-genus">Endiandra</a></p>
                         <a href="https://www.inaturalist.org/taxa/48809-Lauraceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
                         <small>Photo: Ken-ichi Ueda / iNaturalist · CC BY</small>
                     </div>
@@ -73,7 +73,7 @@
                     <div class="family-copy">
                         <p class="family-label"><a href="https://www.inaturalist.org/taxa/62970-Burseraceae" target="_blank" rel="noopener">Torchwood family</a></p><h3>Burseraceae</h3>
                         <p class="family-description">These tropical trees and shrubs frequently have aromatic bark and resin-producing tissues. The family includes plants associated with frankincense and myrrh.</p>
-                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.html#canarium-genus">Canarium</a> · <a href="genera.html#dacryodes-genus">Dacryodes</a></p>
+                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.php#canarium-genus">Canarium</a> · <a href="genera.php#dacryodes-genus">Dacryodes</a></p>
                         <a href="https://www.inaturalist.org/taxa/62970-Burseraceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
                         <small>Photo: Kuklín / iNaturalist · CC BY-NC</small>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="family-copy">
                         <p class="family-label"><a href="https://www.inaturalist.org/taxa/71575-Myristicaceae" target="_blank" rel="noopener">Nutmeg family</a></p><h3>Myristicaceae</h3>
                         <p class="family-description">The Myristicaceae family are flowering plants local to Africa, Asia, Pacific Islands, and America. It is also known as the “nutmeg family”, due to the member “Myristica fragrans” which produces the spices of nutmeg and mace. Its widely known genera are Myristica in Asia and Virola in Neotropics.  </p>
-                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.html#horsfieldia-genus">Horsfieldia</a> · <a href="genera.html#knema-genus">Knema</a></p>
+                        <p class="family-genera"><strong>Selected genera:</strong> <a href="genera.php#horsfieldia-genus">Horsfieldia</a> · <a href="genera.php#knema-genus">Knema</a></p>
                         <a href="https://www.inaturalist.org/taxa/71575-Myristicaceae" target="_blank" rel="noopener">Explore on iNaturalist ↗</a>
                         <small>Photo: Nate Hartley / iNaturalist · CC BY-NC</small>
                     </div>
