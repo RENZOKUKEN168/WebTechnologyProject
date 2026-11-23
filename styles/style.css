@@ -231,6 +231,30 @@ header:has(.nav-explore:focus-within)::before {
     outline-offset: 4px;
 }
 
+.header-logout {
+    padding: 7px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header-logout:hover,
+.header-logout:focus-visible {
+    background: #f7faf6;
+    color: #1f4d36;
+    outline: none;
+}
+
+/* Make room for the Log out link without widening the header. */
+.header-right:has(.header-logout) input {
+    width: 115px;
+}
+
 .header-right input {
     width: 185px;
     padding: 9px 14px;
@@ -4295,3 +4319,10 @@ html.home-document {
 /* Show review save only after a new status is chosen. */
 .review-status-form .review-save-status { display: none; }
 .review-status-form:has(select:valid) .review-save-status { display: inline-block; }
+
+/* Keep the logged-in header on one row on phones. */
+@media (max-width: 480px) {
+    .header-right:has(.header-logout) { gap: 8px; }
+    .header-right:has(.header-logout) input { width: 64px; }
+    .header-logout { padding: 5px 10px; }
+}

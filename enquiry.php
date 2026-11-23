@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include "session.inc";
     include "createdatabase_table.php";
     require "connection.php";
     mysqli_report(MYSQLI_REPORT_OFF);

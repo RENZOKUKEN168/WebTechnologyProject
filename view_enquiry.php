@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "session.inc";
 
 if (($_SESSION["role"] ?? "") !== "admin" || empty($_SESSION["user_id"])) {
     header("Location: login.php");

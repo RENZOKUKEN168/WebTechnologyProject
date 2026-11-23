@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "session.inc";
 mysqli_report(MYSQLI_REPORT_OFF);
 include "createdatabase_table.php";
 @include "connection.php";
@@ -110,6 +110,9 @@ if (isset($conn) &&$conn instanceof mysqli) {
 
                 <?php if (isset($_GET["registered"])): ?>
                     <p class="admin-message">Account created. You can now sign in.</p>
+                <?php endif; ?>
+                <?php if (!empty($_SESSION["timed_out"])): unset($_SESSION["timed_out"]); ?>
+                    <p class="admin-error" role="alert">You were logged out after 30 minutes of inactivity. Please log in again.</p>
                 <?php endif; ?>
                 <?php if ($error !== ""): ?>
                     <p class="admin-error" role="alert"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></p>

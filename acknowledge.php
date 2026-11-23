@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    include "session.inc";
     ?>
 <!DOCTYPE html>
 <html lang="en">

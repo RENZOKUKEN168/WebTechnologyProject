@@ -1,4 +1,21 @@
 <?php
+    // The account button depends on who is logged in.
+    $accountHref = "login.php";
+    $accountLabel = "Login";
+    $accountImage = "images/user/unknown.png";
+    $logoutLink = "";
+    if (($_SESSION["role"] ?? "") === "admin") {
+        $accountHref = "admin.php";
+        $accountLabel = "Back to admin panel";
+    } elseif (!empty($_SESSION["user_id"])) {
+        $accountHref = "index.php";
+        $accountLabel = "Signed in as " . htmlspecialchars((string)($_SESSION["username"] ?? ""), ENT_QUOTES, "UTF-8");
+        $accountImage = htmlspecialchars((string)($_SESSION["profile_picture"] ?? $accountImage), ENT_QUOTES, "UTF-8");
+    }
+    if (!empty($_SESSION["user_id"])) {
+        $logoutLink = "<a class='header-logout' href='logout.php'>Log out</a>";
+    }
+
     echo "
     
     <header id=header>
@@ -31,9 +48,10 @@
 
         <div class='header-right'>
             <input type='search' aria-label='Search Plantify' placeholder='Search'>
-            <a class='header-account' href='login.php' aria-label='Login'>
-                <img src='images/user/unknown.png' alt='' width='44' height='44'>
+            <a class='header-account' href='$accountHref' aria-label='$accountLabel' title='$accountLabel'>
+                <img src='$accountImage' alt='' width='44' height='44'>
             </a>
+            $logoutLink
         </div>
     </header>";
 ?>

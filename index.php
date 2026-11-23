@@ -1,5 +1,5 @@
 ﻿<?php 
-    session_start();
+    include "session.inc";
     include ("createdatabase_table.php");
     ?>
 <!DOCTYPE html>
