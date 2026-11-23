@@ -3229,7 +3229,7 @@ html.home-document {
 .identify-page .identifier-hero-content {
     position: relative;
     z-index: 1;
-    width: min(100% - 72px, 1260px);
+    width: min(100% - 72px, 1600px);
     margin: 0 auto;
     padding: 80px 0 110px;
 }
@@ -3306,11 +3306,11 @@ html.home-document {
 
 
 .identify-page .identifier-workspace {
-    padding: clamp(65px, 8vw, 118px) 24px;
+    padding: clamp(65px, 8vw, 118px) clamp(20px, 3vw, 40px);
 }
 
 .identify-page .identifier-section-heading {
-    width: min(100%, 1200px);
+    width: min(100%, 1600px);
     margin: 0 auto 40px;
 }
 
@@ -3336,17 +3336,17 @@ html.home-document {
 .identify-page .identifier-layout {
     display: grid;
     grid-template-columns:
-        minmax(0, 1.75fr) minmax(280px, .88fr);
+        minmax(0, 2.6fr) minmax(260px, .75fr);
     gap: 28px;
-    width: min(100%, 1200px);
+    width: min(100%, 1600px);
     margin: 0 auto;
-    align-items: stretch;
+    align-items: start;
 }
 
 .identify-page .identifier-form-section,
 .identify-page .identifier-tips {
     min-width: 0;
-    padding: clamp(26px, 3.4vw, 52px);
+    padding: clamp(26px, 3vw, 46px);
     border: 1px solid #e0e8dd;
     border-radius: 18px;
     box-shadow: 0 17px 45px rgba(22, 64, 39, .06);
@@ -3507,6 +3507,33 @@ html.home-document {
     line-height: 1.65;
 }
 
+.identify-page #identify-results {
+    width: 100%;
+    margin-top: 38px;
+    gap: 24px;
+}
+
+.identify-page #identify-results .family-row {
+    grid-template-columns: minmax(220px, .72fr) minmax(0, 1.28fr);
+    min-height: 280px;
+}
+
+.identify-page #identify-results .family-image {
+    min-height: 260px;
+}
+
+.identify-page #identify-results .family-copy {
+    padding: clamp(22px, 2.5vw, 34px);
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+.identify-page #identify-results .family-copy h3 {
+    margin: 0 0 14px;
+    font-size: clamp(1.35rem, 1.9vw, 1.85rem);
+    line-height: 1.2;
+}
+
 /* Photography guide */
 
 .identify-page .identifier-tips h3 {
@@ -3552,7 +3579,7 @@ html.home-document {
 
 
 .identify-page .identifier-explore {
-    padding: clamp(65px, 8vw, 110px) 24px;
+    padding: clamp(65px, 8vw, 110px) clamp(20px, 3vw, 40px);
     background: #e7efe4;
 }
 
@@ -3560,7 +3587,7 @@ html.home-document {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
-    width: min(100%, 1200px);
+    width: min(100%, 1600px);
     margin: 0 auto;
 }
 
@@ -3655,9 +3682,9 @@ html.home-document {
         minmax(280px, 1fr) minmax(0, 1.65fr);
     gap: 46px;
     align-items: center;
-    max-width: 1250px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 95px 24px 115px;
+    padding: 95px clamp(20px, 3vw, 40px) 115px;
 }
 
 .identify-page .identifier-glossary h2 {
@@ -3702,6 +3729,67 @@ html.home-document {
 .identify-page select:focus-visible {
     outline: 3px solid #8ec7a2;
     outline-offset: 3px;
+}
+
+/* Responsive tablet layout */
+
+@media (max-width: 960px) {
+    .identify-page .identifier-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .identify-page .identifier-glossary {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive mobile layout */
+
+@media (max-width: 700px) {
+    .identify-page .identifier-hero-content {
+        width: min(100% - 44px, 1600px);
+        padding: 75px 0 100px;
+    }
+
+    .identify-page .identifier-hero {
+        min-height: 570px;
+    }
+
+    .identify-page .identifier-hero h1 {
+        font-size: clamp(3.8rem, 14vw, 5.8rem);
+    }
+
+    .identify-page .identifier-form fieldset,
+    .identify-page #identify-results .family-row {
+        grid-template-columns: 1fr;
+    }
+
+    .identify-page #identify-results .family-row .family-image {
+        order: 0;
+    }
+
+    .identify-page .identifier-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .identify-page .identifier-card article {
+        min-height: 350px;
+    }
+
+    .identify-page .identifier-glossary dl {
+        grid-template-columns: 1fr;
+    }
+
+    .identify-page .identifier-workspace,
+    .identify-page .identifier-explore {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .identify-page .identifier-glossary {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
 }
 
 /* Responsive tablet layout */
