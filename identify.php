@@ -57,7 +57,7 @@ if ($conn) {
     $seedStmt = mysqli_prepare($conn, "INSERT IGNORE INTO plant (scientific_name, common_name, family, genus, main_feature, habitat_location, care_instructions, description, keywords, image_path, species_link) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     if ($seedStmt) {
         foreach ($seedPlants as $sp) {
-            mysqli_stmt_bind_param($seedStmt, "sssssssssss", $sp[0], $sp[1], $sp[2], $sp[3], $sp[4], $sp[5], $sp[6], $sp[7], $sp[8], $sp[9], $sp[10]);
+            mysqli_stmt_bind_param($seedStmt, " sssssssssss", $sp[0], $sp[1], $sp[2], $sp[3], $sp[4], $sp[5], $sp[6], $sp[7], $sp[8], $sp[9], $sp[10]);
             mysqli_stmt_execute($seedStmt);
         }
         mysqli_stmt_close($seedStmt);
