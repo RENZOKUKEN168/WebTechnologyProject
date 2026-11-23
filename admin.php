@@ -53,25 +53,19 @@ function adminText(string $key, int $max, bool $required = true): string
 }
 function adminValidateUser(bool $creating): array
 {
-    $firstname = adminText("firstname", 25);
-    $lastname = adminText("lastname", 25);
-    $phone = adminText("phone", 10);
+    $name = adminText("name", 51);
+    $contact = adminText("contact_number", 10);
+    $address = adminText("address", 100);
     $username = adminText("username", 50);
-    $street = adminText("street_address", 40);
-    $city = adminText("city", 20);
-    $state = adminText("state", 30);
-    $postcode = adminText("postcode", 5);
     $password = (string)($_POST["password"] ?? "");
-    $states = ["Johor","Kedah","Kelantan","Melaka","Negeri Sembilan","Pahang","Penang","Perak","Perlis","Sabah","Sarawak","Selangor","Terengganu","Kuala Lumpur","Labuan","Putrajaya"];
-    if (!preg_match("/^[A-Za-z ]+$/", $firstname) || !preg_match("/^[A-Za-z ]+$/", $lastname) ||
-        !preg_match("/^[0-9]{1,10}$/", $phone) || !preg_match("/^[0-9]{5}$/", $postcode) ||
-        !in_array($state, $states, true) || strtolower($username) === "admin") {
-        throw new RuntimeException("Check the name, phone, postcode, state, and reserved username.");
+    if (!preg_match("/^[A-Za-z ]+$/", $name) || !preg_match("/^[0-9]{1,10}$/", $contact) ||
+        strtolower($username) === "admin") {
+        throw new RuntimeException("Check the name, contact number, and reserved username.");
     }
     if (($creating && strlen($password) < 8) || ($password !== "" && (strlen($password) < 8 || strlen($password) > 255))) {
         throw new RuntimeException("A user password must contain at least 8 characters.");
     }
-    return [$firstname, $lastname, $phone, $username, $street, $city, $state, $postcode, $password];
+    return [$name, $contact, $address, $username, $password];
 }
 function adminPhotosFromRow(array $row): array
 {
@@ -91,25 +85,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             throw new RuntimeException("Use the Plant submissions page to manage submissions.");
         } elseif ($action === "save_user") {
             $id = (int)($_POST["id"] ?? 0);
-            [$firstname, $lastname, $phone, $username, $street, $city, $state, $postcode, $password] = adminValidateUser($id === 0);
+            [$name, $contact, $address, $username, $password] = adminValidateUser($id === 0);
             if ($id > 0) {
-                $find = mysqli_prepare($conn, "SELECT role FROM register WHERE id = ?");
-                mysqli_stmt_bind_param($find, "i", $id);
-                mysqli_stmt_execute($find);
-                $target = mysqli_fetch_assoc(mysqli_stmt_get_result($find));
-                if (!$target || $target["role"] !== "user") throw new RuntimeException("Only regular accounts can be changed here.");
                 if ($password !== "") {
                     $hash = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = mysqli_prepare($conn, "UPDATE register SET firstname=?, lastname=?, phone=?, username=?, street_address=?, city=?, state=?, postcode=?, password=? WHERE id=? AND role='user'");
-                    mysqli_stmt_bind_param($stmt, "sssssssssi", $firstname, $lastname, $phone, $username, $street, $city, $state, $postcode, $hash, $id);
+                    $stmt = mysqli_prepare($conn, "UPDATE `user` SET name=?, contact_number=?, address=?, username=?, password=? WHERE id=?");
+                    mysqli_stmt_bind_param($stmt, "sssssi", $name, $contact, $address, $username, $hash, $id);
                 } else {
-                    $stmt = mysqli_prepare($conn, "UPDATE register SET firstname=?, lastname=?, phone=?, username=?, street_address=?, city=?, state=?, postcode=? WHERE id=? AND role='user'");
-                    mysqli_stmt_bind_param($stmt, "ssssssssi", $firstname, $lastname, $phone, $username, $street, $city, $state, $postcode, $id);
+                    $stmt = mysqli_prepare($conn, "UPDATE `user` SET name=?, contact_number=?, address=?, username=? WHERE id=?");
+                    mysqli_stmt_bind_param($stmt, "ssssi", $name, $contact, $address, $username, $id);
                 }
             } else {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = mysqli_prepare($conn, "INSERT INTO register (firstname, lastname, phone, username, password, street_address, city, state, postcode, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'user')");
-                mysqli_stmt_bind_param($stmt, "sssssssss", $firstname, $lastname, $phone, $username, $hash, $street, $city, $state, $postcode);
+                $stmt = mysqli_prepare($conn, "INSERT INTO `user` (name, contact_number, address, username, password) VALUES (?, ?, ?, ?, ?)");
+                mysqli_stmt_bind_param($stmt, "sssss", $name, $contact, $address, $username, $hash);
             }
             if (!mysqli_stmt_execute($stmt)) {
                 if (mysqli_errno($conn) === 1062) throw new RuntimeException("That username is already in use.");
@@ -118,9 +107,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             adminRedirect("users", "Account saved.");
         } elseif ($action === "delete_user") {
             $id = (int)($_POST["id"] ?? 0);
-            $stmt = mysqli_prepare($conn, "DELETE FROM register WHERE id = ? AND role = 'user'");
+            $stmt = mysqli_prepare($conn, "DELETE FROM `user` WHERE id = ?");
             mysqli_stmt_bind_param($stmt, "i", $id);
-            if (!mysqli_stmt_execute($stmt) || mysqli_stmt_affected_rows($stmt) !== 1) throw new RuntimeException("That regular account could not be deleted.");
+            if (!mysqli_stmt_execute($stmt) || mysqli_stmt_affected_rows($stmt) !== 1) throw new RuntimeException("That user account could not be deleted.");
             adminRedirect("users", "Account deleted.");
         } else {
             throw new RuntimeException("Choose a valid admin action.");
@@ -136,15 +125,14 @@ $csrf = adminCsrfToken();
 $userEdit = null;
 if (isset($_GET["edit_user"])) {
     $id = (int)$_GET["edit_user"];
-    $stmt = mysqli_prepare($conn, "SELECT id, firstname, lastname, phone, username, street_address, city, state, postcode FROM register WHERE id = ? AND role = 'user'");
+    $stmt = mysqli_prepare($conn, "SELECT id, name, contact_number, address, username FROM `user` WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "i", $id);
     mysqli_stmt_execute($stmt);
     $userEdit = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt)) ?: null;
 }
-$states = ["Johor","Kedah","Kelantan","Melaka","Negeri Sembilan","Pahang","Penang","Perak","Perlis","Sabah","Sarawak","Selangor","Terengganu","Kuala Lumpur","Labuan","Putrajaya"];
 $submissionCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contribute"))["total"] ?? 0);
 $pendingCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM contribute WHERE status='pending'"))["total"] ?? 0);
-$userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM register"))["total"] ?? 0);
+$userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM `user`"))["total"] ?? 0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -203,27 +191,23 @@ $userCount = (int)(mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS to
                     <?php $editingUser = (bool)$userEdit; ?>
                     <form class="admin-form" method="post" action="admin.php">
                         <input type="hidden" name="csrf_token" value="<?= adminEscape($csrf) ?>"><input type="hidden" name="tab" value="users"><input type="hidden" name="action" value="save_user"><input type="hidden" name="id" value="<?= (int)($userEdit["id"] ?? 0) ?>">
-                        <label>First name<input name="firstname" maxlength="25" pattern="[A-Za-z ]+" required value="<?= adminEscape($userEdit["firstname"] ?? "") ?>"></label>
-                        <label>Last name<input name="lastname" maxlength="25" pattern="[A-Za-z ]+" required value="<?= adminEscape($userEdit["lastname"] ?? "") ?>"></label>
-                        <label>Phone<input name="phone" maxlength="10" pattern="[0-9]{1,10}" required value="<?= adminEscape($userEdit["phone"] ?? "") ?>"></label>
+                        <label>Name<input name="name" maxlength="51" pattern="[A-Za-z ]+" required value="<?= adminEscape($userEdit["name"] ?? "") ?>"></label>
+                        <label>Contact number<input name="contact_number" maxlength="10" pattern="[0-9]{1,10}" required value="<?= adminEscape($userEdit["contact_number"] ?? "") ?>"></label>
+                        <label>Address<input name="address" maxlength="100" required value="<?= adminEscape($userEdit["address"] ?? "") ?>"></label>
                         <label>Username<input name="username" maxlength="50" required value="<?= adminEscape($userEdit["username"] ?? "") ?>"></label>
                         <label><?= $editingUser ? "New password (leave blank to keep it)" : "Password" ?><input type="password" name="password" maxlength="255" <?= $editingUser ? "" : "required" ?>></label>
-                        <label>Street address<input name="street_address" maxlength="40" required value="<?= adminEscape($userEdit["street_address"] ?? "") ?>"></label>
-                        <label>City<input name="city" maxlength="20" required value="<?= adminEscape($userEdit["city"] ?? "") ?>"></label>
-                        <label>State<select name="state" required><option value="">Select state</option><?php foreach ($states as $state): ?><option value="<?= adminEscape($state) ?>" <?= (($userEdit["state"] ?? "") === $state) ? "selected" : "" ?>><?= adminEscape($state) ?></option><?php endforeach; ?></select></label>
-                        <label>Postcode<input name="postcode" maxlength="5" pattern="[0-9]{5}" required value="<?= adminEscape($userEdit["postcode"] ?? "") ?>"></label>
                         <div class="admin-actions"><button type="submit"><?= $editingUser ? "Save account" : "Add account" ?></button><a href="admin.php?tab=users">Cancel</a></div>
                     </form>
                 <?php endif; ?>
                 <?php
-                $users = mysqli_query($conn, "SELECT id, firstname, lastname, phone, username, city, state, role, created_at FROM register ORDER BY created_at DESC, id DESC");
+                $users = mysqli_query($conn, "SELECT id, name, contact_number, address, username FROM `user` ORDER BY id DESC");
                 ?>
                 <?php if ($users && mysqli_num_rows($users) > 0): ?>
                     <div class="admin-table-wrap"><table class="admin-table">
-                        <thead><tr><th>Name</th><th>Username</th><th>Phone</th><th>Location</th><th>Permission</th><th>Joined</th><th>Actions</th></tr></thead>
+                        <thead><tr><th>Name</th><th>Username</th><th>Contact</th><th>Address</th><th>Actions</th></tr></thead>
                         <tbody><?php while ($user = mysqli_fetch_assoc($users)): ?>
-                            <tr><td><?= adminEscape($user["firstname"] . " " . $user["lastname"]) ?></td><td><?= adminEscape($user["username"]) ?></td><td><?= adminEscape($user["phone"]) ?></td><td><?= adminEscape($user["city"] . ", " . $user["state"]) ?></td><td><?= adminEscape(ucfirst($user["role"] ?? "user")) ?></td><td><?= adminEscape($user["created_at"]) ?></td>
-                                <td class="admin-row-actions"><?php if (!$isFullAdmin): ?><small>You do not have permission to manage member accounts.</small><?php elseif (($user["role"] ?? "user") === "admin"): ?><a href="view_member.php">Manage role</a><?php else: ?><a href="admin.php?tab=users&edit_user=<?= (int)$user["id"] ?>">Edit</a> <a href="admin.php?tab=users&confirm_delete_user=<?= (int)$user["id"] ?>">Delete</a><?php endif; ?></td></tr>
+                            <tr><td><?= adminEscape($user["name"]) ?></td><td><?= adminEscape($user["username"]) ?></td><td><?= adminEscape($user["contact_number"]) ?></td><td><?= adminEscape($user["address"]) ?></td>
+                                <td class="admin-row-actions"><?php if (!$isFullAdmin): ?><small>You do not have permission to manage member accounts.</small><?php else: ?><a href="admin.php?tab=users&edit_user=<?= (int)$user["id"] ?>">Edit</a> <a href="admin.php?tab=users&confirm_delete_user=<?= (int)$user["id"] ?>">Delete</a><?php endif; ?></td></tr>
                         <?php endwhile; ?></tbody>
                     </table></div>
                 <?php else: ?><p>No registered user accounts yet.</p><?php endif; ?>
